@@ -1,0 +1,28 @@
+name: Cleanup sensitive issues
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close and scrub issues 2-11
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issues = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+            for (const num of issues) {
+              try {
+                await github.rest.issues.update({
+                  owner: 'getmilodev',
+                  repo: 'milo-inbox',
+                  issue_number: num,
+                  state: 'closed',
+                  body: '_Content removed — moved to internal docs._'
+                });
+                console.log(`Closed and scrubbed issue #${num}`);
+              } catch (e) {
+                console.log(`Error on issue #${num}: ${e.message}`);
+              }
+            }
