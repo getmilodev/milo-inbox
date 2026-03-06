@@ -1,0 +1,54 @@
+name: Create EARLYMILO25 Stripe coupon
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-coupon:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create coupon and promo code
+        env:
+          STRIPE_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+        run: |
+          if [ -z "$STRIPE_KEY" ]; then
+            echo "::error::STRIPE_SECRET_KEY not found in repo secrets"
+            exit 1
+          fi
+
+          echo "Creating coupon..."
+          COUPON=$(curl -s -w "\n%{http_code}" -u "$STRIPE_KEY:" \
+            -d "percent_off=25" \
+            -d "duration=once" \
+            -d "id=EARLYMILO25" \
+            -d "name=Early Milo 25% Off" \
+            https://api.stripe.com/v1/coupons)
+          
+          HTTP_CODE=$(echo "$COUPON" | tail -1)
+          BODY=$(echo "$COUPON" | head -n -1)
+          
+          if [ "$HTTP_CODE" = "200" ]; then
+            echo "Coupon created successfully"
+          elif echo "$BODY" | grep -q "already exists"; then
+            echo "Coupon already exists, continuing to promo code"
+          else
+            echo "Coupon response: $HTTP_CODE"
+            echo "$BODY"
+          fi
+
+          echo "Creating promotion code..."
+          PROMO=$(curl -s -w "\n%{http_code}" -u "$STRIPE_KEY:" \
+            -d "coupon=EARLYMILO25" \
+            -d "code=EARLYMILO25" \
+            -d "active=true" \
+            https://api.stripe.com/v1/promotion_codes)
+          
+          HTTP_CODE=$(echo "$PROMO" | tail -1)
+          BODY=$(echo "$PROMO" | head -n -1)
+          
+          echo "Promo code response: $HTTP_CODE"
+          if [ "$HTTP_CODE" = "200" ]; then
+            echo "EARLYMILO25 promo code is live!"
+          else
+            echo "$BODY"
+          fi
