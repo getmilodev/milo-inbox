@@ -1,10 +1,19 @@
 {
+  "rewrites": [
+    { "source": "/receptionist", "destination": "/receptionist.html" }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" }
+      ]
+    },
+    {
+      "source": "/receptionist",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     }
   ]
