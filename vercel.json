@@ -10,6 +10,7 @@
     { "source": "/demo", "destination": "/demo.html" },
     { "source": "/ainative", "destination": "/ainative.html" },
     { "source": "/agents", "destination": "/agents.html" },
+    { "source": "/build", "destination": "/build.html" },
     { "source": "/calculator", "destination": "/calculator.html" },
     { "source": "/security", "destination": "/security.html" },
     { "source": "/law-firms", "destination": "/content/law-firm-landing.html" },
@@ -31,7 +32,7 @@
       ]
     },
     {
-      "source": "/(receptionist|demo|ainative|agents|calculator|security)",
+      "source": "/(receptionist|demo|ainative|agents|build|calculator|security)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build Your AI Team — See What Agents Your Business Needs | Milo</title>
+  <meta name="description" content="Answer 3 questions. Get a custom AI agent team recommendation for your business. See exactly which agents you need, what they do, and what it costs. Takes 60 seconds.">
+  <meta property="og:title" content="Build Your AI Team in 60 Seconds | Milo">
+  <meta property="og:description" content="Pick your industry. Tell us what eats your time. Get a custom AI agent team blueprint — with roles, capabilities, and pricing.">
+  <link rel="canonical" href="https://getmilo.dev/build">
+  <style>
+    :root {
+      --slate: #1a1a2e;
+      --copper: #c47a4a;
+      --copper-light: #f5ebe0;
+      --success: #22c55e;
+      --white: #ffffff;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif;
+      color: var(--gray-900);
+      line-height: 1.6;
+      background: var(--white);
+      min-height: 100vh;
+    }
+    .nav {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav a { color: var(--gray-900); text-decoration: none; font-weight: 600; font-size: 1.1rem; }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+    .hero {
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--copper);
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--gray-500);
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .progress {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 40px 0 32px;
+    }
+    .progress-dot {
+      width: 40px;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--gray-200);
+      transition: background 0.3s;
+    }
+    .progress-dot.active { background: var(--copper); }
+    .progress-dot.done { background: var(--success); }
+    .step { display: none; animation: fadeIn 0.4s ease; }
+    .step.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .step-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--copper);
+      margin-bottom: 8px;
+    }
+    .step h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .option-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 600px) { .option-grid { grid-template-columns: 1fr; } }
+    .option {
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--white);
+      text-align: left;
+    }
+    .option:hover { border-color: var(--gray-400); background: var(--gray-50); }
+    .option.selected { border-color: var(--copper); background: var(--copper-light); }
+    .option-icon { font-size: 1.5rem; margin-bottom: 8px; }
+    .option h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+    .option p { font-size: 0.85rem; color: var(--gray-500); margin: 0; }
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 600px) { .checkbox-grid { grid-template-columns: 1fr; } }
+    .checkbox-option {
+      border: 2px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+    }
+    .checkbox-option:hover { border-color: var(--gray-400); }
+    .checkbox-option.selected { border-color: var(--copper); background: var(--copper-light); }
+    .checkbox-option .check {
+      width: 20px; height: 20px;
+      border: 2px solid var(--gray-300);
+      border-radius: 4px;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .checkbox-option.selected .check {
+      background: var(--copper);
+      border-color: var(--copper);
+      color: white;
+    }
+    .checkbox-option .check::after { content: ''; }
+    .checkbox-option.selected .check::after { content: '\2713'; font-size: 12px; font-weight: bold; color: white; }
+    .checkbox-option span { font-size: 0.95rem; font-weight: 500; }
+    .btn-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 28px;
+      gap: 12px;
+    }
+    .btn {
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--slate);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: #2a2a4e; }
+    .btn-primary:disabled { background: var(--gray-300); cursor: not-allowed; }
+    .btn-back {
+      background: transparent;
+      color: var(--gray-500);
+      border: 1px solid var(--gray-200);
+    }
+    .btn-back:hover { background: var(--gray-50); }
+    /* Results */
+    .result { display: none; animation: fadeIn 0.5s ease; }
+    .result.active { display: block; }
+    .result-header {
+      text-align: center;
+      padding: 48px 0 32px;
+    }
+    .result-header .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .result-header .badge::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+    }
+    .result-header h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .result-header p {
+      font-size: 1.05rem;
+      color: var(--gray-500);
+    }
+    .agent-card {
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--white);
+    }
+    .agent-avatar {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .agent-info { flex: 1; }
+    .agent-info h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 2px; }
+    .agent-info .role { font-size: 0.8rem; color: var(--copper); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .agent-info p { font-size: 0.9rem; color: var(--gray-600); margin: 0; }
+    .agent-info .saves { font-size: 0.85rem; color: var(--success); font-weight: 600; margin-top: 6px; }
+    .summary-box {
+      background: var(--slate);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .summary-box h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 16px; }
+    .summary-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 500px) { .summary-stats { flex-direction: column; gap: 16px; } }
+    .summary-stat .num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--copper);
+    }
+    .summary-stat .label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .summary-box .cta-btn {
+      display: inline-block;
+      background: var(--copper);
+      color: var(--white);
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: opacity 0.2s;
+      margin: 4px;
+    }
+    .summary-box .cta-btn:hover { opacity: 0.9; }
+    .summary-box .cta-secondary {
+      display: inline-block;
+      color: rgba(255,255,255,0.7);
+      padding: 16px 24px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .summary-box .cta-secondary:hover { color: var(--white); }
+    .fine-print {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gray-400);
+      padding: 16px 0 60px;
+    }
+    .fine-print strong { color: var(--gray-600); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/">milo</a>
+  <a href="/agents" style="font-weight: 500; font-size: 0.95rem; color: var(--gray-500);">All agents &rarr;</a>
+</nav>
+
+<div class="container">
+  <div class="hero">
+    <h1>Build your <em>AI team</em></h1>
+    <p>Answer 3 questions. Get a custom AI agent team blueprint for your business. Takes 60 seconds.</p>
+  </div>
+
+  <div class="progress">
+    <div class="progress-dot active" id="dot1"></div>
+    <div class="progress-dot" id="dot2"></div>
+    <div class="progress-dot" id="dot3"></div>
+  </div>
+
+  <!-- STEP 1: Industry -->
+  <div class="step active" id="step1">
+    <div class="step-label">Step 1 of 3</div>
+    <h2>What kind of business do you run?</h2>
+    <div class="option-grid" id="industryGrid">
+      <div class="option" data-value="law" onclick="selectIndustry(this)">
+        <div class="option-icon">&#9878;</div>
+        <h3>Law Firm</h3>
+        <p>Solo to mid-size practice</p>
+      </div>
+      <div class="option" data-value="realestate" onclick="selectIndustry(this)">
+        <div class="option-icon">&#127968;</div>
+        <h3>Real Estate</h3>
+        <p>Brokerage, team, or solo agent</p>
+      </div>
+      <div class="option" data-value="healthcare" onclick="selectIndustry(this)">
+        <div class="option-icon">&#129657;</div>
+        <h3>Healthcare / Dental</h3>
+        <p>Practice or clinic</p>
+      </div>
+      <div class="option" data-value="trades" onclick="selectIndustry(this)">
+        <div class="option-icon">&#128295;</div>
+        <h3>Home Services / HVAC</h3>
+        <p>Plumbing, electrical, HVAC, roofing</p>
+      </div>
+      <div class="option" data-value="agency" onclick="selectIndustry(this)">
+        <div class="option-icon">&#128640;</div>
+        <h3>Agency / Consulting</h3>
+        <p>Marketing, design, or advisory</p>
+      </div>
+      <div class="option" data-value="ecommerce" onclick="selectIndustry(this)">
+        <div class="option-icon">&#128722;</div>
+        <h3>E-Commerce</h3>
+        <p>Online store or D2C brand</p>
+      </div>
+      <div class="option" data-value="finance" onclick="selectIndustry(this)">
+        <div class="option-icon">&#128200;</div>
+        <h3>Accounting / Finance</h3>
+        <p>CPA, bookkeeper, or advisor</p>
+      </div>
+      <div class="option" data-value="other" onclick="selectIndustry(this)">
+        <div class="option-icon">&#9733;</div>
+        <h3>Something Else</h3>
+        <p>We build for any business</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 2: Team size -->
+  <div class="step" id="step2">
+    <div class="step-label">Step 2 of 3</div>
+    <h2>How big is your team?</h2>
+    <div class="option-grid" id="sizeGrid">
+      <div class="option" data-value="solo" onclick="selectSize(this)">
+        <div class="option-icon">&#128100;</div>
+        <h3>Just me</h3>
+        <p>Solopreneur or freelancer</p>
+      </div>
+      <div class="option" data-value="small" onclick="selectSize(this)">
+        <div class="option-icon">&#128101;</div>
+        <h3>2 to 5 people</h3>
+        <p>Small but growing</p>
+      </div>
+      <div class="option" data-value="medium" onclick="selectSize(this)">
+        <div class="option-icon">&#127970;</div>
+        <h3>6 to 20 people</h3>
+        <p>Established operation</p>
+      </div>
+      <div class="option" data-value="large" onclick="selectSize(this)">
+        <div class="option-icon">&#127963;</div>
+        <h3>20+ people</h3>
+        <p>Scaling fast</p>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="goStep(1)">Back</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: Pain points -->
+  <div class="step" id="step3">
+    <div class="step-label">Step 3 of 3</div>
+    <h2>What eats most of your time?</h2>
+    <p style="color: var(--gray-500); margin-bottom: 20px; font-size: 0.95rem;">Pick all that apply. This shapes your agent team.</p>
+    <div class="checkbox-grid" id="painGrid">
+      <div class="checkbox-option" data-value="leads" onclick="togglePain(this)">
+        <div class="check"></div>
+        <span>Following up with leads</span>
+      </div>
+      <div class="checkbox-option" data-value="scheduling" onclick="togglePain(this)">
+        <div class="check"></div>
+        <span>Scheduling and calendar</span>
+      </div>
+      <div class="checkbox-option" data-value="support" onclick="togglePain(this)">
+        <div class="check"></div>
+        <span>Customer questions</span>
+      </div>
+      <div class="checkbox-option" data-value="outreach" onclick="togglePain(this)">
+        <div class="check"></div>
+        <span>Outreach and prospecting</span>
+      </div>
+      <div class="checkbox-option" data-value="data" onclick="togglePain(this)">
+        <div class="check"></div>
+        <span>Data entry and admin</span>
+      </div>
+      <div class="checkbox-option" data-value="reporting" onclick="togglePain(this)">
+        <div class="check"></div>
+        <span>Reporting and analytics</span>
+      </div>
+      <div class="checkbox-option" data-value="content" onclick="togglePain(this)">
+        <div class="check"></div>
+        <span>Content and social media</span>
+      </div>
+      <div class="checkbox-option" data-value="invoicing" onclick="togglePain(this)">
+        <div class="check"></div>
+        <span>Invoicing and follow-up</span>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-back" onclick="goStep(2)">Back</button>
+      <button class="btn btn-primary" id="buildBtn" disabled onclick="showResults()">Build my team &rarr;</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="result" id="resultSection">
+    <div class="result-header">
+      <div class="badge">Team blueprint ready</div>
+      <h2 id="resultTitle">Your AI Agent Team</h2>
+      <p id="resultSubtitle">Based on your answers, here are the agents we'd build for you.</p>
+    </div>
+    <div id="agentCards"></div>
+    <div class="summary-box">
+      <h3>Your team at a glance</h3>
+      <div class="summary-stats">
+        <div class="summary-stat">
+          <div class="num" id="agentCount">4</div>
+          <div class="label">AI agents</div>
+        </div>
+        <div class="summary-stat">
+          <div class="num" id="hoursSaved">25+</div>
+          <div class="label">hours saved per week</div>
+        </div>
+        <div class="summary-stat">
+          <div class="num" id="investmentAmount">-</div>
+          <div class="label">one-time setup</div>
+        </div>
+      </div>
+      <a class="cta-btn" id="ctaLink" href="/buy/team">Get this team built &rarr;</a>
+      <a class="cta-secondary" href="/agents">Compare all plans</a>
+    </div>
+    <p class="fine-print">One-time setup fee. You own everything. Only ongoing cost is <strong>$10 to $50/mo</strong> for hosting and AI API usage. No monthly fees to Milo. <strong>Use code EARLYMILO25</strong> for 25% off.</p>
+  </div>
+</div>
+
+<script>
+let state = { industry: null, size: null, pains: [] };
+
+function selectIndustry(el) {
+  document.querySelectorAll('#industryGrid .option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  state.industry = el.dataset.value;
+  setTimeout(() => goStep(2), 300);
+}
+
+function selectSize(el) {
+  document.querySelectorAll('#sizeGrid .option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  state.size = el.dataset.value;
+  setTimeout(() => goStep(3), 300);
+}
+
+function togglePain(el) {
+  el.classList.toggle('selected');
+  const v = el.dataset.value;
+  if (state.pains.includes(v)) {
+    state.pains = state.pains.filter(p => p !== v);
+  } else {
+    state.pains.push(v);
+  }
+  document.getElementById('buildBtn').disabled = state.pains.length === 0;
+}
+
+function goStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step' + n).classList.add('active');
+  for (let i = 1; i <= 3; i++) {
+    const dot = document.getElementById('dot' + i);
+    dot.className = 'progress-dot';
+    if (i < n) dot.classList.add('done');
+    if (i === n) dot.classList.add('active');
+  }
+}
+
+const agentDB = {
+  leads: {
+    name: 'Lead Follow-Up Agent',
+    icon: '&#9889;',
+    bg: '#fef3c7',
+    role: 'Pipeline acceleration',
+    desc: 'Responds to new leads within 60 seconds via email or SMS. Sends personalized follow-ups on a cadence you set. Never lets a lead go cold.',
+    hours: 6
+  },
+  scheduling: {
+    name: 'Calendar Agent',
+    icon: '&#128197;',
+    bg: '#dbeafe',
+    role: 'Scheduling automation',
+    desc: 'Books meetings, sends confirmations and reminders, reschedules no-shows, and syncs across your calendar tools. Zero back-and-forth.',
+    hours: 4
+  },
+  support: {
+    name: 'Client Communication Agent',
+    icon: '&#128172;',
+    bg: '#dcfce7',
+    role: 'Always-on client support',
+    desc: 'Answers common questions 24/7 via chat, email, or text. Trained on YOUR business, YOUR policies, YOUR tone. Escalates when needed.',
+    hours: 5
+  },
+  outreach: {
+    name: 'Outreach Agent',
+    icon: '&#127919;',
+    bg: '#fce7f3',
+    role: 'Prospecting on autopilot',
+    desc: 'Researches prospects, writes personalized messages, and sends targeted outreach. Fills your pipeline while you focus on closing.',
+    hours: 8
+  },
+  data: {
+    name: 'Admin Agent',
+    icon: '&#128203;',
+    bg: '#f3e8ff',
+    role: 'Data entry elimination',
+    desc: 'Enters data into your CRM, updates records, processes forms, and syncs information across systems. The busywork disappears.',
+    hours: 5
+  },
+  reporting: {
+    name: 'Reporting Agent',
+    icon: '&#128202;',
+    bg: '#e0f2fe',
+    role: 'Automated insights',
+    desc: 'Pulls numbers from your tools, builds daily and weekly reports, flags anomalies, and delivers insights to your inbox every morning.',
+    hours: 3
+  },
+  content: {
+    name: 'Content Agent',
+    icon: '&#9997;',
+    bg: '#fef9c3',
+    role: 'Content production',
+    desc: 'Drafts social posts, blog outlines, email newsletters, and marketing copy in your voice. You review and approve — it does the heavy lifting.',
+    hours: 6
+  },
+  invoicing: {
+    name: 'Billing Agent',
+    icon: '&#128176;',
+    bg: '#d1fae5',
+    role: 'Revenue collection',
+    desc: 'Sends invoices on schedule, follows up on overdue payments with polite persistence, and logs payment status. Get paid faster.',
+    hours: 3
+  }
+};
+
+function showResults() {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.progress-dot').forEach(d => { d.className = 'progress-dot done'; });
+
+  const agents = state.pains.map(p => agentDB[p]).filter(Boolean);
+  const totalHours = agents.reduce((sum, a) => sum + a.hours, 0);
+  const count = agents.length;
+
+  let tier, price, link;
+  if (count <= 2) {
+    tier = 'Starter'; price = '$299'; link = '/buy/starter';
+  } else if (count <= 5) {
+    tier = 'Team'; price = '$2,499'; link = '/buy/team';
+  } else {
+    tier = 'Managed'; price = '$999/mo'; link = '/buy/managed';
+  }
+
+  const industryNames = {
+    law: 'law firm', realestate: 'real estate business', healthcare: 'practice',
+    trades: 'business', agency: 'agency', ecommerce: 'store',
+    finance: 'firm', other: 'business'
+  };
+  const biz = industryNames[state.industry] || 'business';
+
+  document.getElementById('resultTitle').innerHTML = 'Your ' + count + '-Agent AI Team';
+  document.getElementById('resultSubtitle').textContent = 'Custom-built for your ' + biz + '. Ready in days, not months.';
+  document.getElementById('agentCount').textContent = count;
+  document.getElementById('hoursSaved').textContent = totalHours + '+';
+  document.getElementById('investmentAmount').textContent = price;
+  document.getElementById('ctaLink').href = link;
+  document.getElementById('ctaLink').textContent = 'Get the ' + tier + ' package \u2192';
+
+  const cardsHTML = agents.map(a => {
+    return '<div class="agent-card">' +
+      '<div class="agent-avatar" style="background:' + a.bg + '">' + a.icon + '</div>' +
+      '<div class="agent-info">' +
+        '<h3>' + a.name + '</h3>' +
+        '<div class="role">' + a.role + '</div>' +
+        '<p>' + a.desc + '</p>' +
+        '<div class="saves">\u23F0 Saves ~' + a.hours + ' hours/week</div>' +
+      '</div></div>';
+  }).join('');
+
+  document.getElementById('agentCards').innerHTML = cardsHTML;
+  document.getElementById('resultSection').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
