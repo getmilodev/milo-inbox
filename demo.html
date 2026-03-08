@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>See Milo For Your Firm — Free Personalized Demo</title>
+<meta name="description" content="Request a free personalized demo of Milo AI Receptionist. No payment, no commitment. Ready in 24 hours.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a2e;line-height:1.6;background:#fafafa}
+.hero{background:linear-gradient(135deg,#0a0a1a 0%,#1a1a3e 100%);color:#fff;padding:60px 20px 50px;text-align:center}
+.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);max-width:600px;margin:0 auto 16px;line-height:1.2}
+.hero h1 span{color:#4ecdc4}
+.hero p{font-size:1.05rem;max-width:480px;margin:0 auto;opacity:0.85}
+.form-wrap{max-width:520px;margin:-30px auto 60px;padding:0 20px}
+.form-card{background:#fff;border-radius:16px;padding:36px 32px;box-shadow:0 8px 30px rgba(0,0,0,0.1)}
+.field{margin-bottom:20px}
+.field label{display:block;font-weight:600;font-size:0.9rem;margin-bottom:6px;color:#1a1a2e}
+.field .opt{font-weight:400;color:#888;font-size:0.8rem}
+.field input,.field select,.field textarea{width:100%;padding:12px 14px;border:2px solid #e8e8e8;border-radius:8px;font-size:1rem;font-family:inherit;transition:border-color 0.2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#4ecdc4}
+.field textarea{resize:vertical}
+.submit-btn{width:100%;padding:16px;background:#4ecdc4;color:#0a0a1a;border:none;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(78,205,196,0.35)}
+.submit-btn:disabled{opacity:0.6;transform:none;cursor:wait}
+.trust{text-align:center;margin-top:16px;font-size:0.85rem;color:#888}
+.success{text-align:center;padding:40px 20px}
+.success .check{font-size:3rem;margin-bottom:16px}
+.success h2{font-size:1.6rem;margin-bottom:12px;color:#1a1a2e}
+.success p{color:#555;font-size:1rem;max-width:380px;margin:0 auto}
+.success .firm-name{color:#4ecdc4;font-weight:700}
+.hide{display:none}
+.bottom-note{text-align:center;padding:30px 20px 50px;color:#aaa;font-size:0.85rem}
+.bottom-note a{color:#4ecdc4;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<h1>See Milo answer calls for <span>your firm</span></h1>
+<p>We build a personalized demo in 24 hours. No payment. No commitment. Just see it work.</p>
+</div>
+
+<div class="form-wrap">
+<div class="form-card" id="form-card">
+<form id="demo-form">
+<div class="field">
+<label>Your name</label>
+<input type="text" name="name" required placeholder="Jane Smith" autocomplete="name">
+</div>
+<div class="field">
+<label>Business email</label>
+<input type="email" name="email" required autocomplete="email">
+</div>
+<div class="field">
+<label>Firm name</label>
+<input type="text" name="firm" required placeholder="Smith and Associates" autocomplete="organization">
+</div>
+<div class="field">
+<label>Type of practice</label>
+<select name="vertical">
+<option value="">Select one...</option>
+<option value="cpa">CPA / Accounting</option>
+<option value="law">Law / Personal Injury</option>
+<option value="vet">Veterinary</option>
+<option value="medical">Medical / Dental</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="field">
+<label>Biggest phone headache? <span class="opt">(optional)</span></label>
+<textarea name="message" rows="3" placeholder="e.g. Missing calls during busy season, after-hours voicemails..."></textarea>
+</div>
+<input type="hidden" name="ref" id="ref-field" value="">
+<button type="submit" class="submit-btn">Request My Demo</button>
+<p class="trust">No payment required &bull; No commitment &bull; Ready in 24 hours</p>
+</form>
+</div>
+
+<div class="form-card hide" id="success-card">
+<div class="success">
+<div class="check">&#10003;</div>
+<h2>You're in.</h2>
+<p>We'll have a personalized demo ready for <span class="firm-name" id="echo-firm"></span> within 24 hours. Check your inbox.</p>
+</div>
+</div>
+</div>
+
+<div class="bottom-note">
+<a href="/receptionist">Learn more about Milo</a>
+</div>
+
+<script>
+(function() {
+  var D = 'join.getmilo.dev';
+  var params = new URLSearchParams(window.location.search);
+  var refEl = document.getElementById('ref-field');
+  if (params.get('ref')) refEl.value = params.get('ref');
+
+  document.getElementById('demo-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = e.target.querySelector('button');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    var fd = new FormData(e.target);
+    var d = {};
+    fd.forEach(function(v, k) { d[k] = v; });
+
+    var ts = new Date().toISOString();
+    var vMap = { cpa: 'CPA/Accounting', law: 'Law/PI', vet: 'Veterinary', medical: 'Medical/Dental', other: 'Other' };
+    var lines = [
+      'DEMO REQUEST',
+      'Name: ' + d.name,
+      'Email: ' + d.email,
+      'Firm: ' + d.firm,
+      'Type: ' + (vMap[d.vertical] || 'not specified'),
+      'Source: ' + (d.ref || 'direct'),
+      'Time: ' + ts
+    ];
+    if (d.message) lines.push('Notes: ' + d.message);
+
+    var dest = 'leads' + String.fromCharCode(64) + D;
+
+    fetch('/api/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        to: dest,
+        subject: 'LEAD: ' + d.name + ' at ' + d.firm,
+        text: lines.join('\n'),
+        from: 'Milo Leads <leads' + String.fromCharCode(64) + D + '>'
+      })
+    })
+    .then(function(res) {
+      if (res.ok) {
+        document.getElementById('form-card').classList.add('hide');
+        document.getElementById('echo-firm').textContent = d.firm;
+        document.getElementById('success-card').classList.remove('hide');
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Request My Demo';
+        alert('Something went wrong. Please try again.');
+      }
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Request My Demo';
+      alert('Connection error. Please try again.');
+    });
+  });
+})();
+</script>
+</body>
+</html>
