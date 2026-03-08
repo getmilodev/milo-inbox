@@ -66,6 +66,13 @@
       font-size: 14px;
       color: #888;
     }
+    .hero .cta-note a {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+    .hero .cta-note a:hover {
+      color: #1d4ed8;
+    }
 
     .problem {
       padding: 64px 0;
@@ -232,6 +239,13 @@
       font-size: 14px;
       color: #888;
     }
+    .pricing .guarantee a {
+      color: #aaa;
+      text-decoration: underline;
+    }
+    .pricing .guarantee a:hover {
+      color: #fff;
+    }
 
     .faq {
       padding: 64px 0;
@@ -257,6 +271,10 @@
       font-size: 15px;
       color: #666;
       line-height: 1.6;
+    }
+    .faq-item a {
+      color: #2563eb;
+      text-decoration: underline;
     }
 
     .footer {
@@ -300,6 +318,7 @@
       <p class="subtitle">A custom AI workspace built around your actual work. One session. You own everything. Walk away ahead of everyone in your office.</p>
       <a href="https://buy.stripe.com/aFa7sKckB5aD4ts0lUfIs0d" class="cta-primary">Book Your Setup — $2,500</a>
       <span class="cta-note">One-time. No subscriptions. No ongoing fees.</span>
+      <span class="cta-note"><a href="#" id="hero-talk-link">Prefer to talk first? &#8594;</a></span>
     </div>
   </section>
 
@@ -386,7 +405,7 @@
         </ul>
       </div>
       <a href="https://buy.stripe.com/aFa7sKckB5aD4ts0lUfIs0d" class="cta-primary">Book Your Setup</a>
-      <p class="guarantee">Have questions first? Reach out at getmilo.dev</p>
+      <p class="guarantee">Prefer to talk first? <a href="#" id="pricing-talk-link">Email us</a> — we reply within a few hours.</p>
     </div>
   </section>
 
@@ -407,7 +426,7 @@
       </div>
       <div class="faq-item">
         <h3>What if I want to set up my whole team?</h3>
-        <p>We do team setups too. Reach out through getmilo.dev and we will scope it out. Most team packages run $5,000 to $15,000 depending on size.</p>
+        <p>We do team setups too. <a href="#" id="faq-team-link">Email us</a> and we will scope it out. Most team packages run $5,000 to $15,000 depending on size.</p>
       </div>
       <div class="faq-item">
         <h3>Will I need to pay for anything else?</h3>
@@ -431,10 +450,23 @@
   </footer>
 
   <script>
-    if (window.location.search.includes('success=true')) {
-      document.getElementById('successBanner').style.display = 'block';
-      window.scrollTo(0, 0);
-    }
+    (function() {
+      if (window.location.search.includes('success=true')) {
+        document.getElementById('successBanner').style.display = 'block';
+        window.scrollTo(0, 0);
+      }
+      var u = 'milo';
+      var d = 'getmilo.dev';
+      var a = u + String.fromCharCode(64) + d;
+      var s1 = 'AI%20Native%20Setup%20%E2%80%94%20Quick%20Question';
+      var s2 = 'Team%20AI%20Native%20Setup';
+      var el1 = document.getElementById('hero-talk-link');
+      var el2 = document.getElementById('pricing-talk-link');
+      var el3 = document.getElementById('faq-team-link');
+      if (el1) el1.href = 'mailto:' + a + '?subject=' + s1;
+      if (el2) el2.href = 'mailto:' + a + '?subject=' + s1;
+      if (el3) el3.href = 'mailto:' + a + '?subject=' + s2;
+    })();
   </script>
 </body>
 </html>
