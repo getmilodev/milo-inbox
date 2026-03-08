@@ -1,0 +1,64 @@
+name: Send outreach email
+on:
+  workflow_dispatch:
+    inputs:
+      recipient:
+        description: 'Recipient address'
+        required: true
+        type: string
+      subject_line:
+        description: 'Subject'
+        required: true
+        type: string
+      message_body:
+        description: 'Body text'
+        required: true
+        type: string
+      sender_name:
+        description: 'From name'
+        required: true
+        type: string
+      sender_handle:
+        description: 'From handle (before the at sign)'
+        required: true
+        type: string
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send via Resend
+        env:
+          RESEND_KEY: ${{ secrets.RESEND_API_KEY }}
+          DOMAIN: getmilo.dev
+        run: |
+          if [ -z "$RESEND_KEY" ]; then
+            echo "::error::RESEND_API_KEY not in secrets"
+            exit 1
+          fi
+
+          SENDER="${{ inputs.sender_name }} <${{ inputs.sender_handle }}@${DOMAIN}>"
+          
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -X POST https://api.resend.com/emails \
+            -H "Authorization: Bearer $RESEND_KEY" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"from\": \"${SENDER}\",
+              \"to\": [\"${{ inputs.recipient }}\"],
+              \"subject\": \"${{ inputs.subject_line }}\",
+              \"text\": \"${{ inputs.message_body }}\"
+            }")
+          
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -n -1)
+          
+          echo "Status: $HTTP_CODE"
+          echo "Response: $BODY"
+          
+          if [ "$HTTP_CODE" -ge 400 ]; then
+            echo "::error::Failed with status $HTTP_CODE"
+            exit 1
+          fi
+          
+          echo "Sent successfully"

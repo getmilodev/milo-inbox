@@ -1,0 +1,62 @@
+{
+  "redirects": [
+    { "source": "/buy/starter", "destination": "https://buy.stripe.com/dRm9ASdoFcD5e426KifIs0e", "statusCode": 307 },
+    { "source": "/buy/team", "destination": "https://buy.stripe.com/28EdR81FXbz11hgc4CfIs0f", "statusCode": 307 },
+    { "source": "/buy/managed", "destination": "https://buy.stripe.com/bJe5kC2K18mP5xw7OmfIs0g", "statusCode": 307 }
+  ],
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/receptionist", "destination": "/receptionist.html" },
+    { "source": "/demo", "destination": "/demo.html" },
+    { "source": "/ainative", "destination": "/ainative.html" },
+    { "source": "/agents", "destination": "/agents.html" },
+    { "source": "/build", "destination": "/build.html" },
+    { "source": "/calculator", "destination": "/calculator.html" },
+    { "source": "/security", "destination": "/security.html" },
+    { "source": "/law-firms", "destination": "/content/law-firm-landing.html" },
+    { "source": "/accountants", "destination": "/content/cpa-landing.html" },
+    { "source": "/hvac", "destination": "/content/hvac-landing.html" },
+    { "source": "/dental", "destination": "/content/dental-landing.html" },
+    { "source": "/veterinary", "destination": "/content/veterinary-landing.html" },
+    { "source": "/compare/answerconnect", "destination": "/content/answerconnect-alternative.html" },
+    { "source": "/compare/ruby-receptionists", "destination": "/content/ruby-receptionists-alternative.html" },
+    { "source": "/compare/smith-ai", "destination": "/content/smith-ai-alternative.html" },
+    { "source": "/blog/best-ai-receptionist", "destination": "/content/blog-best-ai-receptionist.html" },
+    { "source": "/blog/ai-native-agencies", "destination": "/content/blog-ai-native-agencies.html" },
+    { "source": "/blog/ai-agents-small-business", "destination": "/content/blog-ai-agents-small-business.html" },
+    { "source": "/blog/ai-agent-system", "destination": "/content/blog-ai-agent-system-6m-pipeline.html" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" }
+      ]
+    },
+    {
+      "source": "/(receptionist|demo|ainative|agents|build|calculator|security)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/(law-firms|accountants|hvac|dental|veterinary)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/compare/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/blog/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    }
+  ]
+}
