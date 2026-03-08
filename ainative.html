@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Native Setup — Go AI-Native in One Afternoon | Milo</title>
+  <meta name="description" content="Custom AI workspace built around your actual work. One session, you own everything. Walk away as the most dangerous person in your office.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      color: #1a1a1a;
+      background: #fafafa;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: #f0f7ff;
+      color: #2563eb;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+    }
+    .hero h1 {
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+      color: #0a0a0a;
+    }
+    .hero .subtitle {
+      font-size: 20px;
+      color: #555;
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.5;
+    }
+    .hero .cta-primary {
+      display: inline-block;
+      background: #0a0a0a;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 16px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .hero .cta-primary:hover { background: #333; }
+    .hero .cta-note {
+      display: block;
+      margin-top: 12px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    .problem {
+      padding: 64px 0;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .problem h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+    .problem p {
+      font-size: 17px;
+      color: #444;
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .problem .highlight {
+      background: #fffbeb;
+      border-left: 3px solid #f59e0b;
+      padding: 20px 24px;
+      margin: 28px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 17px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .solution {
+      padding: 64px 0;
+      background: #fafafa;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .solution h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+    .solution .lead {
+      font-size: 17px;
+      color: #555;
+      margin-bottom: 36px;
+    }
+    .items { list-style: none; }
+    .items li {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+    .items li strong {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 6px;
+      color: #0a0a0a;
+    }
+    .items li span {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .outcome {
+      padding: 64px 0;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .outcome h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .outcome-card {
+      padding: 24px;
+      background: #f8faf8;
+      border-radius: 10px;
+      border: 1px solid #e2e8e2;
+    }
+    .outcome-card .num {
+      font-size: 32px;
+      font-weight: 700;
+      color: #16a34a;
+      margin-bottom: 4px;
+    }
+    .outcome-card .label {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .pricing {
+      padding: 64px 0;
+      text-align: center;
+      background: #0a0a0a;
+      color: #fff;
+    }
+    .pricing h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .pricing .desc {
+      font-size: 17px;
+      color: #aaa;
+      margin-bottom: 32px;
+    }
+    .price-box {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 480px;
+      margin: 0 auto 32px;
+      text-align: left;
+    }
+    .price-box .amount {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .price-box .term {
+      font-size: 15px;
+      color: #888;
+      margin-bottom: 24px;
+    }
+    .price-box ul {
+      list-style: none;
+      margin-bottom: 0;
+    }
+    .price-box ul li {
+      font-size: 15px;
+      color: #ccc;
+      padding: 8px 0;
+      border-top: 1px solid #2a2a2a;
+    }
+    .price-box ul li:before {
+      content: "??? ";
+      color: #16a34a;
+      font-weight: 600;
+    }
+    .pricing .cta-primary {
+      display: inline-block;
+      background: #fff;
+      color: #0a0a0a;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 16px 48px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .pricing .cta-primary:hover { background: #e8e8e8; }
+    .pricing .guarantee {
+      margin-top: 16px;
+      font-size: 14px;
+      color: #888;
+    }
+
+    .faq {
+      padding: 64px 0;
+      background: #fff;
+    }
+    .faq h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      letter-spacing: -0.5px;
+    }
+    .faq-item {
+      border-bottom: 1px solid #e8e8e8;
+      padding: 20px 0;
+    }
+    .faq-item h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #0a0a0a;
+    }
+    .faq-item p {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .footer {
+      padding: 32px 0;
+      text-align: center;
+      font-size: 14px;
+      color: #999;
+      border-top: 1px solid #e8e8e8;
+    }
+    .footer a { color: #666; text-decoration: none; }
+
+    .success-banner {
+      display: none;
+      background: #16a34a;
+      color: #fff;
+      text-align: center;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 48px 0 40px; }
+      .hero h1 { font-size: 32px; }
+      .hero .subtitle { font-size: 17px; }
+      .outcomes-grid { grid-template-columns: 1fr; }
+      .price-box { padding: 28px; }
+      .price-box .amount { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="success-banner" id="successBanner">
+    You're in. Check your inbox — we'll reach out within 24 hours to schedule your setup session.
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <div class="badge">By Milo — AI that works for you</div>
+      <h1>Go AI-Native<br>in One Afternoon</h1>
+      <p class="subtitle">A custom AI workspace built around your actual work. One session. You own everything. Walk away ahead of everyone in your office.</p>
+      <a href="https://buy.stripe.com/aFa7sKckB5aD4ts0lUfIs0d" class="cta-primary">Book Your Setup — $2,500</a>
+      <span class="cta-note">One-time. No subscriptions. No ongoing fees.</span>
+    </div>
+  </section>
+
+  <section class="problem">
+    <div class="container">
+      <h2>You know AI matters. You just don't know where to start.</h2>
+      <p>Your CEO mentions it in every meeting. Your team is asking about it. LinkedIn is full of people who suddenly became AI experts overnight.</p>
+      <p>Meanwhile, you're sitting there thinking: <em>I should probably be using this. But I don't have time to figure out prompt engineering, or which tools to use, or how to make any of this actually useful for my job.</em></p>
+      <div class="highlight">
+        The first person at your company who figures this out gets an unfair advantage. Not eventually — right now. The question is whether that person is you or someone else.
+      </div>
+      <p>You don't need a course. You don't need to learn to code. You need someone who already knows this stuff to set you up and hand you the keys.</p>
+      <p>That's what we do.</p>
+    </div>
+  </section>
+
+  <section class="solution">
+    <div class="container">
+      <h2>What you get</h2>
+      <p class="lead">Everything built around your role, your workflows, your actual work — not generic templates.</p>
+      <ul class="items">
+        <li>
+          <strong>Custom AI Workspace</strong>
+          <span>Claude projects configured specifically for what you do. Your company context, your frameworks, your terminology — already loaded and ready.</span>
+        </li>
+        <li>
+          <strong>Tailored Prompts and Workflows</strong>
+          <span>The analyses, reports, emails, and decisions you make every week — turned into prompts that give you better output in minutes instead of hours.</span>
+        </li>
+        <li>
+          <strong>Your Knowledge Base</strong>
+          <span>Internal docs, playbooks, competitive intel, past work — organized so your AI actually understands your business, not just the internet.</span>
+        </li>
+        <li>
+          <strong>Hands-On Walkthrough</strong>
+          <span>Not a PDF. Not a video. A live session where we build it together and you leave knowing exactly how to use everything.</span>
+        </li>
+        <li>
+          <strong>30 Days of Follow-Up</strong>
+          <span>Questions after the session? New use cases? We are available for 30 days to tune and adjust as you start using it for real.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="outcome">
+    <div class="container">
+      <h2>After your setup</h2>
+      <div class="outcomes-grid">
+        <div class="outcome-card">
+          <div class="num">10x</div>
+          <div class="label">Faster on the work that used to eat your afternoons</div>
+        </div>
+        <div class="outcome-card">
+          <div class="num">2 hrs</div>
+          <div class="label">Average time from start to fully AI-native</div>
+        </div>
+        <div class="outcome-card">
+          <div class="num">100%</div>
+          <div class="label">Yours. No subscriptions, no lock-in, no dependencies</div>
+        </div>
+        <div class="outcome-card">
+          <div class="num">3+</div>
+          <div class="label">Colleagues who will ask you "how are you doing that?"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="container">
+      <h2>Simple pricing</h2>
+      <p class="desc">One session. Everything included. Nothing recurring.</p>
+      <div class="price-box">
+        <div class="amount">$2,500</div>
+        <div class="term">One-time setup — you own everything</div>
+        <ul>
+          <li>Custom AI workspace built for your role</li>
+          <li>Tailored prompts for your actual workflows</li>
+          <li>Knowledge base loaded with your docs</li>
+          <li>Live hands-on setup session</li>
+          <li>30 days of follow-up support</li>
+          <li>Works for any department or function</li>
+        </ul>
+      </div>
+      <a href="https://buy.stripe.com/aFa7sKckB5aD4ts0lUfIs0d" class="cta-primary">Book Your Setup</a>
+      <p class="guarantee">Have questions first? Reach out at getmilo.dev</p>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <h2>Common questions</h2>
+      <div class="faq-item">
+        <h3>Do I need to be technical?</h3>
+        <p>No. That is the entire point. If you can use email and Google Docs, you can use what we set up. We handle everything technical.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is Claude?</h3>
+        <p>Claude is an AI assistant made by Anthropic — think of it as a brilliant colleague who has read everything and works instantly. We configure it to understand your specific job and company.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How long does the setup take?</h3>
+        <p>About 2 hours. We do it live together over video. By the end, you will have a fully configured workspace and know exactly how to use it.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if I want to set up my whole team?</h3>
+        <p>We do team setups too. Reach out through getmilo.dev and we will scope it out. Most team packages run $5,000 to $15,000 depending on size.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Will I need to pay for anything else?</h3>
+        <p>You will need a Claude Pro subscription ($20/month from Anthropic). That is it. Our setup fee is one-time — no recurring charges from us.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What kinds of roles does this work for?</h3>
+        <p>Operations, marketing, finance, strategy, HR, legal, sales leadership — anyone who does knowledge work. If your job involves reading, writing, analyzing, or deciding, this makes you faster.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can my company expense this?</h3>
+        <p>Yes. You will get a receipt from Stripe immediately. Most clients expense it as professional development or technology services.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Milo — AI that works for you</p>
+    </div>
+  </footer>
+
+  <script>
+    if (window.location.search.includes('success=true')) {
+      document.getElementById('successBanner').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>
