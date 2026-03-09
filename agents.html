@@ -7,6 +7,8 @@
   <meta name="description" content="Replace $3,000-5,000/month in admin costs with AI agents that never sleep, never miss a follow-up, and never call in sick. One-time setup from $399. You own everything.">
   <meta property="og:title" content="Get 20+ Hours Back Every Week — AI Agents That Work While You Sleep | Milo">
   <meta property="og:description" content="Your competitors are already using AI to close more deals and save 20+ hours a week. One-time setup from $399. You own everything. No monthly fees to us.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="milo-design-system.css">
   <link rel="canonical" href="https://getmilo.dev/agents">
   <script type="application/ld+json">
@@ -38,510 +40,678 @@
   }
   </script>
   <style>
-    .agents-hero {
-      padding: var(--space-24) 0 var(--space-16);
-      background: var(--copper-wash);
-      position: relative;
-      overflow: hidden;
-    }
-    .agents-hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196, 122, 90, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .agents-hero__content {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-      margin: 0 auto;
+    /* Page-specific overrides only */
+    .promo-bar {
+      background: var(--text-1);
+      color: var(--text-on-dark);
       text-align: center;
-    }
-    .agent-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-6);
-    }
-    @media (max-width: 768px) {
-      .agent-grid { grid-template-columns: 1fr; }
-    }
-    .agent-card {
-      background: var(--white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: var(--space-6);
-    }
-    .agent-card__name {
-      font-family: var(--font-mono);
+      padding: var(--sp-3) var(--sp-4);
       font-size: var(--text-sm);
-      color: var(--copper);
       font-weight: 500;
-      margin-bottom: var(--space-2);
-    }
-    .agent-card h3 {
-      font-size: var(--text-base);
-      margin-bottom: var(--space-3);
-    }
-    .agent-card p {
-      font-size: var(--text-sm);
-      color: var(--graphite);
-    }
-    .proof-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-6);
-      text-align: center;
-    }
-    @media (max-width: 768px) {
-      .proof-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    .proof-stat {
-      font-family: var(--font-heading);
-      font-size: var(--text-4xl);
-      color: var(--slate);
-      line-height: 1;
-      margin-bottom: var(--space-2);
-    }
-    .proof-label {
-      font-size: var(--text-sm);
-      color: var(--graphite);
-    }
-    .hw-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-8);
-    }
-    @media (max-width: 768px) {
-      .hw-grid { grid-template-columns: 1fr; }
-    }
-    .hw-step {
-      text-align: center;
-    }
-    .hw-step__num {
-      width: 56px;
-      height: 56px;
-      border-radius: var(--radius-full);
-      background: var(--copper-wash);
-      border: 2px solid var(--copper-10);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto var(--space-4);
-      font-family: var(--font-heading);
-      font-size: var(--text-xl);
-      color: var(--copper);
-    }
-    .hw-step h3 {
-      font-size: var(--text-base);
-      margin-bottom: var(--space-2);
-    }
-    .hw-step p {
-      font-size: var(--text-sm);
-      color: var(--graphite);
-    }
-    .usecase-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-8);
-    }
-    @media (max-width: 768px) {
-      .usecase-grid { grid-template-columns: 1fr; }
-    }
-    .usecase {
-      display: flex;
-      gap: var(--space-5);
-      align-items: flex-start;
-    }
-    .usecase__icon {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-md);
-      background: var(--warm-gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .usecase__icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--graphite);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .usecase h3 {
-      font-size: var(--text-base);
-      margin-bottom: var(--space-2);
-    }
-    .usecase p {
-      font-size: var(--text-sm);
-      color: var(--graphite);
-    }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-8);
-    }
-    @media (max-width: 768px) {
-      .pricing-grid { grid-template-columns: 1fr; }
-    }
-    .price-card {
-      background: var(--white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: var(--space-8);
-      display: flex;
-      flex-direction: column;
-    }
-    .price-card--featured {
-      border-color: var(--copper);
       position: relative;
+      z-index: 51;
     }
-    .price-card__amount {
-      font-family: var(--font-heading);
-      font-size: var(--text-4xl);
-      color: var(--slate);
-      margin-bottom: var(--space-1);
+    .promo-bar strong {
+      color: var(--gold);
+      font-weight: 700;
     }
-    .price-card__freq {
+
+    /* Hero — editorial asymmetry */
+    .agents-hero {
+      padding: clamp(120px, 14vh, 180px) 0 var(--sp-16);
+    }
+    .agents-hero__grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: var(--sp-16);
+      align-items: start;
+    }
+    .agents-hero__body {
+      font-size: var(--text-lg);
+      color: var(--text-2);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: var(--sp-6);
+    }
+    .agents-hero__fine {
       font-size: var(--text-sm);
-      color: var(--ash);
-      margin-bottom: var(--space-6);
+      color: var(--text-3);
+      margin-bottom: var(--sp-8);
+      max-width: 520px;
+      line-height: 1.6;
     }
-    .price-card .feature-list {
-      flex: 1;
-      margin-bottom: var(--space-6);
+    .agents-hero__actions {
+      display: flex;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
     }
-    .cta-dark {
-      background: var(--slate);
-      color: var(--white);
-      padding: var(--space-16) 0;
+    .agents-hero__sidebar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: var(--sp-6);
+      margin-top: var(--sp-12);
     }
-    .cta-dark__inner {
-      max-width: 640px;
-      margin: 0 auto;
-      text-align: center;
+    .agents-hero__sidebar-title {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-1);
+      margin-bottom: var(--sp-4);
     }
-    .cta-dark h2 { color: var(--white); margin-bottom: var(--space-6); }
-    .cta-dark p { color: rgba(255,255,255,0.7); margin-bottom: var(--space-8); }
-    .footer__logo-text {
-      font-family: var(--font-heading);
-      font-size: var(--text-xl);
-      color: var(--white);
-      letter-spacing: -0.03em;
+    .agents-hero__sidebar-row {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      line-height: 2.2;
+      color: var(--text-3);
+    }
+    .agents-hero__sidebar-row .key { display: inline-block; min-width: 100px; }
+    .agents-hero__sidebar-row .val { color: var(--text-1); font-weight: 500; }
+    .agents-hero__sidebar-divider { height: 1px; background: var(--border); margin: var(--sp-3) 0; }
+
+    @media (max-width: 768px) {
+      .agents-hero__grid { grid-template-columns: 1fr; gap: var(--sp-8); }
+      .agents-hero__sidebar { margin-top: var(--sp-4); }
+    }
+
+    /* How it works — 3-step editorial */
+    .steps-list {
+      counter-reset: step-counter;
+      list-style: none;
+    }
+    .steps-list li {
+      counter-increment: step-counter;
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: var(--sp-6);
+      padding: var(--sp-8) 0;
+      border-bottom: 1px solid var(--border-subtle);
+      align-items: start;
+    }
+    .steps-list li:last-child { border-bottom: none; }
+    .steps-list li::before {
+      content: counter(step-counter);
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      color: var(--gold-text);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .steps-list h3 {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: var(--text-lg);
+      color: var(--text-1);
+      margin-bottom: var(--sp-2);
+    }
+    .steps-list p {
+      font-size: var(--text-base);
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+
+    /* Pricing tier CTA styling */
+    .pricing-tier__cta {
+      margin-top: var(--sp-6);
+    }
+    .pricing-tier__badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--gold-text);
+      background: var(--gold-light);
+      padding: 2px var(--sp-2);
+      border-radius: 3px;
+      margin-bottom: var(--sp-2);
+      display: inline-block;
+    }
+
+    /* Promo note */
+    .promo-note {
+      font-size: var(--text-sm);
+      color: var(--text-3);
+      margin-top: var(--sp-8);
+    }
+    .promo-note strong {
+      color: var(--gold-text);
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
 
-  <div style="background: var(--slate); color: var(--white); text-align: center; padding: 10px 16px; font-size: var(--text-sm); font-weight: 500;">
-    \ud83d\ude80 Founding customer pricing: <strong>25% off any package</strong> with code <strong>EARLYMILO25</strong> — limited spots
+<div class="grid-bg" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- PROMO BAR -->
+<div class="promo-bar">
+  Founding customer pricing: <strong>25% off any package</strong> with code <strong>EARLYMILO25</strong> — limited spots
+</div>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main">
+  <div class="wrap">
+    <a href="/" class="nav__logo">
+      <span class="nav__logo-text">milo</span>
+      <span class="nav__dot"></span>
+    </a>
+    <div class="nav__links">
+      <a href="/agents" class="nav__link nav__link--active" aria-current="page">Services</a>
+      <a href="/security" class="nav__link">Security</a>
+      <a href="/calculator" class="nav__link">Calculator</a>
+      <a href="/build" class="nav__link">Build</a>
+      <a href="/contact" class="nav__cta">Start a project</a>
+    </div>
+    <button class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</nav>
 
-  <nav class="nav">
-    <div class="nav__inner">
-      <a href="/" class="nav__logo">
-        <img src="milo-icon.svg" alt="" class="nav__logo-icon">
-        <span class="nav__logo-text">milo</span>
-      </a>
-      <div class="nav__links">
-        <a href="/agents" class="nav__link" style="color: var(--copper); font-weight: 600;">AI Agents</a>
-        <a href="/industries" class="nav__link">Industries</a>
-        <a href="/security" class="nav__link">Security</a>
-        <a href="/services" class="nav__link">Services</a>
-        <a href="/blog" class="nav__link">Guides</a>
-        <a href="/calculator" class="nav__link" style="color: var(--copper); font-weight: 600;">Free Calculator</a>
-        <a href="#pricing" class="btn btn--primary btn--sm">Get Started</a>
-      </div>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation">
+  <a href="/agents">Services</a>
+  <a href="/security">Security</a>
+  <a href="/calculator">Calculator</a>
+  <a href="/build">Build</a>
+  <a href="/contact">Start a project</a>
+</div>
+
+<main id="main">
+
+<!-- HERO — SPEC:001 -->
+<section class="agents-hero">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:001</span>
+      <span class="spec-coord">// agent deployment</span>
     </div>
-  </nav>
-
-  <section class="agents-hero">
-    <div class="container">
-      <div class="agents-hero__content">
-        <div class="caption mb-6">While you were reading this, your competitor's AI agent just followed up with 3 leads</div>
-        <h1 class="mb-6">Get 20+ Hours Back Every Week. Your Agents Never Sleep, Never Miss a Lead, Never Quit.</h1>
-        <p class="lead mb-8">You're burning $3,000-5,000/month on admin tasks a machine handles better. Follow-ups, scheduling, outreach, reporting -- done automatically, 24/7. One-time setup. You own everything. No monthly fees to us.</p>
-        <p style="font-size: var(--text-sm); color: var(--graphite); margin-bottom: var(--space-8);">Built by the team running 12 agents in production daily. Not theory -- these are the same agents running our own business right now.</p>
-        <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
-          <a href="#pricing" class="btn btn--primary btn--lg">Stop Wasting $150/Day</a>
-          <a href="#examples" class="btn btn--outline btn--lg">See What Gets Automated</a>
+    <div class="agents-hero__grid">
+      <div>
+        <h1 class="page-hero__title reveal">Get 20+ Hours Back Every Week. Your Agents Never Sleep, Never Miss a Lead, Never Quit.</h1>
+        <p class="agents-hero__body reveal" data-delay="1">You're burning $3,000-5,000/month on admin tasks a machine handles better. Follow-ups, scheduling, outreach, reporting -- done automatically, 24/7. One-time setup. You own everything. No monthly fees to us.</p>
+        <p class="agents-hero__fine reveal" data-delay="2">Built by the team running 12 agents in production daily. Not theory -- these are the same agents running our own business right now.</p>
+        <div class="agents-hero__actions reveal" data-delay="2">
+          <a href="#pricing" class="btn btn--dark btn--lg">Stop Wasting $150/Day</a>
+          <a href="#agents" class="btn btn--ghost">See What Gets Automated</a>
         </div>
       </div>
+      <div class="agents-hero__sidebar reveal" data-delay="3">
+        <div class="agents-hero__sidebar-title">Quick specs</div>
+        <div class="agents-hero__sidebar-row"><span class="key">hours saved</span> <span class="val">20+/week</span></div>
+        <div class="agents-hero__sidebar-row"><span class="key">availability</span> <span class="val">24/7/365</span></div>
+        <div class="agents-hero__sidebar-row"><span class="key">monthly to us</span> <span class="val">$0</span></div>
+        <div class="agents-hero__sidebar-row"><span class="key">go-live</span> <span class="val">2-5 days</span></div>
+        <div class="agents-hero__sidebar-divider"></div>
+        <div class="agents-hero__sidebar-row"><span class="key">your cost</span> <span class="val">$30-60/mo</span></div>
+        <div class="agents-hero__sidebar-row"><span class="key">lock-in</span> <span class="val">none</span></div>
+        <div class="agents-hero__sidebar-row"><span class="key">infra</span> <span class="val">yours</span></div>
+        <div class="agents-hero__sidebar-row"><span class="key">source</span> <span class="val">open</span></div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section--sm" style="border-bottom: 1px solid var(--border-light);">
-    <div class="container">
-      <div class="proof-grid">
+<!-- STATS — SPEC:002 -->
+<section style="padding: 0 0 var(--sp-20);">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:002</span>
+      <span class="spec-coord">// proof points</span>
+    </div>
+    <div class="stats-bar reveal" data-delay="1">
+      <div class="stats-bar__item">
+        <div class="stats-bar__num">20+</div>
+        <div class="stats-bar__label">hours saved / week / client</div>
+      </div>
+      <div class="stats-bar__item">
+        <div class="stats-bar__num">24/7</div>
+        <div class="stats-bar__label">never sick, never on vacation</div>
+      </div>
+      <div class="stats-bar__item">
+        <div class="stats-bar__num">$0</div>
+        <div class="stats-bar__label">monthly fees to us after setup</div>
+      </div>
+      <div class="stats-bar__item">
+        <div class="stats-bar__num">2-5</div>
+        <div class="stats-bar__label">days to go live — not months</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENTS — SPEC:003 -->
+<section id="agents" style="padding: 0 0 var(--sp-24);">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:003</span>
+      <span class="spec-coord">// agent roster</span>
+    </div>
+    <div class="editorial reveal" data-delay="1">
+      <div>
+        <h2 class="editorial__title">Six problems you'll never waste time on again</h2>
+      </div>
+      <div class="editorial__body">
+        <p>Each agent handles a specific job that's currently eating your day. You set it up once. It runs forever. Here's what that looks like.</p>
+      </div>
+    </div>
+    <div class="gold-line"></div>
+    <ul class="stacked-list">
+      <li class="stacked-item reveal">
+        <div class="stacked-item__num">scheduler</div>
         <div>
-          <div class="proof-stat">20+</div>
-          <div class="proof-label">Hours saved per week, per client</div>
+          <div class="stacked-item__title">Never Lose a Booking to Phone Tag Again</div>
+          <div class="stacked-item__body">Books appointments from incoming messages automatically. Checks your real availability. Sends confirmations and reminders. Handles rescheduling without you lifting a finger. Zero double-bookings.</div>
         </div>
+      </li>
+      <li class="stacked-item reveal" data-delay="1">
+        <div class="stacked-item__num">follow-up</div>
         <div>
-          <div class="proof-stat">24/7</div>
-          <div class="proof-label">Never calls in sick, never takes a vacation</div>
+          <div class="stacked-item__title">Close 30% More Deals by Never Forgetting to Follow Up</div>
+          <div class="stacked-item__body">Follows up with every lead who inquired but didn't book. Sends check-ins after completed jobs. Asks for reviews at the exact right moment. Persistent but never annoying. Works while you sleep.</div>
         </div>
+      </li>
+      <li class="stacked-item reveal" data-delay="2">
+        <div class="stacked-item__num">scout</div>
         <div>
-          <div class="proof-stat">$0</div>
-          <div class="proof-label">Monthly fees to us after setup</div>
+          <div class="stacked-item__title">Wake Up to a Full Pipeline Every Morning</div>
+          <div class="stacked-item__body">Researches potential customers overnight. Finds verified contact info. Drafts personalized outreach that sounds like you wrote it. Tracks every conversation so nothing falls through the cracks.</div>
         </div>
+      </li>
+      <li class="stacked-item reveal" data-delay="1">
+        <div class="stacked-item__num">inbox</div>
         <div>
-          <div class="proof-stat">2-5</div>
-          <div class="proof-label">Days to go live -- not months</div>
+          <div class="stacked-item__title">Respond to Every Customer in Minutes, Not Hours</div>
+          <div class="stacked-item__body">Monitors email, WhatsApp, and SMS around the clock. Answers common questions using your playbook. Escalates the hard stuff to you with a clean summary. Your customers feel heard -- instantly.</div>
         </div>
+      </li>
+      <li class="stacked-item reveal" data-delay="2">
+        <div class="stacked-item__num">reporter</div>
+        <div>
+          <div class="stacked-item__title">Know Everything About Your Business in 30 Seconds</div>
+          <div class="stacked-item__body">Sends you a morning briefing before your first coffee: yesterday's activity, pending items, upcoming appointments, revenue summary. No more checking 5 apps to figure out where you stand.</div>
+        </div>
+      </li>
+      <li class="stacked-item reveal" data-delay="3">
+        <div class="stacked-item__num">content</div>
+        <div>
+          <div class="stacked-item__title">Stay Visible Online Without Spending a Second on It</div>
+          <div class="stacked-item__body">Posts to your social channels on schedule. Writes and publishes content. Monitors mentions and engagement. Your online presence stays active and growing -- without a single hour of your time.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- WHY IT WORKS — SPEC:004 -->
+<section style="padding: 0 0 var(--sp-24);">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:004</span>
+      <span class="spec-coord">// differentiation</span>
+    </div>
+    <div class="editorial reveal" data-delay="1">
+      <div>
+        <h2 class="editorial__title">Why this actually works (when ChatGPT and chatbots didn't)</h2>
+      </div>
+      <div class="editorial__body">
+        <p>You've probably tried AI before and were disappointed. Here's the difference: we don't sell tools. We deploy employees that happen to be software.</p>
       </div>
     </div>
-  </section>
+    <div class="gold-line"></div>
+    <ul class="stacked-list">
+      <li class="stacked-item reveal">
+        <div class="stacked-item__num">01</div>
+        <div>
+          <div class="stacked-item__title">Skip 6 months of trial and error</div>
+          <div class="stacked-item__body">We run 12 agents in our own business every day. We've already hit the problems you'd discover in month 3 -- memory drift, context overflow, identity confusion -- and solved them all. You get production-grade from day one.</div>
+        </div>
+      </li>
+      <li class="stacked-item reveal" data-delay="1">
+        <div class="stacked-item__num">02</div>
+        <div>
+          <div class="stacked-item__title">Saving you time by Friday, not next quarter</div>
+          <div class="stacked-item__body">A typical 3-agent setup is live in 2-3 days. Not a 6-month "digital transformation." Not a 12-week consulting engagement. Real agents doing real work, this week.</div>
+        </div>
+      </li>
+      <li class="stacked-item reveal" data-delay="2">
+        <div class="stacked-item__num">03</div>
+        <div>
+          <div class="stacked-item__title">Your agents get smarter every week -- automatically</div>
+          <div class="stacked-item__body">Each agent has structured memory across three tiers. They remember past conversations, decisions, and context. They learn what works and adjust. No retraining. No manual updates. Just better results over time.</div>
+        </div>
+      </li>
+      <li class="stacked-item reveal" data-delay="3">
+        <div class="stacked-item__num">04</div>
+        <div>
+          <div class="stacked-item__title">A coordinated team, not a pile of disconnected tools</div>
+          <div class="stacked-item__body">Your agents talk to each other. The prospecting agent finds a lead, the outreach agent sends the message, the follow-up agent checks in 3 days later. They work like a team because they are one.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
 
-  <section id="examples" class="section">
-    <div class="container">
-      <h2 class="text-center mb-4">Six problems you'll never waste time on again</h2>
-      <p class="lead text-center text-narrow mb-12">Each agent handles a specific job that's currently eating your day. You set it up once. It runs forever. Here's what that looks like.</p>
-      <div class="agent-grid">
-        <div class="agent-card">
-          <div class="agent-card__name">scheduler</div>
-          <h3>Never Lose a Booking to Phone Tag Again</h3>
-          <p>Books appointments from incoming messages automatically. Checks your real availability. Sends confirmations and reminders. Handles rescheduling without you lifting a finger. Zero double-bookings.</p>
-        </div>
-        <div class="agent-card">
-          <div class="agent-card__name">follow-up</div>
-          <h3>Close 30% More Deals by Never Forgetting to Follow Up</h3>
-          <p>Follows up with every lead who inquired but didn't book. Sends check-ins after completed jobs. Asks for reviews at the exact right moment. Persistent but never annoying. Works while you sleep.</p>
-        </div>
-        <div class="agent-card">
-          <div class="agent-card__name">scout</div>
-          <h3>Wake Up to a Full Pipeline Every Morning</h3>
-          <p>Researches potential customers overnight. Finds verified contact info. Drafts personalized outreach that sounds like you wrote it. Tracks every conversation so nothing falls through the cracks.</p>
-        </div>
-        <div class="agent-card">
-          <div class="agent-card__name">inbox</div>
-          <h3>Respond to Every Customer in Minutes, Not Hours</h3>
-          <p>Monitors email, WhatsApp, and SMS around the clock. Answers common questions using your playbook. Escalates the hard stuff to you with a clean summary. Your customers feel heard -- instantly.</p>
-        </div>
-        <div class="agent-card">
-          <div class="agent-card__name">reporter</div>
-          <h3>Know Everything About Your Business in 30 Seconds</h3>
-          <p>Sends you a morning briefing before your first coffee: yesterday's activity, pending items, upcoming appointments, revenue summary. No more checking 5 apps to figure out where you stand.</p>
-        </div>
-        <div class="agent-card">
-          <div class="agent-card__name">content</div>
-          <h3>Stay Visible Online Without Spending a Second on It</h3>
-          <p>Posts to your social channels on schedule. Writes and publishes content. Monitors mentions and engagement. Your online presence stays active and growing -- without a single hour of your time.</p>
-        </div>
+<!-- PULL QUOTE -->
+<blockquote class="pull-quote">
+  <div class="wrap">
+    <div class="pull-quote__inner reveal">
+      <p class="pull-quote__text">We run a 12-agent system ourselves -- every day, in production. The problems you'd hit in month three, we solved in our own operations first.</p>
+      <cite class="pull-quote__attr">From the team that eats its own cooking</cite>
+    </div>
+  </div>
+</blockquote>
+
+<!-- HOW IT WORKS — SPEC:005 -->
+<section style="padding: 0 0 var(--sp-24);">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:005</span>
+      <span class="spec-coord">// process</span>
+    </div>
+    <div class="editorial reveal" data-delay="1">
+      <div>
+        <h2 class="editorial__title">You're 3 steps away from getting 20 hours back</h2>
+      </div>
+      <div class="editorial__body">
+        <p>Here's exactly what happens. No surprises. No scope creep.</p>
       </div>
     </div>
-  </section>
-
-  <section class="section section--tinted">
-    <div class="container">
-      <h2 class="text-center mb-4">Why this actually works (when ChatGPT and chatbots didn't)</h2>
-      <p class="lead text-center text-narrow mb-12">You've probably tried AI before and were disappointed. Here's the difference: we don't sell tools. We deploy employees that happen to be software.</p>
-      <div class="usecase-grid">
-        <div class="usecase">
-          <div class="usecase__icon">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div>
-            <h3>Skip 6 months of trial and error</h3>
-            <p>We run 12 agents in our own business every day. We've already hit the problems you'd discover in month 3 -- memory drift, context overflow, identity confusion -- and solved them all. You get production-grade from day one.</p>
-          </div>
-        </div>
-        <div class="usecase">
-          <div class="usecase__icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-            <h3>Saving you time by Friday, not next quarter</h3>
-            <p>A typical 3-agent setup is live in 2-3 days. Not a 6-month \"digital transformation.\" Not a 12-week consulting engagement. Real agents doing real work, this week.</p>
-          </div>
-        </div>
-        <div class="usecase">
-          <div class="usecase__icon">
-            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <div>
-            <h3>Your agents get smarter every week -- automatically</h3>
-            <p>Each agent has structured memory across three tiers. They remember past conversations, decisions, and context. They learn what works and adjust. No retraining. No manual updates. Just better results over time.</p>
-          </div>
-        </div>
-        <div class="usecase">
-          <div class="usecase__icon">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div>
-            <h3>A coordinated team, not a pile of disconnected tools</h3>
-            <p>Your agents talk to each other. The prospecting agent finds a lead, the outreach agent sends the message, the follow-up agent checks in 3 days later. They work like a team because they are one.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2 class="text-center mb-4">You're 3 steps away from getting 20 hours back</h2>
-      <p class="lead text-center text-narrow mb-12">Here's exactly what happens. No surprises. No scope creep.</p>
-      <div class="hw-grid">
-        <div class="hw-step">
-          <div class="hw-step__num">1</div>
+    <div class="gold-line"></div>
+    <ol class="steps-list">
+      <li class="reveal">
+        <div>
           <h3>Tell us what's eating your time</h3>
           <p>30-minute call. You tell us which tasks drain your week -- follow-ups you keep forgetting, scheduling you do manually, outreach you never get to. We map out which agents solve it.</p>
         </div>
-        <div class="hw-step">
-          <div class="hw-step__num">2</div>
+      </li>
+      <li class="reveal" data-delay="1">
+        <div>
           <h3>We build and test it in 2-5 days</h3>
           <p>Your agents get custom identity, memory, tool access, and communication channels. We deploy to your infrastructure and test everything end-to-end before you see it. When we hand it to you, it works.</p>
         </div>
-        <div class="hw-step">
-          <div class="hw-step__num">3</div>
+      </li>
+      <li class="reveal" data-delay="2">
+        <div>
           <h3>You start saving 20+ hours next week</h3>
           <p>Your agents go to work immediately. You get daily reports showing what they handled. We monitor and tune for the first month. After that, they run on their own -- 24/7, 365 days a year.</p>
         </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- PRICING — SPEC:006 -->
+<section id="pricing" class="section">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:006</span>
+      <span class="spec-coord">// pricing</span>
+    </div>
+    <div class="editorial reveal" data-delay="1">
+      <div>
+        <h2 class="editorial__title">Less than one month of the admin costs you're replacing</h2>
+      </div>
+      <div class="editorial__body">
+        <p>One-time setup. You own everything. No monthly fees to us. Compare these prices to the $3,000-5,000/month you're spending on the work these agents replace.</p>
       </div>
     </div>
-  </section>
+    <div class="gold-line"></div>
 
-  <section id="pricing" class="section section--tinted">
-    <div class="container">
-      <h2 class="text-center mb-4">Less than one month of the admin costs you're replacing</h2>
-      <p class="lead text-center text-narrow mb-12">One-time setup. You own everything. No monthly fees to us. Compare these prices to the $3,000-5,000/month you're spending on the work these agents replace.</p>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <div class="card__badge mb-4">Quick Start</div>
-          <h3 class="mb-3">Save 10+ Hours/Week</h3>
-          <p style="font-size: var(--text-sm); color: var(--graphite); margin-bottom: var(--space-6);">1-2 agents tackling your biggest time drain. Perfect if you're a solopreneur who needs to stop doing everything manually. Live in days.</p>
-          <div class="price-card__amount">$399</div>
-          <div class="price-card__freq">One-time setup -- not $399/month</div>
-          <ul class="feature-list">
-            <li>1-2 agents handling your most painful workflow</li>
-            <li>Custom-built for how your business actually works</li>
-            <li>Connected to your email, WhatsApp, or SMS</li>
-            <li>7 days of post-setup support</li>
-          </ul>
-          <a href="/buy/starter" class="btn btn--secondary btn--full">Start Saving Time — $399</a>
+    <!-- Quick Start -->
+    <div class="pricing-tier reveal">
+      <div>
+        <div class="caption" style="margin-bottom: var(--sp-2);">Quick Start</div>
+        <div class="pricing-tier__name">Save 10+ Hours/Week</div>
+        <div class="pricing-tier__price">$399 one-time — not $399/month</div>
+      </div>
+      <div class="pricing-tier__body">
+        <p>1-2 agents tackling your biggest time drain. Perfect if you're a solopreneur who needs to stop doing everything manually. Live in days.</p>
+        <ul class="feature-list">
+          <li>1-2 agents handling your most painful workflow</li>
+          <li>Custom-built for how your business actually works</li>
+          <li>Connected to your email, WhatsApp, or SMS</li>
+          <li>7 days of post-setup support</li>
+        </ul>
+        <div class="pricing-tier__cta">
+          <a href="/buy/starter" class="btn btn--dark">Start Saving Time — $399</a>
         </div>
-        <div class="price-card price-card--featured">
-          <div class="card__badge card__badge--featured mb-4">Most Popular</div>
-          <h3 class="mb-3">Save 20+ Hours/Week</h3>
-          <p style="font-size: var(--text-sm); color: var(--graphite); margin-bottom: var(--space-6);">Full agent team that coordinates like employees. They find leads, send outreach, follow up, book appointments, and report back to you. Replaces $3,000-5,000/month in admin costs.</p>
-          <div class="price-card__amount">$2,499</div>
-          <div class="price-card__freq">One-time setup -- pays for itself in 3 weeks</div>
-          <ul class="feature-list">
-            <li>3-6 agents working as a coordinated team</li>
-            <li>Agents hand off work to each other automatically</li>
-            <li>Connected to all your communication channels</li>
-            <li>Automated scheduling, tasks, and daily reports</li>
-            <li>Agents remember everything and improve over time</li>
-            <li>Tested end-to-end before handoff</li>
-            <li>30 days of post-setup support</li>
-          </ul>
-          <a href="/buy/team" class="btn btn--primary btn--full">Get Your Full Team — $2,499</a>
-        </div>
-        <div class="price-card">
-          <div class="card__badge mb-4">Hands-Off</div>
-          <h3 class="mb-3">Never Think About It Again</h3>
-          <p style="font-size: var(--text-sm); color: var(--graphite); margin-bottom: var(--space-6);">We manage, monitor, and improve your agents every month. New agents deployed as your business grows. You focus 100% on revenue -- we handle the rest.</p>
-          <div class="price-card__amount">$999</div>
-          <div class="price-card__freq">Per month -- still cheaper than one part-time hire</div>
-          <ul class="feature-list">
-            <li>Everything in the full team setup</li>
-            <li>Monthly performance tuning -- agents get better each month</li>
-            <li>New agents added as you need them</li>
-            <li>We catch and fix issues before you notice them</li>
-            <li>Same-day priority support</li>
-            <li>Quarterly strategy call to plan what's next</li>
-          </ul>
-          <a href="/buy/managed" class="btn btn--secondary btn--full">Go Fully Hands-Off — $999/mo</a>
-        </div>
-      </div>
-      <p style="text-align: center; margin-top: var(--space-8); font-size: var(--text-sm); color: var(--graphite);">Use code <strong style="color: var(--copper);">EARLYMILO25</strong> at checkout for 25% off. Founding customer pricing — won't last.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container container--narrow">
-      <h2 class="text-center mb-12">Questions you're probably thinking right now</h2>
-
-      <div class="faq-item">
-        <h3 class="faq__question">\"Is this for my kind of business?\"</h3>
-        <p class="faq__answer">If you have repetitive tasks eating your day -- follow-ups, scheduling, outreach, data entry, customer communication -- this is for you. We work with solopreneurs, small businesses (2-50 people), and service businesses: plumbers, consultants, lawyers, agencies, coaches, e-commerce. If you can describe the process, we can automate it.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3 class="faq__question">\"I tried ChatGPT and it didn't help. How is this different?\"</h3>
-        <p class="faq__answer">ChatGPT is a tool you have to go to and ask. An agent works on its own -- it checks your inbox on a schedule, sends follow-ups without being told, researches prospects while you sleep, and coordinates with other agents. It's the difference between a search engine and an employee.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3 class="faq__question">\"What happens if I stop working with you?\"</h3>
-        <p class="faq__answer">Nothing changes. Your agents keep running on your server. Open source tools, standard APIs, zero lock-in. You own everything from day one. Fire us and your agents don't even notice.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3 class="faq__question">\"What does it actually cost me per month after setup?\"</h3>
-        <p class="faq__answer">Hosting runs about $10/month. AI API usage runs $20-50/month depending on volume. That's $30-60/month total. Compare that to the $3,000-5,000/month you're currently spending on the tasks these agents replace. The math isn't close.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3 class="faq__question">\"What if an agent sends something I don't want it to?\"</h3>
-        <p class="faq__answer">You set the guardrails. Customer-facing actions like emails and messages can require your approval before sending. Internal operations like research and reporting run fully on their own. You choose how much autonomy each agent gets.</p>
-      </div>
-
-      <div class="faq-item">
-        <h3 class="faq__question">\"Can I see this working before I buy?\"</h3>
-        <p class="faq__answer">You're looking at it. This website, our email outreach, our social media, our prospecting -- it's all run by the same agents we'd build for you. Book a 30-minute call and we'll show you exactly how our agents work, live.</p>
       </div>
     </div>
-  </section>
 
-  <section class="cta-dark">
-    <div class="container">
-      <div class="cta-dark__inner">
-        <h2>Every hour you spend on admin is an hour you're not making money.</h2>
-        <p>One-time setup. You own everything. Your agents start working this week. The only question is how many more leads you'll lose before you start.</p>
-        <a href="#pricing" class="btn btn--primary btn--lg">Get Your Time Back</a>
+    <!-- Agent Team (featured) -->
+    <div class="pricing-tier pricing-tier__featured reveal" data-delay="1">
+      <div>
+        <div class="pricing-tier__badge">Most Popular</div>
+        <div class="pricing-tier__name">Save 20+ Hours/Week</div>
+        <div class="pricing-tier__price">$2,499 one-time — pays for itself in 3 weeks</div>
+      </div>
+      <div class="pricing-tier__body">
+        <p>Full agent team that coordinates like employees. They find leads, send outreach, follow up, book appointments, and report back to you. Replaces $3,000-5,000/month in admin costs.</p>
+        <ul class="feature-list">
+          <li>3-6 agents working as a coordinated team</li>
+          <li>Agents hand off work to each other automatically</li>
+          <li>Connected to all your communication channels</li>
+          <li>Automated scheduling, tasks, and daily reports</li>
+          <li>Agents remember everything and improve over time</li>
+          <li>Tested end-to-end before handoff</li>
+          <li>30 days of post-setup support</li>
+        </ul>
+        <div class="pricing-tier__cta">
+          <a href="/buy/team" class="btn btn--gold btn--lg">Get Your Full Team — $2,499</a>
+        </div>
       </div>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <img src="milo-icon.svg" alt="" class="footer__logo-icon">
-            <span class="footer__logo-text">milo</span>
-          </div>
-          <p class="footer__brand-text">Stop paying humans for work machines do better. One-time setup. You own it all.</p>
-        </div>
-        <div>
-          <h4>Services</h4>
-          <ul class="footer__links">
-            <li><a href="/agents">AI Agent Teams</a></li>
-            <li><a href="/security">Security Hardening</a></li>
-            <li><a href="/services">OpenClaw Services</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Resources</h4>
-          <ul class="footer__links">
-            <li><a href="/blog">Guides</a></li>
-            <li><a href="/scanner">Free Scanner</a></li>
-            <li><a href="https://github.com/getmilodev">GitHub</a></li>
-            <li><a href="https://x.com/getmilo_dev">@getmilo_dev</a></li>
-          </ul>
-        </div>
+    <!-- Managed -->
+    <div class="pricing-tier reveal" data-delay="2">
+      <div>
+        <div class="caption" style="margin-bottom: var(--sp-2);">Hands-Off</div>
+        <div class="pricing-tier__name">Never Think About It Again</div>
+        <div class="pricing-tier__price">$999/month — still cheaper than one part-time hire</div>
       </div>
-      <div class="footer__bottom">
-        <span>\u00a9 2026 Milo</span>
-        <span>Privacy \u00b7 Terms</span>
+      <div class="pricing-tier__body">
+        <p>We manage, monitor, and improve your agents every month. New agents deployed as your business grows. You focus 100% on revenue -- we handle the rest.</p>
+        <ul class="feature-list">
+          <li>Everything in the full team setup</li>
+          <li>Monthly performance tuning -- agents get better each month</li>
+          <li>New agents added as you need them</li>
+          <li>We catch and fix issues before you notice them</li>
+          <li>Same-day priority support</li>
+          <li>Quarterly strategy call to plan what's next</li>
+        </ul>
+        <div class="pricing-tier__cta">
+          <a href="/buy/managed" class="btn btn--outline">Go Fully Hands-Off — $999/mo</a>
+        </div>
       </div>
     </div>
-  </footer>
+
+    <p class="promo-note reveal">Use code <strong>EARLYMILO25</strong> at checkout for 25% off. Founding customer pricing -- won't last.</p>
+  </div>
+</section>
+
+<!-- FAQ — SPEC:007 -->
+<section class="section" style="padding-top: 0;">
+  <div class="wrap wrap--narrow">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:007</span>
+      <span class="spec-coord">// faq</span>
+    </div>
+    <h2 class="reveal" style="font-size: var(--text-2xl); margin-bottom: var(--sp-10);">Questions you're probably thinking right now</h2>
+
+    <div class="faq-item reveal">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-1">"Is this for my kind of business?"</button>
+      <div class="faq__answer" id="faq-1" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p>If you have repetitive tasks eating your day -- follow-ups, scheduling, outreach, data entry, customer communication -- this is for you. We work with solopreneurs, small businesses (2-50 people), and service businesses: plumbers, consultants, lawyers, agencies, coaches, e-commerce. If you can describe the process, we can automate it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" data-delay="1">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-2">"I tried ChatGPT and it didn't help. How is this different?"</button>
+      <div class="faq__answer" id="faq-2" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p>ChatGPT is a tool you have to go to and ask. An agent works on its own -- it checks your inbox on a schedule, sends follow-ups without being told, researches prospects while you sleep, and coordinates with other agents. It's the difference between a search engine and an employee.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" data-delay="2">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-3">"What happens if I stop working with you?"</button>
+      <div class="faq__answer" id="faq-3" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p>Nothing changes. Your agents keep running on your server. Open source tools, standard APIs, zero lock-in. You own everything from day one. Fire us and your agents don't even notice.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-4">"What does it actually cost me per month after setup?"</button>
+      <div class="faq__answer" id="faq-4" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p>Hosting runs about $10/month. AI API usage runs $20-50/month depending on volume. That's $30-60/month total. Compare that to the $3,000-5,000/month you're currently spending on the tasks these agents replace. The math isn't close.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" data-delay="1">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-5">"What if an agent sends something I don't want it to?"</button>
+      <div class="faq__answer" id="faq-5" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p>You set the guardrails. Customer-facing actions like emails and messages can require your approval before sending. Internal operations like research and reporting run fully on their own. You choose how much autonomy each agent gets.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" data-delay="2">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-6">"Can I see this working before I buy?"</button>
+      <div class="faq__answer" id="faq-6" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p>You're looking at it. This website, our email outreach, our social media, our prospecting -- it's all run by the same agents we'd build for you. Book a 30-minute call and we'll show you exactly how our agents work, live.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA — SPEC:008 -->
+<section class="cta-section">
+  <div class="section-marker section-marker--cta reveal">
+    <span class="spec-label spec-label--on-dark">SPEC:008</span>
+    <span class="spec-coord spec-coord--on-dark">// engagement</span>
+  </div>
+  <div class="cta__inner">
+    <div>
+      <h2 class="cta__title reveal">Every hour you spend on admin is an hour you're not <span class="accent">making money</span>.</h2>
+      <p class="cta__body reveal" data-delay="1">One-time setup. You own everything. Your agents start working this week. The only question is how many more leads you'll lose before you start.</p>
+      <div class="reveal" data-delay="2">
+        <a href="#pricing" class="btn btn--gold-on-dark btn--lg">Get Your Time Back</a>
+      </div>
+    </div>
+    <div class="cta__pricing reveal" data-delay="2">
+      <strong>Starter</strong> — $399 one-time<br>
+      <strong>Full team</strong> — $2,499 one-time<br>
+      <strong>Managed</strong> — $999/month<br><br>
+      You own everything.<br>
+      $0/month to us after delivery.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__logo">
+      <span class="footer__logo-text">milo</span>
+      <span class="footer__dot"></span>
+    </div>
+    <div class="footer__links">
+      <a href="/agents">Services</a>
+      <a href="/security">Security</a>
+      <a href="/blog">Guides</a>
+      <a href="https://github.com/getmilodev">GitHub</a>
+    </div>
+    <span class="footer__copy">&copy; 2026 Milo</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Mobile menu
+  const toggle = document.querySelector('.nav__toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !open);
+    menu.classList.toggle('open');
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  // Focus trap + Escape for mobile menu
+  document.addEventListener('keydown', (e) => {
+    if (!menu.classList.contains('open')) return;
+    if (e.key === 'Escape') {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+      toggle.focus();
+      return;
+    }
+    if (e.key === 'Tab') {
+      const focusable = [toggle, ...menu.querySelectorAll('a')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq__question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answer = document.getElementById(btn.getAttribute('aria-controls'));
+
+      // Close all others
+      document.querySelectorAll('.faq__question').forEach(other => {
+        if (other !== btn) {
+          other.setAttribute('aria-expanded', 'false');
+          const otherAnswer = document.getElementById(other.getAttribute('aria-controls'));
+          if (otherAnswer) otherAnswer.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      btn.setAttribute('aria-expanded', !expanded);
+      answer.setAttribute('aria-hidden', expanded);
+    });
+  });
+</script>
 
 </body>
 </html>

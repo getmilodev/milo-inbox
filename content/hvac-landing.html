@@ -7,207 +7,441 @@
   <meta name="description" content="HVAC emergencies don't wait for business hours. Milo's AI receptionist answers every call 24/7, dispatches techs, and books service appointments. $399 one-time setup.">
   <meta property="og:title" content="AI Receptionist for HVAC &amp; Plumbing | Milo">
   <meta property="og:description" content="The first company to answer gets the job. AI receptionist that answers 24/7, dispatches, and books. $399 one-time.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/milo-design-system.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1a1a1a; line-height: 1.6; }
-    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-    .hero { padding: 80px 0 60px; }
-    .hero .eyebrow { font-size: 0.85rem; font-weight: 600; color: #2563eb; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-    .hero h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 20px; }
-    .hero h1 span { color: #e53e3e; }
-    .hero p { font-size: 1.2rem; color: #555; margin-bottom: 32px; max-width: 640px; }
-    .cta-btn { display: inline-block; background: #1a1a1a; color: #fff; padding: 16px 36px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: background 0.2s; }
-    .cta-btn:hover { background: #333; }
-    .cta-secondary { display: inline-block; color: #1a1a1a; padding: 16px 24px; text-decoration: none; font-weight: 500; font-size: 1rem; margin-left: 12px; }
-    .problem { padding: 60px 0; background: #fef2f2; }
-    .problem h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 24px; }
-    .problem p { font-size: 1.05rem; color: #444; margin-bottom: 16px; }
-    .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 32px 0; }
-    .stat { text-align: center; }
-    .stat .number { font-size: 2.5rem; font-weight: 700; color: #e53e3e; }
-    .stat .label { font-size: 0.9rem; color: #666; margin-top: 4px; }
-    .solution { padding: 60px 0; }
-    .solution h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 32px; }
-    .feature { margin-bottom: 32px; padding-left: 32px; border-left: 3px solid #1a1a1a; }
-    .feature h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; }
-    .feature p { color: #555; }
-    .cost-compare { padding: 60px 0; background: #f0fdf4; }
-    .cost-compare h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 24px; }
-    .vs-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
-    .vs-table th, .vs-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid #d1fae5; }
-    .vs-table th { background: #dcfce7; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
-    .vs-table .highlight-row { background: #f0fdf4; font-weight: 600; }
-    .social-proof { padding: 60px 0; border-top: 1px solid #eee; }
-    .social-proof h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; text-align: center; }
-    .scenario { background: #f9fafb; border-radius: 12px; padding: 32px; margin: 24px 0; }
-    .scenario h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; }
-    .scenario p { color: #555; margin-bottom: 8px; }
-    .bottom-cta { padding: 80px 0; text-align: center; background: #1a1a1a; color: #fff; }
-    .bottom-cta h2 { font-size: 2rem; font-weight: 700; margin-bottom: 12px; color: #fff; }
-    .bottom-cta p { color: #999; font-size: 1.1rem; margin-bottom: 32px; }
-    .bottom-cta .cta-btn { background: #fff; color: #1a1a1a; }
-    .promo { display: inline-block; background: #fef3c7; color: #92400e; padding: 8px 16px; border-radius: 6px; font-size: 0.9rem; font-weight: 600; margin-bottom: 24px; }
-    .internal-links { padding: 40px 0; border-top: 1px solid #eee; }
-    .internal-links h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 16px; text-align: center; color: #666; }
-    .internal-links .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-    .internal-links a { color: #2563eb; text-decoration: none; font-size: 0.95rem; padding: 6px 14px; background: #f0f9ff; border-radius: 6px; }
-    .internal-links a:hover { background: #dbeafe; }
-    @media (max-width: 640px) {
-      .hero h1 { font-size: 1.75rem; }
-      .stat-grid { grid-template-columns: 1fr; gap: 16px; }
-      .cta-secondary { display: block; margin: 12px 0 0 0; }
+    .scenario-block {
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-8);
+      margin-bottom: var(--sp-6);
+    }
+    .scenario-block h3 {
+      margin-bottom: var(--sp-3);
+    }
+    .scenario-block p {
+      font-size: var(--text-base);
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+    .scenario-block strong {
+      color: var(--text-1);
+    }
+    .internal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3);
+    }
+    .internal-links a {
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--text-2);
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      padding: var(--sp-2) var(--sp-4);
+      border-radius: var(--radius-md);
+      transition: border-color 150ms, color 150ms;
+    }
+    .internal-links a:hover {
+      border-color: var(--text-3);
+      color: var(--text-1);
+    }
+    .payoff-note {
+      font-weight: 600;
+      color: var(--gold-text);
+      margin-top: var(--sp-4);
     }
   </style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="container">
-    <div class="eyebrow">For HVAC &amp; Plumbing Companies</div>
-    <h1>The AC dies at 3pm on a <span>102°F day</span>.<br>First company to answer gets the job.</h1>
-    <p>Emergency calls don't wait for business hours. When a pipe bursts or a furnace dies, homeowners call the first 3 companies on Google. If you don't pick up, the next one will. Milo answers every call, 24/7. One-time $399 setup.</p>
-    <a href="/buy/starter" class="cta-btn">Get Your AI Receptionist</a>
-    <a href="/receptionist" class="cta-secondary">How it works &rarr;</a>
+<div class="grid-bg" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main">
+  <div class="wrap">
+    <a href="/" class="nav__logo">
+      <span class="nav__logo-text">milo</span>
+      <span class="nav__dot"></span>
+    </a>
+    <div class="nav__links">
+      <a href="/agents" class="nav__link">Services</a>
+      <a href="/security" class="nav__link">Security</a>
+      <a href="/calculator" class="nav__link">Calculator</a>
+      <a href="/build" class="nav__link">Build</a>
+      <a href="/contact" class="nav__cta">Start a project</a>
+    </div>
+    <button class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation">
+  <a href="/agents">Services</a>
+  <a href="/security">Security</a>
+  <a href="/calculator">Calculator</a>
+  <a href="/build">Build</a>
+  <a href="/contact">Start a project</a>
 </div>
 
-<div class="problem">
-  <div class="container">
-    <h2>The Emergency Call Problem</h2>
-    <p>HVAC and plumbing is a speed game. When something breaks, homeowners don't comparison shop — they call until someone picks up. The first company to answer gets the job.</p>
-    <p>Your busiest months are also when you miss the most calls. Your techs are out on jobs. Your office manager is juggling dispatch. And the phone keeps ringing with $300-$2,000 service calls you can't get to.</p>
-    <p>A traditional answering service helps, but at $300-800/month — with per-call charges on top — it eats into margins fast. And they're reading a script, not actually understanding what's wrong.</p>
+<main id="main">
 
-    <div class="stat-grid">
-      <div class="stat">
-        <div class="number">85%</div>
-        <div class="label">of callers won't leave a voicemail — they call the next company</div>
+<!-- HERO — LAND:004 -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">LAND:004</span>
+      <span class="spec-coord">// hvac &amp; plumbing</span>
+    </div>
+    <h1 class="page-hero__title reveal" data-delay="1">The AC dies at 3pm on a <span class="accent">102&deg;F day.</span><br>First company to answer gets the job.</h1>
+    <p class="page-hero__subtitle reveal" data-delay="2">Emergency calls don't wait for business hours. When a pipe bursts or a furnace dies, homeowners call the first 3 companies on Google. If you don't pick up, the next one will. Milo answers every call, 24/7. One-time $399 setup.</p>
+    <div class="reveal" data-delay="3" style="margin-top: var(--sp-8); display: flex; align-items: center; gap: var(--sp-4); flex-wrap: wrap;">
+      <a href="/buy/starter" class="btn btn--dark btn--lg">Get Your AI Receptionist</a>
+      <a href="/receptionist" class="btn btn--ghost">How it works</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS — LAND:004.1 -->
+<section class="section--sm">
+  <div class="wrap">
+    <div class="stats-bar reveal">
+      <div class="stats-bar__item">
+        <div class="stats-bar__num">85%</div>
+        <div class="stats-bar__label">of callers won't leave a voicemail — they call the next company</div>
       </div>
-      <div class="stat">
-        <div class="number">$450</div>
-        <div class="label">average value of a missed emergency call</div>
+      <div class="stats-bar__item">
+        <div class="stats-bar__num">$450</div>
+        <div class="stats-bar__label">average value of a missed emergency call</div>
       </div>
-      <div class="stat">
-        <div class="number">40%</div>
-        <div class="label">of service calls come outside office hours</div>
+      <div class="stats-bar__item">
+        <div class="stats-bar__num">40%</div>
+        <div class="stats-bar__label">of service calls come outside office hours</div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="solution">
-  <div class="container">
-    <h2>What Your AI Receptionist Does</h2>
-
-    <div class="feature">
-      <h3>Answers every call instantly — days, nights, weekends</h3>
-      <p>Peak summer, Christmas Eve, 2am on a Sunday. Milo picks up on the first ring. Homeowners get a professional voice, not a recording.</p>
+<!-- PROBLEM — LAND:004.2 -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">LAND:004.2</span>
+      <span class="spec-coord">// the emergency call problem</span>
     </div>
-
-    <div class="feature">
-      <h3>Triages emergencies vs. routine service</h3>
-      <p>Burst pipe? Gas smell? No heat with an infant in the house? The AI recognizes true emergencies and escalates immediately to your on-call tech. Routine maintenance request? Books a standard appointment.</p>
-    </div>
-
-    <div class="feature">
-      <h3>Captures job details for your dispatcher</h3>
-      <p>Address, equipment type, symptom description, urgency level, preferred time. Your dispatcher gets everything they need in a text summary — no callback required to ask basic questions.</p>
-    </div>
-
-    <div class="feature">
-      <h3>Books service appointments into your schedule</h3>
-      <p>For non-emergency calls, Milo checks your availability and books the appointment. Sends the homeowner a confirmation with your company info, what to expect, and a reminder.</p>
-    </div>
-
-    <div class="feature">
-      <h3>Handles pricing and FAQ questions</h3>
-      <p>"Do you service my area?" "What's a diagnostic fee?" "Do you work on Carrier units?" "Can you come today?" — trained on YOUR service area, brands, and pricing.</p>
-    </div>
-
-    <div class="feature">
-      <h3>Gives your office manager their day back</h3>
-      <p>Instead of answering 50+ calls per day, your office staff focuses on dispatch, invoicing, and follow-up. Milo handles the phone. They handle the business.</p>
+    <div class="editorial reveal" data-delay="1">
+      <div>
+        <h2 class="editorial__title">The Emergency Call Problem</h2>
+      </div>
+      <div class="editorial__body">
+        <p>HVAC and plumbing is a speed game. When something breaks, homeowners don't comparison shop — they call until someone picks up. The first company to answer gets the job.</p>
+        <p>Your busiest months are also when you miss the most calls. Your techs are out on jobs. Your office manager is juggling dispatch. And the phone keeps ringing with $300-$2,000 service calls you can't get to.</p>
+        <p>A traditional answering service helps, but at $300-800/month — with per-call charges on top — it eats into margins fast. And they're reading a script, not actually understanding what's wrong.</p>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="cost-compare">
-  <div class="container">
-    <h2>The Real Cost Comparison</h2>
-    <table class="vs-table">
-      <thead>
-        <tr><th></th><th>Missed Calls (Now)</th><th>Answering Service</th><th>Milo</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Monthly Cost</td><td>$0</td><td>$300-$800/mo + per-call</td><td>~$40/mo infrastructure</td></tr>
-        <tr><td>Setup</td><td>Free</td><td>Free</td><td>$399 one-time</td></tr>
-        <tr><td>After-Hours Coverage</td><td>None or personal cell</td><td>24/7</td><td>24/7</td></tr>
-        <tr><td>Emergency Triage</td><td>None</td><td>Basic (script-based)</td><td>Intelligent (trained on your operations)</td></tr>
-        <tr><td>Jobs Lost to Missed Calls</td><td>8-15/month</td><td>0-2/month</td><td>0/month</td></tr>
-        <tr class="highlight-row"><td>Monthly Revenue Lost</td><td>$3,600-$6,750</td><td>$0-$900</td><td>$0</td></tr>
-        <tr><td>Annual Total Cost</td><td>$43K-$81K lost revenue</td><td>$3,600-$9,600</td><td>$399 + $480 = $879</td></tr>
-        <tr><td>You Own It</td><td>N/A</td><td>No</td><td>Yes</td></tr>
-      </tbody>
-    </table>
-    <p style="color: #166534; font-weight: 600; margin-top: 16px;">Milo pays for itself after capturing 1 service call. Every call after that is pure revenue.</p>
+<!-- SOLUTION — LAND:004.3 -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">LAND:004.3</span>
+      <span class="spec-coord">// capabilities</span>
+    </div>
+    <div class="editorial reveal" data-delay="1">
+      <div>
+        <h2 class="editorial__title">What Your AI Receptionist Does</h2>
+      </div>
+      <div class="editorial__body">
+        <p>An AI agent trained on your operations that handles service calls like your best dispatcher.</p>
+      </div>
+    </div>
+    <div class="gold-line"></div>
+    <ul class="stacked-list">
+      <li class="stacked-item reveal">
+        <div class="stacked-item__num">01</div>
+        <div>
+          <div class="stacked-item__title">Answers every call instantly — days, nights, weekends</div>
+          <div class="stacked-item__body">Peak summer, Christmas Eve, 2am on a Sunday. Milo picks up on the first ring. Homeowners get a professional voice, not a recording.</div>
+        </div>
+      </li>
+      <li class="stacked-item reveal" data-delay="1">
+        <div class="stacked-item__num">02</div>
+        <div>
+          <div class="stacked-item__title">Triages emergencies vs. routine service</div>
+          <div class="stacked-item__body">Burst pipe? Gas smell? No heat with an infant in the house? The AI recognizes true emergencies and escalates immediately to your on-call tech. Routine maintenance request? Books a standard appointment.</div>
+        </div>
+      </li>
+      <li class="stacked-item reveal" data-delay="2">
+        <div class="stacked-item__num">03</div>
+        <div>
+          <div class="stacked-item__title">Captures job details for your dispatcher</div>
+          <div class="stacked-item__body">Address, equipment type, symptom description, urgency level, preferred time. Your dispatcher gets everything they need in a text summary — no callback required to ask basic questions.</div>
+        </div>
+      </li>
+      <li class="stacked-item reveal" data-delay="3">
+        <div class="stacked-item__num">04</div>
+        <div>
+          <div class="stacked-item__title">Books service appointments into your schedule</div>
+          <div class="stacked-item__body">For non-emergency calls, Milo checks your availability and books the appointment. Sends the homeowner a confirmation with your company info, what to expect, and a reminder.</div>
+        </div>
+      </li>
+      <li class="stacked-item reveal">
+        <div class="stacked-item__num">05</div>
+        <div>
+          <div class="stacked-item__title">Handles pricing and FAQ questions</div>
+          <div class="stacked-item__body">"Do you service my area?" "What's a diagnostic fee?" "Do you work on Carrier units?" "Can you come today?" — trained on YOUR service area, brands, and pricing.</div>
+        </div>
+      </li>
+      <li class="stacked-item reveal" data-delay="1">
+        <div class="stacked-item__num">06</div>
+        <div>
+          <div class="stacked-item__title">Gives your office manager their day back</div>
+          <div class="stacked-item__body">Instead of answering 50+ calls per day, your office staff focuses on dispatch, invoicing, and follow-up. Milo handles the phone. They handle the business.</div>
+        </div>
+      </li>
+    </ul>
   </div>
-</div>
+</section>
 
-<div class="social-proof">
-  <div class="container">
-    <h2>Real Scenarios</h2>
+<!-- COST COMPARISON — LAND:004.4 -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">LAND:004.4</span>
+      <span class="spec-coord">// cost comparison</span>
+    </div>
+    <h2 class="editorial__title reveal" data-delay="1" style="margin-bottom: var(--sp-10);">The Real Cost Comparison</h2>
+    <div class="reveal" data-delay="2">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Missed Calls (Now)</th>
+            <th>Answering Service</th>
+            <th class="highlight">Milo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monthly Cost</td>
+            <td>$0</td>
+            <td>$300-$800/mo + per-call</td>
+            <td class="highlight">~$40/mo infrastructure</td>
+          </tr>
+          <tr>
+            <td>Setup</td>
+            <td>Free</td>
+            <td>Free</td>
+            <td class="highlight">$399 one-time</td>
+          </tr>
+          <tr>
+            <td>After-Hours Coverage</td>
+            <td>None or personal cell</td>
+            <td>24/7</td>
+            <td class="highlight">24/7</td>
+          </tr>
+          <tr>
+            <td>Emergency Triage</td>
+            <td>None</td>
+            <td>Basic (script-based)</td>
+            <td class="highlight">Intelligent (trained on your operations)</td>
+          </tr>
+          <tr>
+            <td>Jobs Lost to Missed Calls</td>
+            <td>8-15/month</td>
+            <td>0-2/month</td>
+            <td class="highlight">0/month</td>
+          </tr>
+          <tr>
+            <td>Monthly Revenue Lost</td>
+            <td>$3,600-$6,750</td>
+            <td>$0-$900</td>
+            <td class="highlight">$0</td>
+          </tr>
+          <tr>
+            <td>Annual Total Cost</td>
+            <td>$43K-$81K lost revenue</td>
+            <td>$3,600-$9,600</td>
+            <td class="highlight">$399 + $480 = $879</td>
+          </tr>
+          <tr>
+            <td>You Own It</td>
+            <td>N/A</td>
+            <td>No</td>
+            <td class="highlight">Yes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="payoff-note reveal" data-delay="3">Milo pays for itself after capturing 1 service call. Every call after that is pure revenue.</p>
+  </div>
+</section>
 
-    <div class="scenario">
-      <h3>Sunday, 6am — No heat, 15°F outside</h3>
+<!-- SCENARIOS — LAND:004.5 -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">LAND:004.5</span>
+      <span class="spec-coord">// real scenarios</span>
+    </div>
+    <h2 class="editorial__title reveal" data-delay="1" style="margin-bottom: var(--sp-10);">Real Scenarios</h2>
+
+    <div class="scenario-block reveal">
+      <h3>Sunday, 6am — No heat, 15&deg;F outside</h3>
       <p>A homeowner wakes up to a freezing house. The furnace is dead. They have a baby. They're calling every HVAC company on Google right now.</p>
       <p><strong>Without Milo:</strong> Your office is closed. They reach voicemail. They call your competitor. Emergency service call: $800. Gone.</p>
-      <p><strong>With Milo:</strong> AI answers instantly. Captures the address, equipment details, and urgency. Texts your on-call tech: "Emergency — no heat, infant in home, 15°F. Address: [details]. Furnace: Trane XR95, won't ignite." Tech calls homeowner within 10 minutes. Job secured.</p>
+      <p><strong>With Milo:</strong> AI answers instantly. Captures the address, equipment details, and urgency. Texts your on-call tech: "Emergency — no heat, infant in home, 15&deg;F. Address: [details]. Furnace: Trane XR95, won't ignite." Tech calls homeowner within 10 minutes. Job secured.</p>
     </div>
 
-    <div class="scenario">
+    <div class="scenario-block reveal" data-delay="1">
       <h3>Peak summer, Tuesday 2pm — Your team is on jobs</h3>
-      <p>It's 98°F. Six techs are out on calls. Your office manager is coordinating dispatch. The phone rings 4 times in 10 minutes with new AC calls.</p>
+      <p>It's 98&deg;F. Six techs are out on calls. Your office manager is coordinating dispatch. The phone rings 4 times in 10 minutes with new AC calls.</p>
       <p><strong>Without Milo:</strong> Two go to voicemail. Those homeowners call your competitor. You lose $600-$1,200 in service calls.</p>
       <p><strong>With Milo:</strong> AI handles all four calls simultaneously. Captures details, books next-available slots, and texts your dispatcher a summary. Zero missed calls, zero missed revenue.</p>
     </div>
 
-    <div class="scenario">
+    <div class="scenario-block reveal" data-delay="2">
       <h3>Thursday, 8pm — Burst pipe</h3>
       <p>Water is spraying from under a kitchen sink. The homeowner found you on Google with 4.8 stars. They call.</p>
       <p><strong>Without Milo:</strong> Voicemail. They call the 4.5-star plumber next. That plumber answers.</p>
       <p><strong>With Milo:</strong> AI answers, tells the homeowner to shut off the main water valve (buys time), captures the situation, and connects them with your emergency line. You arrive in 45 minutes. $350 job, plus a customer for life.</p>
     </div>
   </div>
-</div>
+</section>
 
-<div class="internal-links">
-  <div class="container">
-    <h3>Compare Milo to Specific Services</h3>
-    <div class="links">
+<!-- PULL QUOTE -->
+<blockquote class="pull-quote">
+  <div class="wrap">
+    <div class="pull-quote__inner reveal">
+      <p class="pull-quote__text">In HVAC and plumbing, the first company to answer gets the job. With Milo, that company is always you.</p>
+    </div>
+  </div>
+</blockquote>
+
+<!-- INTERNAL LINKS — LAND:004.6 -->
+<section class="section--sm">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">LAND:004.6</span>
+      <span class="spec-coord">// related</span>
+    </div>
+    <h3 class="reveal" data-delay="1" style="margin-bottom: var(--sp-6);">Compare Milo to Specific Services</h3>
+    <div class="internal-links reveal" data-delay="2">
       <a href="/compare/smith-ai">vs. Smith.ai</a>
       <a href="/compare/ruby-receptionists">vs. Ruby Receptionists</a>
       <a href="/compare/answerconnect">vs. AnswerConnect</a>
-      <a href="/compare/my-ai-front-desk">vs. My AI Front Desk</a>
-      <a href="/compare/goodcall">vs. Goodcall</a>
-      <a href="/compare/dialzara">vs. Dialzara</a>
-      <a href="/compare/rosie">vs. Rosie</a>
       <a href="/blog/best-ai-receptionist">Best AI Receptionist 2026</a>
-      <a href="/blog/ai-receptionist-hvac-plumbing">AI for HVAC Guide</a>
       <a href="/law-firms">For Law Firms</a>
       <a href="/dental">For Dental Practices</a>
       <a href="/accountants">For CPA Firms</a>
     </div>
   </div>
-</div>
+</section>
 
-<div class="bottom-cta">
-  <div class="container">
-    <span class="promo">Use code EARLYMILO25 for 25% off</span>
-    <h2>Stop losing emergency calls to voicemail</h2>
-    <p>$399 one-time. AI that answers, triages, and dispatches — 24/7/365.</p>
-    <a href="/buy/starter" class="cta-btn">Get Your AI Receptionist</a>
+<!-- CTA — LAND:004.7 -->
+<section class="cta-section">
+  <div class="section-marker section-marker--cta reveal">
+    <span class="spec-label spec-label--on-dark">LAND:004.7</span>
+    <span class="spec-coord spec-coord--on-dark">// get started</span>
   </div>
-</div>
+  <div class="cta__inner">
+    <div>
+      <h2 class="cta__title reveal">Stop losing emergency calls to <span class="accent">voicemail.</span></h2>
+      <p class="cta__body reveal" data-delay="1">$399 one-time. AI that answers, triages, and dispatches — 24/7/365.</p>
+      <div class="reveal" data-delay="2">
+        <a href="/buy/starter" class="btn btn--gold-on-dark btn--lg">Get Your AI Receptionist</a>
+        <div style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-on-dark-muted); margin-top: var(--sp-4);">Use code EARLYMILO25 for 25% off — founding customer pricing</div>
+      </div>
+    </div>
+    <div class="cta__pricing reveal" data-delay="2">
+      <strong>One-time</strong> — $399<br>
+      <strong>Ongoing</strong> — ~$40/mo<br>
+      <strong>Monthly fees to us</strong> — $0<br><br>
+      You own everything.<br>
+      No subscription. No lock-in.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__logo">
+      <span class="footer__logo-text">milo</span>
+      <span class="footer__dot"></span>
+    </div>
+    <div class="footer__links">
+      <a href="/agents">Services</a>
+      <a href="/security">Security</a>
+      <a href="/blog">Guides</a>
+      <a href="https://github.com/getmilodev">GitHub</a>
+    </div>
+    <span class="footer__copy">&copy; 2026 Milo</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Mobile menu
+  const toggle = document.querySelector('.nav__toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !open);
+    menu.classList.toggle('open');
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  // Focus trap + Escape for mobile menu
+  document.addEventListener('keydown', (e) => {
+    if (!menu.classList.contains('open')) return;
+    if (e.key === 'Escape') {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+      toggle.focus();
+      return;
+    }
+    if (e.key === 'Tab') {
+      const focusable = [toggle, ...menu.querySelectorAll('a')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+</script>
 
 </body>
 </html>
