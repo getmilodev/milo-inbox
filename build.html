@@ -111,9 +111,15 @@
       .option.selected { animation: none; }
     }
     .option-icon {
-      font-size: 1.3rem;
+      width: 22px;
+      height: 22px;
       margin-bottom: var(--sp-2);
-      line-height: 1;
+      color: var(--gold-text);
+    }
+    .option-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
     .option h3 {
       font-family: var(--font-body);
@@ -279,8 +285,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.15rem;
       flex-shrink: 0;
+      color: var(--text-2);
+    }
+    .agent-avatar svg {
+      width: 20px;
+      height: 20px;
     }
     .agent-info { min-width: 0; }
     .agent-info h3 {
@@ -475,42 +485,42 @@
       </div>
       <div class="option-grid" id="industryGrid" role="radiogroup" aria-label="Select your industry">
         <div class="option" data-value="law" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon">&#9878;</div>
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v16"/><path d="M4 6h12"/><path d="M2 12l2-6 2 6"/><path d="M14 12l2-6 2 6"/></svg></div>
           <h3>Law Firm</h3>
           <p>Solo to mid-size practice</p>
         </div>
         <div class="option" data-value="realestate" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon">&#127968;</div>
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10l8-7 8 7"/><path d="M4 8.5V17h12V8.5"/></svg></div>
           <h3>Real Estate</h3>
           <p>Brokerage, team, or solo agent</p>
         </div>
         <div class="option" data-value="healthcare" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon">&#129657;</div>
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v14"/><path d="M3 10h14"/></svg></div>
           <h3>Healthcare / Dental</h3>
           <p>Practice or clinic</p>
         </div>
         <div class="option" data-value="trades" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon">&#128295;</div>
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2l6.93 4v8L10 18l-6.93-4V6z"/></svg></div>
           <h3>Home Services / HVAC</h3>
           <p>Plumbing, electrical, HVAC, roofing</p>
         </div>
         <div class="option" data-value="agency" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon">&#128640;</div>
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M10 3v3M10 14v3M3 10h3M14 10h3"/></svg></div>
           <h3>Agency / Consulting</h3>
           <p>Marketing, design, or advisory</p>
         </div>
         <div class="option" data-value="ecommerce" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon">&#128722;</div>
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="14" height="11" rx="1"/><path d="M7 7V5a3 3 0 016 0v2"/></svg></div>
           <h3>E-Commerce</h3>
           <p>Online store or D2C brand</p>
         </div>
         <div class="option" data-value="finance" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon">&#128200;</div>
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V12M8 17V8M12 17V5M16 17V3"/></svg></div>
           <h3>Accounting / Finance</h3>
           <p>CPA, bookkeeper, or advisor</p>
         </div>
         <div class="option" data-value="other" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon">&#9733;</div>
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2l8 8-8 8-8-8z"/></svg></div>
           <h3>Something Else</h3>
           <p>We build for any business</p>
         </div>
@@ -525,22 +535,22 @@
       </div>
       <div class="option-grid" id="sizeGrid" role="radiogroup" aria-label="Select your team size">
         <div class="option" data-value="solo" onclick="selectSize(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon">&#128100;</div>
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="3"/></svg></div>
           <h3>Just me</h3>
           <p>Solopreneur or freelancer</p>
         </div>
         <div class="option" data-value="small" onclick="selectSize(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon">&#128101;</div>
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="10" r="2.5"/><circle cx="13" cy="10" r="2.5"/></svg></div>
           <h3>2 to 5 people</h3>
           <p>Small but growing</p>
         </div>
         <div class="option" data-value="medium" onclick="selectSize(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon">&#127970;</div>
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6.5" cy="7" r="2"/><circle cx="13.5" cy="7" r="2"/><circle cx="6.5" cy="13" r="2"/><circle cx="13.5" cy="13" r="2"/></svg></div>
           <h3>6 to 20 people</h3>
           <p>Established operation</p>
         </div>
         <div class="option" data-value="large" onclick="selectSize(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon">&#127963;</div>
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="5" r="1.5"/><circle cx="10" cy="5" r="1.5"/><circle cx="15" cy="5" r="1.5"/><circle cx="5" cy="10" r="1.5"/><circle cx="10" cy="10" r="1.5"/><circle cx="15" cy="10" r="1.5"/><circle cx="5" cy="15" r="1.5"/><circle cx="10" cy="15" r="1.5"/><circle cx="15" cy="15" r="1.5"/></svg></div>
           <h3>20+ people</h3>
           <p>Scaling fast</p>
         </div>
@@ -710,7 +720,7 @@ function goStep(n) {
 const agentDB = {
   leads: {
     name: 'Lead Follow-Up Agent',
-    icon: '&#9889;',
+    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2l-6 9h5l-1 7 6-9h-5l1-7z"/></svg>',
     bg: 'oklch(94% 0.04 65)',
     role: 'Pipeline acceleration',
     desc: 'Responds to new leads within 60 seconds via email or SMS. Sends personalized follow-ups on a cadence you set. Never lets a lead go cold.',
@@ -718,7 +728,7 @@ const agentDB = {
   },
   scheduling: {
     name: 'Calendar Agent',
-    icon: '&#128197;',
+    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg>',
     bg: 'oklch(92% 0.03 240)',
     role: 'Scheduling automation',
     desc: 'Books meetings, sends confirmations and reminders, reschedules no-shows, and syncs across your calendar tools. Zero back-and-forth.',
@@ -726,7 +736,7 @@ const agentDB = {
   },
   support: {
     name: 'Client Communication Agent',
-    icon: '&#128172;',
+    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="10" rx="2"/><path d="M7 13v4l4-4"/></svg>',
     bg: 'oklch(93% 0.04 155)',
     role: 'Always-on client support',
     desc: 'Answers common questions 24/7 via chat, email, or text. Trained on YOUR business, YOUR policies, YOUR tone. Escalates when needed.',
@@ -734,7 +744,7 @@ const agentDB = {
   },
   outreach: {
     name: 'Outreach Agent',
-    icon: '&#127919;',
+    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.5"/><circle cx="10" cy="10" r="1"/></svg>',
     bg: 'oklch(93% 0.03 350)',
     role: 'Prospecting on autopilot',
     desc: 'Researches prospects, writes personalized messages, and sends targeted outreach. Fills your pipeline while you focus on closing.',
@@ -742,7 +752,7 @@ const agentDB = {
   },
   data: {
     name: 'Admin Agent',
-    icon: '&#128203;',
+    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="10" height="15" rx="1"/><path d="M8 3V1h4v2"/></svg>',
     bg: 'oklch(93% 0.03 300)',
     role: 'Data entry elimination',
     desc: 'Enters data into your CRM, updates records, processes forms, and syncs information across systems. The busywork disappears.',
@@ -750,7 +760,7 @@ const agentDB = {
   },
   reporting: {
     name: 'Reporting Agent',
-    icon: '&#128202;',
+    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V11M8 17V7M12 17V9M16 17V4"/></svg>',
     bg: 'oklch(93% 0.03 220)',
     role: 'Automated insights',
     desc: 'Pulls numbers from your tools, builds daily and weekly reports, flags anomalies, and delivers insights to your inbox every morning.',
@@ -758,7 +768,7 @@ const agentDB = {
   },
   content: {
     name: 'Content Agent',
-    icon: '&#9997;',
+    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 3.5l3 3L7 16H4v-3z"/></svg>',
     bg: 'oklch(95% 0.04 90)',
     role: 'Content production',
     desc: 'Drafts social posts, blog outlines, email newsletters, and marketing copy in your voice. You review and approve \u2014 it does the heavy lifting.',
@@ -766,7 +776,7 @@ const agentDB = {
   },
   invoicing: {
     name: 'Billing Agent',
-    icon: '&#128176;',
+    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="12" height="16" rx="1"/><path d="M8 7h4M8 10h4M8 13h2"/></svg>',
     bg: 'oklch(93% 0.04 155)',
     role: 'Revenue collection',
     desc: 'Sends invoices on schedule, follows up on overdue payments with polite persistence, and logs payment status. Get paid faster.',
@@ -813,7 +823,7 @@ function showResults() {
         '<h3>' + a.name + '</h3>' +
         '<div class="role">' + a.role + '</div>' +
         '<p>' + a.desc + '</p>' +
-        '<div class="saves">\u23F0 Saves ~' + a.hours + ' hours/week</div>' +
+        '<div class="saves">// saves ~' + a.hours + ' hrs/week</div>' +
       '</div></div>';
   }).join('');
 
