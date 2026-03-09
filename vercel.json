@@ -7,6 +7,7 @@
     { "source": "/blog/openclaw-memory-management", "destination": "/blog", "statusCode": 301 },
     { "source": "/blog/top-openclaw-problems-how-to-fix-them", "destination": "/blog", "statusCode": 301 },
     { "source": "/receptionist", "destination": "/agents", "statusCode": 301 },
+    { "source": "/insurance", "destination": "/industries", "statusCode": 301 },
     { "source": "/blog/ai-receptionist-pricing-comparison", "destination": "/blog", "statusCode": 301 },
     { "source": "/blog/ai-receptionist-no-monthly-fee", "destination": "/blog", "statusCode": 301 },
     { "source": "/blog/ai-receptionist-dental-practices", "destination": "/blog", "statusCode": 301 },
