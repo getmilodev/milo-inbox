@@ -7,311 +7,490 @@
   <meta name="description" content="Practical guides on AI agents, business automation, pricing breakdowns, and industry-specific AI receptionist solutions. Updated weekly.">
   <meta property="og:title" content="Guides & Resources — Milo">
   <meta property="og:description" content="Practical guides on AI agents, automation, and AI receptionists for small businesses.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="milo-design-system.css">
   <link rel="canonical" href="https://www.getmilo.dev/blog">
   <style>
+    /* Page-specific: blog index */
+    .blog-hero {
+      padding: clamp(120px, 14vh, 170px) 0 var(--sp-6);
+    }
+    .blog-hero__title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: 400;
+      color: var(--text-1);
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      margin-bottom: var(--sp-3);
+    }
+    .blog-hero__subtitle {
+      font-size: var(--text-lg);
+      color: var(--text-2);
+      max-width: 540px;
+      line-height: 1.6;
+    }
+
+    .blog-section {
+      padding: var(--sp-6) 0;
+    }
+    .blog-section + .blog-section {
+      padding-top: var(--sp-10);
+    }
+    .blog-section__label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      color: var(--gold-text);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--sp-6);
+      padding-bottom: var(--sp-3);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-8);
+      gap: var(--sp-4);
     }
     @media (max-width: 768px) {
       .blog-grid { grid-template-columns: 1fr; }
     }
+
     .blog-card {
-      background: var(--white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: var(--space-8);
-      transition: border-color 0.2s, box-shadow 0.2s;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--sp-6);
+      transition: border-color 150ms var(--ease-out-quart),
+                  background 150ms var(--ease-out-quart);
       text-decoration: none;
       color: inherit;
       display: block;
+      background: var(--surface-raised);
     }
     .blog-card:hover {
-      border-color: var(--copper);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      border-color: var(--gold);
+      background: var(--surface);
+    }
+    .blog-card:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
     }
     .blog-card__tag {
       font-family: var(--font-mono);
       font-size: var(--text-xs);
-      color: var(--copper);
+      color: var(--gold-text);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: var(--space-3);
+      margin-bottom: var(--sp-3);
     }
     .blog-card h3 {
-      font-size: var(--text-lg);
-      margin-bottom: var(--space-3);
-      line-height: 1.3;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--text-1);
+      margin-bottom: var(--sp-2);
+      line-height: 1.35;
     }
     .blog-card p {
       font-size: var(--text-sm);
-      color: var(--graphite);
-      margin-bottom: var(--space-4);
+      color: var(--text-2);
+      margin: 0 0 var(--sp-4);
+      line-height: 1.6;
     }
     .blog-card__meta {
+      font-family: var(--font-mono);
       font-size: var(--text-xs);
-      color: var(--ash);
+      color: var(--text-3);
+      letter-spacing: 0.02em;
     }
     .blog-card__arrow {
       font-size: var(--text-sm);
-      color: var(--copper);
+      color: var(--gold-text);
       font-weight: 600;
+      display: inline-block;
+      margin-top: var(--sp-3);
+      transition: transform 150ms var(--ease-out-quart);
     }
-    .section-label {
-      font-family: var(--font-mono);
+    .blog-card:hover .blog-card__arrow {
+      transform: translateX(3px);
+    }
+
+    /* CTA section */
+    .blog-cta {
+      margin: var(--sp-16) 0 var(--sp-12);
+      padding: var(--sp-12) var(--sp-8);
+      background: var(--text-1);
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+    .blog-cta h2 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 400;
+      color: var(--text-inv);
+      line-height: 1.2;
+      margin-bottom: var(--sp-3);
+    }
+    .blog-cta p {
+      font-size: var(--text-base);
+      color: var(--text-on-dark-muted);
+      max-width: 480px;
+      margin: 0 auto var(--sp-8);
+      line-height: 1.6;
+    }
+    .blog-cta__actions {
+      display: flex;
+      justify-content: center;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+    }
+    .blog-cta .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      background: var(--gold);
+      color: var(--text-1);
+      padding: var(--sp-4) var(--sp-8);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-weight: 600;
       font-size: var(--text-sm);
-      color: var(--ash);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: var(--space-6);
-      padding-bottom: var(--space-3);
-      border-bottom: 1px solid var(--border-light);
+      transition: transform 200ms var(--ease-out-quart), opacity 150ms;
     }
+    .blog-cta .cta-btn:hover { transform: translateY(-1px); opacity: 0.9; }
+    .blog-cta .cta-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .blog-cta .cta-secondary {
+      display: inline-flex;
+      color: var(--text-on-dark-muted);
+      padding: var(--sp-4) var(--sp-6);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: var(--text-sm);
+      transition: color 150ms;
+    }
+    .blog-cta .cta-secondary:hover { color: var(--text-on-dark); }
+    .blog-cta .cta-secondary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
   </style>
 </head>
 <body>
 
-  <nav class="nav">
-    <div class="nav__inner">
-      <a href="/" class="nav__logo">
-        <img src="milo-icon.svg" alt="" class="nav__logo-icon">
-        <span class="nav__logo-text">milo</span>
+<div class="grid-bg" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main">
+  <div class="wrap">
+    <a href="/" class="nav__logo">
+      <span class="nav__logo-text">milo</span>
+      <span class="nav__dot"></span>
+    </a>
+    <div class="nav__links">
+      <a href="/agents" class="nav__link">Services</a>
+      <a href="/security" class="nav__link">Security</a>
+      <a href="/calculator" class="nav__link">Calculator</a>
+      <a href="/build" class="nav__link">Build</a>
+      <a href="/contact" class="nav__cta">Start a project</a>
+    </div>
+    <button class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation">
+  <a href="/agents">Services</a>
+  <a href="/security">Security</a>
+  <a href="/calculator">Calculator</a>
+  <a href="/build">Build</a>
+  <a href="/contact">Start a project</a>
+</div>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">GUIDES</span>
+      <span class="spec-coord">// knowledge base</span>
+    </div>
+    <h1 class="blog-hero__title reveal" data-delay="1">Guides & <span class="accent">Resources</span></h1>
+    <p class="blog-hero__subtitle reveal" data-delay="2">Practical guides on AI agents for small business. No fluff, no theory — just what we've learned building agent systems in production.</p>
+  </div>
+</section>
+
+<!-- PRICING & COST GUIDES -->
+<section class="blog-section">
+  <div class="wrap">
+    <div class="blog-section__label reveal">// Pricing & Cost Guides</div>
+    <div class="blog-grid">
+
+      <a href="/blog/ai-receptionist-no-monthly-fee" class="blog-card reveal">
+        <div class="blog-card__tag">Pricing</div>
+        <h3>AI Receptionist With No Monthly Fee — Does It Exist?</h3>
+        <p>Every AI receptionist charges monthly. Except one. We break down why the market is stuck on subscriptions, the 3 alternatives, and the full 3-year cost comparison.</p>
+        <div class="blog-card__meta">March 2026 · 10 min read</div>
+        <span class="blog-card__arrow">Read guide &#8594;</span>
       </a>
-      <div class="nav__links">
-        <a href="/agents" class="nav__link">AI Agents</a>
-        <a href="/industries" class="nav__link">Industries</a>
-        <a href="/security" class="nav__link">Security</a>
-        <a href="/blog" class="nav__link" style="color: var(--copper); font-weight: 600;">Guides</a>
-        <a href="/calculator" class="nav__link">Free Calculator</a>
-        <a href="/demo" class="btn btn--primary btn--sm">Try Live Demo</a>
+
+      <a href="/blog/ai-receptionist-pricing-comparison" class="blog-card reveal">
+        <div class="blog-card__tag">Pricing</div>
+        <h3>AI Receptionist Pricing 2026: Every Option Compared</h3>
+        <p>We pulled real pricing from every AI receptionist and answering service on the market. Side-by-side comparison table, hidden costs, and the ROI math that actually matters.</p>
+        <div class="blog-card__meta">March 2026 · 15 min read</div>
+        <span class="blog-card__arrow">Read comparison &#8594;</span>
+      </a>
+
+      <a href="/blog/how-much-does-ai-agent-cost" class="blog-card reveal">
+        <div class="blog-card__tag">Guide</div>
+        <h3>How Much Does an AI Agent Cost in 2026? The Complete Breakdown</h3>
+        <p>Every dollar you'll spend: setup fees ($0-$15K), monthly running costs ($10-800), hidden fees, and total cost of ownership across DIY, SaaS, and done-for-you.</p>
+        <div class="blog-card__meta">Updated March 2026 · 10 min read</div>
+        <span class="blog-card__arrow">Read guide &#8594;</span>
+      </a>
+
+      <a href="/blog/ai-agent-team-cost-2026" class="blog-card reveal">
+        <div class="blog-card__tag">Pricing</div>
+        <h3>AI Agent Team Cost in 2026: Real Pricing From Setup to Monthly</h3>
+        <p>What does an AI agent team actually cost? Setup fees, infrastructure, API usage, and the hidden costs nobody talks about. Real numbers, not estimates.</p>
+        <div class="blog-card__meta">March 2026 · 11 min read</div>
+        <span class="blog-card__arrow">Read breakdown &#8594;</span>
+      </a>
+
+      <a href="/blog/missed-calls-cost-calculator" class="blog-card reveal">
+        <div class="blog-card__tag">ROI</div>
+        <h3>How Much Do Missed Calls Actually Cost Your Business?</h3>
+        <p>Small businesses miss 62% of calls. We calculated the real revenue cost by industry — HVAC, dental, plumbing, legal — plus the ROI of fixing it.</p>
+        <div class="blog-card__meta">March 2026 · 9 min read</div>
+        <span class="blog-card__arrow">See the math &#8594;</span>
+      </a>
+
+      <a href="/blog/one-time-vs-monthly-ai-subscriptions" class="blog-card reveal">
+        <div class="blog-card__tag">Analysis</div>
+        <h3>One-Time vs Monthly AI Subscriptions: Which Actually Saves You Money?</h3>
+        <p>SaaS AI tools bleed you $200-800/month forever. One-time AI setup costs $399 once. We ran the real math over 1, 3, and 5 years.</p>
+        <div class="blog-card__meta">March 2026 · 10 min read</div>
+        <span class="blog-card__arrow">Read analysis &#8594;</span>
+      </a>
+
+      <a href="/blog/build-vs-buy-ai-agents" class="blog-card reveal">
+        <div class="blog-card__tag">Analysis</div>
+        <h3>Build vs. Buy: The Real Cost of DIY AI Agent Systems</h3>
+        <p>Thinking about building AI agents yourself with Make.com or n8n? Here's the honest time and cost breakdown — and when it makes more sense to pay $399.</p>
+        <div class="blog-card__meta">March 2026 · 10 min read</div>
+        <span class="blog-card__arrow">Read analysis &#8594;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRY GUIDES -->
+<section class="blog-section">
+  <div class="wrap">
+    <div class="blog-section__label reveal">// Industry Guides</div>
+    <div class="blog-grid">
+
+      <a href="/blog/best-ai-receptionist-contractors" class="blog-card reveal">
+        <div class="blog-card__tag">Contractors</div>
+        <h3>Best AI Receptionist for Contractors & Home Services (2026)</h3>
+        <p>We reviewed every AI receptionist built for HVAC, plumbing, and electrical contractors. Real pricing, honest trade-offs, and the one model nobody else offers.</p>
+        <div class="blog-card__meta">March 2026 · 12 min read</div>
+        <span class="blog-card__arrow">Read comparison &#8594;</span>
+      </a>
+
+      <a href="/blog/ai-receptionist-dental-practices" class="blog-card reveal">
+        <div class="blog-card__tag">Dental</div>
+        <h3>Why 67% of Dental Practices Lose Patients to Voicemail</h3>
+        <p>The missed call problem in dental is costing practices $4,200/month in lost patients. The math, the real numbers, and how AI receptionist technology fixes it.</p>
+        <div class="blog-card__meta">March 2026 · 12 min read</div>
+        <span class="blog-card__arrow">Read guide &#8594;</span>
+      </a>
+
+      <a href="/blog/ai-receptionist-hvac-plumbing" class="blog-card reveal">
+        <div class="blog-card__tag">HVAC & Plumbing</div>
+        <h3>HVAC & Plumbing AI Receptionist: Stop Losing Emergency Calls</h3>
+        <p>After-hours AC emergencies, burst pipes at midnight — the math on missed calls for home services and how AI pays for itself in week one.</p>
+        <div class="blog-card__meta">March 2026 · 10 min read</div>
+        <span class="blog-card__arrow">Read guide &#8594;</span>
+      </a>
+
+      <a href="/blog/ai-receptionist-law-firms" class="blog-card reveal">
+        <div class="blog-card__tag">Legal</div>
+        <h3>Every Missed Call Is a Lost Client: AI Legal Intake for Law Firms</h3>
+        <p>80% of callers don't leave voicemails. For law firms, every unanswered call is a potential $5,000-50,000 case walking to your competitor.</p>
+        <div class="blog-card__meta">March 2026 · 14 min read</div>
+        <span class="blog-card__arrow">Read guide &#8594;</span>
+      </a>
+
+      <a href="/blog/ai-receptionist-veterinary-clinics" class="blog-card reveal">
+        <div class="blog-card__tag">Veterinary</div>
+        <h3>Your Vet Clinic Is Missing Emergency Calls at 2am. Here's the Fix.</h3>
+        <p>After-hours pet emergencies, missed revenue math, and how AI triage gives vet clinics 24/7 coverage without night staff.</p>
+        <div class="blog-card__meta">March 2026 · 12 min read</div>
+        <span class="blog-card__arrow">Read guide &#8594;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICAL GUIDES -->
+<section class="blog-section">
+  <div class="wrap">
+    <div class="blog-section__label reveal">// Practical Guides</div>
+    <div class="blog-grid">
+
+      <a href="/blog/ai-phone-answering-service" class="blog-card reveal">
+        <div class="blog-card__tag">Comparison</div>
+        <h3>Best AI Phone Answering Service for Small Business (2026)</h3>
+        <p>We compared 9 AI phone answering services. Real pricing at real call volumes, the 3 pricing models (one costs 10x more than you think), and best pick by business type.</p>
+        <div class="blog-card__meta">March 2026 · 12 min read</div>
+        <span class="blog-card__arrow">Read comparison &#8594;</span>
+      </a>
+
+      <a href="/blog/best-ai-receptionist" class="blog-card reveal">
+        <div class="blog-card__tag">Comparison</div>
+        <h3>Best AI Receptionist for Small Business (2026)</h3>
+        <p>We compared every AI receptionist and answering service. Here's what actually works, what's overpriced, and what to avoid.</p>
+        <div class="blog-card__meta">Updated March 2026 · 8 min read</div>
+        <span class="blog-card__arrow">Read comparison &#8594;</span>
+      </a>
+
+      <a href="/blog/how-to-automate-business-with-ai" class="blog-card reveal">
+        <div class="blog-card__tag">Framework</div>
+        <h3>How to Automate Your Business With AI (Without Hiring a Developer)</h3>
+        <p>A step-by-step framework: audit what eats your time, identify what's automatable, and start with one agent. No coding required.</p>
+        <div class="blog-card__meta">Updated March 2026 · 10 min read</div>
+        <span class="blog-card__arrow">Read framework &#8594;</span>
+      </a>
+
+      <a href="/blog/ai-agent-team-small-business" class="blog-card reveal">
+        <div class="blog-card__tag">Guide</div>
+        <h3>AI Agent Team for Small Business: Why One Agent Isn't Enough</h3>
+        <p>Most AI tools give you one bot. Your business needs a team. How agent teams work, what they cost, and the 3-year math that makes single tools look expensive.</p>
+        <div class="blog-card__meta">March 2026 · 12 min read</div>
+        <span class="blog-card__arrow">Read guide &#8594;</span>
+      </a>
+
+      <a href="/blog/ai-agents-small-business" class="blog-card reveal">
+        <div class="blog-card__tag">Guide</div>
+        <h3>AI Agents for Small Business: The No-BS Guide</h3>
+        <p>Everything you need to know about AI agents — what they actually do, what they cost, and whether they're worth it for a business your size. No hype, just facts.</p>
+        <div class="blog-card__meta">Updated March 2026 · 12 min read</div>
+        <span class="blog-card__arrow">Read guide &#8594;</span>
+      </a>
+
+      <a href="/blog/ai-agent-system" class="blog-card reveal">
+        <div class="blog-card__tag">Case Study</div>
+        <h3>How We Built a $6M Pipeline with an AI Agent System</h3>
+        <p>The exact architecture, tools, and workflows behind our 12-agent system. Real numbers, real failures, and what actually moved the needle.</p>
+        <div class="blog-card__meta">March 2026 · 10 min read</div>
+        <span class="blog-card__arrow">Read case study &#8594;</span>
+      </a>
+
+      <a href="/blog/ai-native-agencies" class="blog-card reveal">
+        <div class="blog-card__tag">Industry</div>
+        <h3>AI-Native Agencies: The New Model</h3>
+        <p>Why the next generation of agencies will run on AI agent teams — and how to build one before the window closes.</p>
+        <div class="blog-card__meta">March 2026 · 7 min read</div>
+        <span class="blog-card__arrow">Read article &#8594;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="blog-section" style="padding-bottom: var(--sp-20);">
+  <div class="wrap wrap--narrow">
+    <div class="blog-cta reveal">
+      <h2>Want to see AI agents <span class="accent">in action</span>?</h2>
+      <p>Skip the reading. Try a live demo and see what an AI agent team actually does for a business like yours.</p>
+      <div class="blog-cta__actions">
+        <a class="cta-btn" href="/demo">Try Live Demo &#8594;</a>
+        <a class="cta-secondary" href="/calculator">Calculate Your ROI</a>
       </div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <section class="section">
-    <div class="container">
-      <h1 class="mb-4">Guides & Resources</h1>
-      <p class="lead text-narrow mb-12">Practical guides on AI agents for small business. No fluff, no theory — just what we've learned building and running AI agent systems in production.</p>
+</main>
 
-      <!-- PRICING & COST GUIDES -->
-      <div class="section-label">Pricing & Cost Guides</div>
-      <div class="blog-grid" style="margin-bottom: 64px;">
-
-        <a href="/blog/ai-receptionist-no-monthly-fee" class="blog-card">
-          <div class="blog-card__tag">Pricing</div>
-          <h3>AI Receptionist With No Monthly Fee — Does It Exist?</h3>
-          <p>Every AI receptionist charges monthly. Except one. We break down why the market is stuck on subscriptions, the 3 alternatives, and the full 3-year cost comparison.</p>
-          <div class="blog-card__meta">March 2026 · 10 min read</div>
-          <span class="blog-card__arrow">Read guide →</span>
-        </a>
-
-        <a href="/blog/ai-receptionist-pricing-comparison" class="blog-card">
-          <div class="blog-card__tag">Pricing</div>
-          <h3>AI Receptionist Pricing 2026: Every Option Compared</h3>
-          <p>We pulled real pricing from every AI receptionist and answering service on the market. Side-by-side comparison table, hidden costs, and the ROI math that actually matters.</p>
-          <div class="blog-card__meta">March 2026 · 15 min read</div>
-          <span class="blog-card__arrow">Read comparison →</span>
-        </a>
-
-        <a href="/blog/how-much-does-ai-agent-cost" class="blog-card">
-          <div class="blog-card__tag">Guide</div>
-          <h3>How Much Does an AI Agent Cost in 2026? The Complete Breakdown</h3>
-          <p>Every dollar you'll spend: setup fees ($0-$15K), monthly running costs ($10-800), hidden fees, and total cost of ownership across DIY, SaaS, and done-for-you.</p>
-          <div class="blog-card__meta">Updated March 2026 · 10 min read</div>
-          <span class="blog-card__arrow">Read guide →</span>
-        </a>
-
-        <a href="/blog/ai-agent-team-cost-2026" class="blog-card">
-          <div class="blog-card__tag">Pricing</div>
-          <h3>AI Agent Team Cost in 2026: Real Pricing From Setup to Monthly</h3>
-          <p>What does an AI agent team actually cost? Setup fees, infrastructure, API usage, and the hidden costs nobody talks about. Real numbers, not estimates.</p>
-          <div class="blog-card__meta">March 2026 · 11 min read</div>
-          <span class="blog-card__arrow">Read breakdown →</span>
-        </a>
-
-        <a href="/blog/missed-calls-cost-calculator" class="blog-card">
-          <div class="blog-card__tag">ROI</div>
-          <h3>How Much Do Missed Calls Actually Cost Your Business?</h3>
-          <p>Small businesses miss 62% of calls. We calculated the real revenue cost by industry — HVAC, dental, plumbing, legal — plus the ROI of fixing it.</p>
-          <div class="blog-card__meta">March 2026 · 9 min read</div>
-          <span class="blog-card__arrow">See the math →</span>
-        </a>
-
-        <a href="/blog/one-time-vs-monthly-ai-subscriptions" class="blog-card">
-          <div class="blog-card__tag">Analysis</div>
-          <h3>One-Time vs Monthly AI Subscriptions: Which Actually Saves You Money?</h3>
-          <p>SaaS AI tools bleed you $200-800/month forever. One-time AI setup costs $399 once. We ran the real math over 1, 3, and 5 years.</p>
-          <div class="blog-card__meta">March 2026 · 10 min read</div>
-          <span class="blog-card__arrow">Read analysis →</span>
-        </a>
-
-        <a href="/blog/build-vs-buy-ai-agents" class="blog-card">
-          <div class="blog-card__tag">Analysis</div>
-          <h3>Build vs. Buy: The Real Cost of DIY AI Agent Systems</h3>
-          <p>Thinking about building AI agents yourself with Make.com or n8n? Here's the honest time and cost breakdown — and when it makes more sense to pay $399.</p>
-          <div class="blog-card__meta">March 2026 · 10 min read</div>
-          <span class="blog-card__arrow">Read analysis →</span>
-        </a>
-
-      </div>
-
-      <!-- INDUSTRY GUIDES -->
-      <div class="section-label">Industry Guides</div>
-      <div class="blog-grid" style="margin-bottom: 64px;">
-
-        <a href="/blog/best-ai-receptionist-contractors" class="blog-card">
-          <div class="blog-card__tag">Contractors</div>
-          <h3>Best AI Receptionist for Contractors & Home Services (2026)</h3>
-          <p>We reviewed every AI receptionist built for HVAC, plumbing, and electrical contractors. Real pricing, honest trade-offs, and the one model nobody else offers.</p>
-          <div class="blog-card__meta">March 2026 · 12 min read</div>
-          <span class="blog-card__arrow">Read comparison →</span>
-        </a>
-
-        <a href="/blog/ai-receptionist-dental-practices" class="blog-card">
-          <div class="blog-card__tag">Dental</div>
-          <h3>Why 67% of Dental Practices Lose Patients to Voicemail</h3>
-          <p>The missed call problem in dental is costing practices $4,200/month in lost patients. The math, the real numbers, and how AI receptionist technology fixes it.</p>
-          <div class="blog-card__meta">March 2026 · 12 min read</div>
-          <span class="blog-card__arrow">Read guide →</span>
-        </a>
-
-        <a href="/blog/ai-receptionist-hvac-plumbing" class="blog-card">
-          <div class="blog-card__tag">HVAC & Plumbing</div>
-          <h3>HVAC & Plumbing AI Receptionist: Stop Losing Emergency Calls</h3>
-          <p>After-hours AC emergencies, burst pipes at midnight — the math on missed calls for home services and how AI pays for itself in week one.</p>
-          <div class="blog-card__meta">March 2026 · 10 min read</div>
-          <span class="blog-card__arrow">Read guide →</span>
-        </a>
-
-        <a href="/blog/ai-receptionist-law-firms" class="blog-card">
-          <div class="blog-card__tag">Legal</div>
-          <h3>Every Missed Call Is a Lost Client: AI Legal Intake for Law Firms</h3>
-          <p>80% of callers don't leave voicemails. For law firms, every unanswered call is a potential $5,000-50,000 case walking to your competitor.</p>
-          <div class="blog-card__meta">March 2026 · 14 min read</div>
-          <span class="blog-card__arrow">Read guide →</span>
-        </a>
-
-        <a href="/blog/ai-receptionist-veterinary-clinics" class="blog-card">
-          <div class="blog-card__tag">Veterinary</div>
-          <h3>Your Vet Clinic Is Missing Emergency Calls at 2am. Here's the Fix.</h3>
-          <p>After-hours pet emergencies, missed revenue math, and how AI triage gives vet clinics 24/7 coverage without night staff.</p>
-          <div class="blog-card__meta">March 2026 · 12 min read</div>
-          <span class="blog-card__arrow">Read guide →</span>
-        </a>
-
-      </div>
-
-      <!-- PRACTICAL GUIDES -->
-      <div class="section-label">Practical Guides</div>
-      <div class="blog-grid">
-
-        <a href="/blog/ai-phone-answering-service" class="blog-card">
-          <div class="blog-card__tag">Comparison</div>
-          <h3>Best AI Phone Answering Service for Small Business (2026)</h3>
-          <p>We compared 9 AI phone answering services. Real pricing at real call volumes, the 3 pricing models (one costs 10x more than you think), and best pick by business type.</p>
-          <div class="blog-card__meta">March 2026 · 12 min read</div>
-          <span class="blog-card__arrow">Read comparison →</span>
-        </a>
-
-        <a href="/blog/best-ai-receptionist" class="blog-card">
-          <div class="blog-card__tag">Comparison</div>
-          <h3>Best AI Receptionist for Small Business (2026)</h3>
-          <p>We compared every AI receptionist and answering service. Here's what actually works, what's overpriced, and what to avoid.</p>
-          <div class="blog-card__meta">Updated March 2026 · 8 min read</div>
-          <span class="blog-card__arrow">Read comparison →</span>
-        </a>
-
-        <a href="/blog/how-to-automate-business-with-ai" class="blog-card">
-          <div class="blog-card__tag">Framework</div>
-          <h3>How to Automate Your Business With AI (Without Hiring a Developer)</h3>
-          <p>A step-by-step framework: audit what eats your time, identify what's automatable, and start with one agent. No coding required.</p>
-          <div class="blog-card__meta">Updated March 2026 · 10 min read</div>
-          <span class="blog-card__arrow">Read framework →</span>
-        </a>
-
-        <a href="/blog/ai-agent-team-small-business" class="blog-card">
-          <div class="blog-card__tag">Guide</div>
-          <h3>AI Agent Team for Small Business: Why One Agent Isn't Enough</h3>
-          <p>Most AI tools give you one bot. Your business needs a team. How agent teams work, what they cost, and the 3-year math that makes single tools look expensive.</p>
-          <div class="blog-card__meta">March 2026 · 12 min read</div>
-          <span class="blog-card__arrow">Read guide →</span>
-        </a>
-
-        <a href="/blog/ai-agents-small-business" class="blog-card">
-          <div class="blog-card__tag">Guide</div>
-          <h3>AI Agents for Small Business: The No-BS Guide</h3>
-          <p>Everything you need to know about AI agents — what they actually do, what they cost, and whether they're worth it for a business your size. No hype, just facts.</p>
-          <div class="blog-card__meta">Updated March 2026 · 12 min read</div>
-          <span class="blog-card__arrow">Read guide →</span>
-        </a>
-
-        <a href="/blog/ai-agent-system" class="blog-card">
-          <div class="blog-card__tag">Case Study</div>
-          <h3>How We Built a $6M Pipeline with an AI Agent System</h3>
-          <p>The exact architecture, tools, and workflows behind our 12-agent system. Real numbers, real failures, and what actually moved the needle.</p>
-          <div class="blog-card__meta">March 2026 · 10 min read</div>
-          <span class="blog-card__arrow">Read case study →</span>
-        </a>
-
-        <a href="/blog/ai-native-agencies" class="blog-card">
-          <div class="blog-card__tag">Industry</div>
-          <h3>AI-Native Agencies: The New Model</h3>
-          <p>Why the next generation of agencies will run on AI agent teams — and how to build one before the window closes.</p>
-          <div class="blog-card__meta">March 2026 · 7 min read</div>
-          <span class="blog-card__arrow">Read article →</span>
-        </a>
-
-      </div>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__logo">
+      <span class="footer__logo-text">milo</span>
+      <span class="footer__dot"></span>
     </div>
-  </section>
-
-  <section class="section section--tinted">
-    <div class="container container--narrow text-center">
-      <h2 class="mb-4">Want to see AI agents in action?</h2>
-      <p class="lead mb-8">Skip the reading. Try a live demo and see what an AI agent team actually does for a business like yours.</p>
-      <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
-        <a href="/demo" class="btn btn--primary btn--lg">Try Live Demo</a>
-        <a href="/calculator" class="btn btn--outline btn--lg">Calculate Your ROI</a>
-      </div>
+    <div class="footer__links">
+      <a href="/agents">Services</a>
+      <a href="/security">Security</a>
+      <a href="/blog">Guides</a>
+      <a href="https://github.com/getmilodev">GitHub</a>
     </div>
-  </section>
+    <span class="footer__copy">&copy; 2026 Milo</span>
+  </div>
+</footer>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <img src="milo-icon.svg" alt="" class="footer__logo-icon">
-            <span class="footer__logo-text">milo</span>
-          </div>
-          <p class="footer__brand-text">Stop paying humans for work machines do better. One-time setup. You own it all.</p>
-        </div>
-        <div>
-          <h4>Services</h4>
-          <ul class="footer__links">
-            <li><a href="/agents">AI Agent Teams</a></li>
-            <li><a href="/security">Security Hardening</a></li>
-            <li><a href="/ainative">AI Native Setup</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Resources</h4>
-          <ul class="footer__links">
-            <li><a href="/blog">Guides</a></li>
-            <li><a href="/scanner">Free Security Scanner</a></li>
-            <li><a href="https://github.com/getmilodev">GitHub</a></li>
-            <li><a href="https://x.com/getmilo_dev">@getmilo_dev</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <span>&copy; 2026 Milo</span>
-        <span>Privacy &middot; Terms</span>
-      </div>
-    </div>
-  </footer>
+<script>
+  // Scroll reveal
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  // Mobile menu
+  var toggle = document.querySelector('.nav__toggle');
+  var menu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', function() {
+    var open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !open);
+    menu.classList.toggle('open');
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+  menu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  // Focus trap + Escape for mobile menu
+  document.addEventListener('keydown', function(e) {
+    if (!menu.classList.contains('open')) return;
+    if (e.key === 'Escape') {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+      toggle.focus();
+      return;
+    }
+    if (e.key === 'Tab') {
+      var focusable = [toggle].concat(Array.prototype.slice.call(menu.querySelectorAll('a')));
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+</script>
 
 </body>
 </html>
