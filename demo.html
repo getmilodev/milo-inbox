@@ -5,91 +5,307 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>See Milo For Your Firm — Free Personalized Demo</title>
 <meta name="description" content="Request a free personalized demo of Milo AI Receptionist. No payment, no commitment. Ready in 24 hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="milo-design-system.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a2e;line-height:1.6;background:#fafafa}
-.hero{background:linear-gradient(135deg,#0a0a1a 0%,#1a1a3e 100%);color:#fff;padding:60px 20px 50px;text-align:center}
-.hero h1{font-size:clamp(1.8rem,4vw,2.6rem);max-width:600px;margin:0 auto 16px;line-height:1.2}
-.hero h1 span{color:#4ecdc4}
-.hero p{font-size:1.05rem;max-width:480px;margin:0 auto;opacity:0.85}
-.form-wrap{max-width:520px;margin:-30px auto 60px;padding:0 20px}
-.form-card{background:#fff;border-radius:16px;padding:36px 32px;box-shadow:0 8px 30px rgba(0,0,0,0.1)}
-.field{margin-bottom:20px}
-.field label{display:block;font-weight:600;font-size:0.9rem;margin-bottom:6px;color:#1a1a2e}
-.field .opt{font-weight:400;color:#888;font-size:0.8rem}
-.field input,.field select,.field textarea{width:100%;padding:12px 14px;border:2px solid #e8e8e8;border-radius:8px;font-size:1rem;font-family:inherit;transition:border-color 0.2s}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#4ecdc4}
-.field textarea{resize:vertical}
-.submit-btn{width:100%;padding:16px;background:#4ecdc4;color:#0a0a1a;border:none;border-radius:8px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s}
-.submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(78,205,196,0.35)}
-.submit-btn:disabled{opacity:0.6;transform:none;cursor:wait}
-.trust{text-align:center;margin-top:16px;font-size:0.85rem;color:#888}
-.success{text-align:center;padding:40px 20px}
-.success .check{font-size:3rem;margin-bottom:16px}
-.success h2{font-size:1.6rem;margin-bottom:12px;color:#1a1a2e}
-.success p{color:#555;font-size:1rem;max-width:380px;margin:0 auto}
-.success .firm-name{color:#4ecdc4;font-weight:700}
-.hide{display:none}
-.bottom-note{text-align:center;padding:30px 20px 50px;color:#aaa;font-size:0.85rem}
-.bottom-note a{color:#4ecdc4;text-decoration:none}
+  /* Page-specific: form layout */
+  .demo-form-section {
+    padding: 0 0 var(--sp-24);
+    margin-top: calc(-1 * var(--sp-8));
+  }
+  .demo-grid {
+    display: grid;
+    grid-template-columns: 0.38fr 0.62fr;
+    gap: var(--sp-16);
+    align-items: start;
+  }
+  .demo-sidebar {
+    position: sticky;
+    top: 100px;
+  }
+  .demo-sidebar__promises {
+    list-style: none;
+    padding: 0;
+    margin-top: var(--sp-6);
+  }
+  .demo-sidebar__promises li {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-3);
+    line-height: 2.4;
+    display: flex;
+    align-items: baseline;
+    gap: var(--sp-2);
+  }
+  .demo-sidebar__promises li::before {
+    content: '//';
+    color: var(--gold-text);
+    flex-shrink: 0;
+  }
+  .form-group {
+    margin-bottom: var(--sp-6);
+  }
+  .form-group:last-of-type {
+    margin-bottom: var(--sp-8);
+  }
+  .label__opt {
+    font-weight: 400;
+    color: var(--text-3);
+    font-size: var(--text-xs);
+    margin-left: var(--sp-1);
+  }
+  .trust-line {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-3);
+    text-align: center;
+    margin-top: var(--sp-4);
+    letter-spacing: 0.02em;
+  }
+
+  /* Success state */
+  .success-panel {
+    text-align: center;
+    padding: var(--sp-12) var(--sp-6);
+  }
+  .success-panel__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: color-mix(in oklch, var(--success), transparent 90%);
+    border: 1.5px solid color-mix(in oklch, var(--success), transparent 70%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--sp-6);
+  }
+  .success-panel__icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--success);
+    stroke-width: 2.5;
+    fill: none;
+  }
+  .success-panel h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--sp-3);
+  }
+  .success-panel p {
+    color: var(--text-2);
+    font-size: var(--text-base);
+    max-width: 380px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+  .success-panel .firm-name {
+    color: var(--gold-text);
+    font-weight: 600;
+  }
+  .hide { display: none; }
+
+  @media (max-width: 768px) {
+    .demo-grid {
+      grid-template-columns: 1fr;
+      gap: var(--sp-8);
+    }
+    .demo-sidebar {
+      position: static;
+      order: -1;
+    }
+  }
 </style>
 </head>
 <body>
 
-<div class="hero">
-<h1>See Milo answer calls for <span>your firm</span></h1>
-<p>We build a personalized demo in 24 hours. No payment. No commitment. Just see it work.</p>
+<div class="grid-bg" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main">
+  <div class="wrap">
+    <a href="/" class="nav__logo">
+      <span class="nav__logo-text">milo</span>
+      <span class="nav__dot"></span>
+    </a>
+    <div class="nav__links">
+      <a href="/agents" class="nav__link">Services</a>
+      <a href="/security" class="nav__link">Security</a>
+      <a href="/calculator" class="nav__link">Calculator</a>
+      <a href="/build" class="nav__link">Build</a>
+      <a href="/contact" class="nav__cta">Start a project</a>
+    </div>
+    <button class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation">
+  <a href="/agents">Services</a>
+  <a href="/security">Security</a>
+  <a href="/calculator">Calculator</a>
+  <a href="/build">Build</a>
+  <a href="/contact">Start a project</a>
 </div>
 
-<div class="form-wrap">
-<div class="form-card" id="form-card">
-<form id="demo-form">
-<div class="field">
-<label>Your name</label>
-<input type="text" name="name" required placeholder="Jane Smith" autocomplete="name">
-</div>
-<div class="field">
-<label>Business email</label>
-<input type="email" name="email" required autocomplete="email">
-</div>
-<div class="field">
-<label>Firm name</label>
-<input type="text" name="firm" required placeholder="Smith and Associates" autocomplete="organization">
-</div>
-<div class="field">
-<label>Type of practice</label>
-<select name="vertical">
-<option value="">Select one...</option>
-<option value="cpa">CPA / Accounting</option>
-<option value="law">Law / Personal Injury</option>
-<option value="vet">Veterinary</option>
-<option value="medical">Medical / Dental</option>
-<option value="other">Other</option>
-</select>
-</div>
-<div class="field">
-<label>Biggest phone headache? <span class="opt">(optional)</span></label>
-<textarea name="message" rows="3" placeholder="e.g. Missing calls during busy season, after-hours voicemails..."></textarea>
-</div>
-<input type="hidden" name="ref" id="ref-field" value="">
-<button type="submit" class="submit-btn">Request My Demo</button>
-<p class="trust">No payment required &bull; No commitment &bull; Ready in 24 hours</p>
-</form>
-</div>
+<main id="main">
 
-<div class="form-card hide" id="success-card">
-<div class="success">
-<div class="check">&#10003;</div>
-<h2>You're in.</h2>
-<p>We'll have a personalized demo ready for <span class="firm-name" id="echo-firm"></span> within 24 hours. Check your inbox.</p>
-</div>
-</div>
-</div>
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">DEMO</span>
+      <span class="spec-coord">// personalized trial</span>
+    </div>
+    <h1 class="page-hero__title reveal" data-delay="1">See Milo answer calls for <span class="accent">your firm</span></h1>
+    <p class="page-hero__subtitle reveal" data-delay="2">We build a personalized demo in 24 hours. No payment. No commitment. Just see it work.</p>
+  </div>
+</section>
 
-<div class="bottom-note">
-<a href="/receptionist">Learn more about Milo</a>
-</div>
+<!-- FORM SECTION -->
+<section class="demo-form-section">
+  <div class="wrap">
+    <div class="demo-grid">
 
+      <!-- LEFT: sidebar context -->
+      <div class="demo-sidebar reveal" data-delay="2">
+        <h3 style="font-size: var(--text-lg); margin-bottom: var(--sp-2);">What happens next</h3>
+        <p style="font-size: var(--text-sm); color: var(--text-2); line-height: 1.7; margin-bottom: var(--sp-6);">We take your firm details, configure a Milo instance tuned to your practice type, and send you a working demo within 24 hours.</p>
+        <ul class="demo-sidebar__promises">
+          <li>No payment required</li>
+          <li>No commitment</li>
+          <li>Ready in 24 hours</li>
+          <li>Configured for your practice</li>
+          <li>You own the recording</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT: the form -->
+      <div>
+        <div id="form-card">
+          <form id="demo-form">
+            <div class="form-group">
+              <label class="label" for="field-name">Your name</label>
+              <input class="input" type="text" id="field-name" name="name" required placeholder="Jane Smith" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="label" for="field-email">Business email</label>
+              <input class="input" type="email" id="field-email" name="email" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label class="label" for="field-firm">Firm name</label>
+              <input class="input" type="text" id="field-firm" name="firm" required placeholder="Smith and Associates" autocomplete="organization">
+            </div>
+            <div class="form-group">
+              <label class="label" for="field-vertical">Type of practice</label>
+              <select class="select" id="field-vertical" name="vertical">
+                <option value="">Select one...</option>
+                <option value="cpa">CPA / Accounting</option>
+                <option value="law">Law / Personal Injury</option>
+                <option value="vet">Veterinary</option>
+                <option value="medical">Medical / Dental</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="label" for="field-message">Biggest phone headache? <span class="label__opt">(optional)</span></label>
+              <textarea class="textarea" id="field-message" name="message" rows="3" placeholder="e.g. Missing calls during busy season, after-hours voicemails..." style="min-height: 100px;"></textarea>
+            </div>
+            <input type="hidden" name="ref" id="ref-field" value="">
+            <button type="submit" class="btn btn--dark btn--full btn--lg">Request My Demo</button>
+            <p class="trust-line">no payment &middot; no commitment &middot; ready in 24 hours</p>
+          </form>
+        </div>
+
+        <div class="hide" id="success-card">
+          <div class="success-panel">
+            <div class="success-panel__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h2>You're in.</h2>
+            <p>We'll have a personalized demo ready for <span class="firm-name" id="echo-firm"></span> within 24 hours. Check your inbox.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__logo">
+      <span class="footer__logo-text">milo</span>
+      <span class="footer__dot"></span>
+    </div>
+    <div class="footer__links">
+      <a href="/agents">Services</a>
+      <a href="/security">Security</a>
+      <a href="/blog">Guides</a>
+      <a href="https://github.com/getmilodev">GitHub</a>
+    </div>
+    <span class="footer__copy">&copy; 2026 Milo</span>
+  </div>
+</footer>
+
+<!-- Scroll reveal -->
+<script>
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(function(el) { observer.observe(el); });
+
+  // Mobile menu
+  var toggle = document.querySelector('.nav__toggle');
+  var menu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', function() {
+    var open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !open);
+    menu.classList.toggle('open');
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+  menu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  // Focus trap + Escape for mobile menu
+  document.addEventListener('keydown', function(e) {
+    if (!menu.classList.contains('open')) return;
+    if (e.key === 'Escape') {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+      toggle.focus();
+      return;
+    }
+    if (e.key === 'Tab') {
+      var focusable = [toggle].concat(Array.prototype.slice.call(menu.querySelectorAll('a')));
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+</script>
+
+<!-- Form submission — preserved exactly -->
 <script>
 (function() {
   var D = 'join.getmilo.dev';

@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Milo — Stop Losing $4,000/Month to Tasks a Machine Could Handle</title>
-  <meta name="description" content="Save 20+ hours a week and replace $3,000-5,000/month in admin costs with AI agents that work 24/7. One-time setup from $399. You own everything. No monthly fees to us.">
-  <meta property="og:title" content="Milo — Stop Losing $4,000/Month to Tasks a Machine Could Handle">
-  <meta property="og:description" content="Your competitors are already automating follow-ups, scheduling, and outreach with AI. One-time setup from $399. You own everything. Built in days, not months.">
+  <title>Milo — AI Transformation Partner for Small Business</title>
+  <meta name="description" content="End-to-end AI agent systems. Audit, architect, deploy, transfer ownership. One-time setup from $399. You own everything. No monthly fees to us.">
+  <meta property="og:title" content="Milo — End-to-end AI systems, built to outlast us.">
+  <meta property="og:description" content="We audit your operations, architect agent teams, deploy to your infrastructure, and transfer full ownership. No lock-in. No recurring fees.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="milo-design-system.css">
   <link rel="canonical" href="https://www.getmilo.dev/">
   <script type="application/ld+json">
@@ -20,399 +22,459 @@
     "areaServed": "US",
     "serviceType": ["AI Agent Development", "Business Automation", "AI Receptionist", "AI Phone Answering"],
     "offers": [
-      {
-        "@type": "Offer",
-        "name": "Agent Starter",
-        "price": "399",
-        "priceCurrency": "USD",
-        "description": "1-2 AI agents. One-time setup."
-      },
-      {
-        "@type": "Offer",
-        "name": "Agent Team",
-        "price": "2499",
-        "priceCurrency": "USD",
-        "description": "3-6 agents, full architecture. One-time setup."
-      }
+      { "@type": "Offer", "name": "Agent Starter", "price": "399", "priceCurrency": "USD", "description": "1-2 AI agents. One-time setup." },
+      { "@type": "Offer", "name": "Agent Team", "price": "2499", "priceCurrency": "USD", "description": "3-6 agents, full architecture. One-time setup." }
     ],
-    "sameAs": [
-      "https://x.com/getmilo_dev",
-      "https://github.com/getmilodev"
-    ]
+    "sameAs": ["https://x.com/getmilo_dev", "https://github.com/getmilodev"]
   }
   </script>
   <style>
+    /* Page-specific overrides */
     .hero {
-      padding: var(--space-24) 0 var(--space-16);
-      position: relative;
-      overflow: hidden;
+      padding: clamp(120px, 14vh, 180px) 0 var(--sp-16);
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--copper-wash) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero__content {
-      position: relative;
-      z-index: 1;
-      max-width: 760px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .hero__badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      font-size: var(--text-sm);
-      font-weight: 500;
-      color: var(--graphite);
-      background: var(--warm-gray);
-      padding: var(--space-2) var(--space-4);
-      border-radius: var(--radius-full);
-      margin-bottom: var(--space-6);
-    }
-    .hero__badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: var(--radius-full);
-      background: var(--success);
-    }
-    .service-block {
+    .hero__grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
+      grid-template-columns: 64px 1fr 320px;
+      gap: var(--sp-6);
       align-items: start;
     }
-    @media (max-width: 768px) {
-      .service-block { grid-template-columns: 1fr; }
-    }
-    .service-block__card {
-      background: var(--white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: var(--space-8);
-    }
-    .service-block__card--featured {
-      border-color: var(--copper);
-    }
-    .service-block__icon {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-md);
-      background: var(--warm-gray);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: var(--space-5);
-    }
-    .service-block__icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--graphite);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .walkaway {
-      background: var(--slate);
-      color: var(--white);
-      border-radius: var(--radius-lg);
-      padding: var(--space-12) var(--space-10);
-      text-align: center;
-    }
-    .walkaway h2 { color: var(--white); }
-    .walkaway p { color: rgba(255,255,255,0.7); }
-    .walkaway__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-8);
-      margin-top: var(--space-10);
-      text-align: left;
-    }
-    @media (max-width: 768px) {
-      .walkaway__grid { grid-template-columns: 1fr; }
-    }
-    .walkaway__item h3 {
-      color: var(--white);
-      font-size: var(--text-base);
-      margin-bottom: var(--space-2);
-    }
-    .walkaway__item p {
-      font-size: var(--text-sm);
-      color: rgba(255,255,255,0.6);
-    }
-    .persona-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-6);
-    }
-    @media (max-width: 768px) {
-      .persona-grid { grid-template-columns: 1fr; }
-    }
-    .persona {
-      background: var(--white);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-lg);
-      padding: var(--space-6);
-    }
-    .persona__type {
+    .hero__index {
       font-family: var(--font-mono);
       font-size: var(--text-xs);
-      color: var(--copper);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: var(--space-3);
+      color: var(--text-3);
+      line-height: 2.6;
+      padding-top: 50px;
     }
-    .persona h3 {
-      font-size: var(--text-base);
-      margin-bottom: var(--space-3);
+    .hero__index span { display: block; opacity: 0.4; }
+    .hero__index span.active { opacity: 1; color: var(--gold-text); }
+    .hero__main { padding-top: var(--sp-2); }
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: var(--text-4xl);
+      font-weight: 400;
+      color: var(--text-1);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      margin-bottom: var(--sp-6);
     }
-    .persona p {
+    .hero__body {
+      font-size: var(--text-lg);
+      color: var(--text-2);
+      line-height: 1.65;
+      max-width: 480px;
+      margin-bottom: var(--sp-8);
+    }
+    .hero__actions {
+      display: flex;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--sp-16);
+    }
+    .hero__phases {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--text-3);
+      line-height: 2.4;
+      border-top: 1px solid var(--border);
+      padding-top: var(--sp-4);
+    }
+    .hero__phases .num { color: var(--gold-text); display: inline-block; width: 32px; }
+    .hero__phases .name { color: var(--text-1); font-family: var(--font-body); font-weight: 500; }
+    .hero__phases .note { color: var(--text-3); }
+    .hero__sidebar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: var(--sp-6);
+      margin-top: 50px;
+    }
+    .hero__sidebar-title {
+      font-family: var(--font-body);
       font-size: var(--text-sm);
-      color: var(--graphite);
+      font-weight: 600;
+      color: var(--text-1);
+      margin-bottom: var(--sp-4);
     }
-    .proof-bar {
-      border-top: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
-      padding: var(--space-6) 0;
+    .hero__sidebar-row {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      line-height: 2.2;
+      color: var(--text-3);
     }
-    .cta-dark {
-      background: var(--slate);
-      color: var(--white);
-      padding: var(--space-16) 0;
+    .hero__sidebar-row .key { display: inline-block; min-width: 80px; }
+    .hero__sidebar-row .val { color: var(--text-1); font-weight: 500; }
+    .hero__sidebar-divider { height: 1px; background: var(--border); margin: var(--sp-3) 0; }
+    .config-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: var(--sp-8);
+      align-items: start;
     }
-    .cta-dark__inner {
-      max-width: 640px;
-      margin: 0 auto;
-      text-align: center;
+    .config-aside__image {
+      border-radius: 8px;
+      overflow: hidden;
+      height: clamp(200px, 26vh, 320px);
     }
-    .cta-dark h2 { color: var(--white); margin-bottom: var(--space-6); }
-    .cta-dark p { color: rgba(255,255,255,0.7); margin-bottom: var(--space-8); }
-    .footer__logo-text {
-      font-family: var(--font-heading);
-      font-size: var(--text-xl);
-      color: var(--white);
-      letter-spacing: -0.03em;
+    .config-aside__image img { width: 100%; height: 100%; object-fit: cover; }
+    .config-aside__caption {
+      font-size: var(--text-xs);
+      color: var(--text-3);
+      font-style: italic;
+      max-width: 280px;
+    }
+    .config-aside__fig {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-3);
+      opacity: 0.6;
+      margin-bottom: var(--sp-1);
+    }
+    @media (max-width: 900px) {
+      .hero__grid { grid-template-columns: 1fr; }
+      .hero__index { display: none; }
+      .hero__sidebar { margin-top: var(--sp-8); }
+    }
+    @media (max-width: 768px) {
+      .config-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <div style="background: var(--slate); color: var(--white); text-align: center; padding: 10px 16px; font-size: var(--text-sm); font-weight: 500;">
-    🚀 Founding customer pricing: <strong>25% off any package</strong> with code <strong>EARLYMILO25</strong> — limited spots
+<div class="grid-bg" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main">
+  <div class="wrap">
+    <a href="/" class="nav__logo">
+      <span class="nav__logo-text">milo</span>
+      <span class="nav__dot"></span>
+    </a>
+    <div class="nav__links">
+      <a href="/agents" class="nav__link">Services</a>
+      <a href="/security" class="nav__link">Security</a>
+      <a href="/calculator" class="nav__link">Calculator</a>
+      <a href="/build" class="nav__link">Build</a>
+      <a href="/contact" class="nav__cta">Start a project</a>
+    </div>
+    <button class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</nav>
 
-  <nav class="nav">
-    <div class="nav__inner">
-      <a href="/" class="nav__logo">
-        <img src="milo-icon.svg" alt="" class="nav__logo-icon">
-        <span class="nav__logo-text">milo</span>
-      </a>
-      <div class="nav__links">
-        <a href="/agents" class="nav__link">AI Agents</a>
-        <a href="/industries" class="nav__link">Industries</a>
-        <a href="/security" class="nav__link">Security</a>
-        <a href="/blog" class="nav__link">Guides</a>
-        <a href="/calculator" class="nav__link" style="color: var(--copper); font-weight: 600;">Free Calculator</a>
-        <a href="/demo" class="btn btn--primary btn--sm">Try Live Demo</a>
-      </div>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation">
+  <a href="/agents">Services</a>
+  <a href="/security">Security</a>
+  <a href="/calculator">Calculator</a>
+  <a href="/build">Build</a>
+  <a href="/contact">Start a project</a>
+</div>
+
+<main id="main">
+
+<!-- HERO — SPEC:001 -->
+<section class="hero">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:001</span>
+      <span class="spec-coord">// ai transformation</span>
     </div>
-  </nav>
-
-  <section class="hero">
-    <div class="container">
-      <div class="hero__content">
-        <div class="hero__badge">Your competitors are already doing this</div>
-        <h1>Stop Losing $4,000/Month to Tasks a Machine Could Handle</h1>
-        <p class="lead mb-8">You're spending 20+ hours a week on follow-ups, scheduling, outreach, and admin. That's $3,000-5,000/month in lost time. We replace it with AI agents that work 24/7 -- built in days, not months. One-time setup. You own everything.</p>
-        <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
-          <a href="/calculator" class="btn btn--primary btn--lg">See What You're Losing (Free Calculator)</a>
-          <a href="/agents" class="btn btn--outline btn--lg">How AI Agents Work</a>
-        </div>
+    <div class="hero__grid">
+      <div class="hero__index reveal" data-delay="2">
+        <span class="active">001</span>
+        <span>002</span>
+        <span>003</span>
+        <span>004</span>
+        <span>005</span>
       </div>
-    </div>
-  </section>
-
-  <section class="proof-bar">
-    <div class="container">
-      <div class="stats">
-        <div class="stat">
-          <div class="stat__number">20+</div>
-          <div class="stat__label">Hours saved per week, per client</div>
+      <div class="hero__main">
+        <h1 class="hero__title reveal">End-to-end AI systems, built to <span class="accent">outlast</span> us.</h1>
+        <p class="hero__body reveal" data-delay="1">We audit your operations, architect agent teams, deploy to your infrastructure, and transfer full ownership. No lock-in. No recurring fees.</p>
+        <div class="hero__actions reveal" data-delay="2">
+          <a href="/contact" class="btn btn--dark">Start with an audit</a>
+          <a href="/agents" class="btn btn--outline">View specifications</a>
         </div>
-        <div class="stat">
-          <div class="stat__number">24/7</div>
-          <div class="stat__label">Your agents never sleep, never miss a lead</div>
-        </div>
-        <div class="stat">
-          <div class="stat__number">$399</div>
-          <div class="stat__label">One-time. Not $399/month. Just $399.</div>
+        <div class="hero__phases reveal" data-delay="3">
+          <div><span class="num">I.</span> <span class="name">Audit & Strategy</span> <span class="note">— map operations, find leverage</span></div>
+          <div><span class="num">II.</span> <span class="name">Architecture</span> <span class="note">— design agent teams as systems</span></div>
+          <div><span class="num">III.</span> <span class="name">Construction</span> <span class="note">— build, test, deploy in 2-5 days</span></div>
+          <div><span class="num">IV.</span> <span class="name">Mastery Transfer</span> <span class="note">— docs, walkthrough, handoff</span></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <h2 class="text-center mb-4">Two ways to stop bleeding time and money</h2>
-      <p class="lead text-center text-narrow mb-12">Pick one or both. Either way, you pay once, own everything, and your only ongoing cost is $10-50/month for hosting and API fees. No subscriptions to us. Ever.</p>
-      <div class="service-block">
-        <div class="service-block__card service-block__card--featured">
-          <div class="service-block__icon">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <div class="card__badge card__badge--featured mb-4">Flagship</div>
-          <h3 class="mb-3">Get 20+ Hours Back Every Week</h3>
-          <p style="color: var(--graphite); margin-bottom: var(--space-6);">AI agents that handle the work you keep pushing to tomorrow -- follow-ups, scheduling, outreach, reporting. They run 24/7. They never forget a lead. They never call in sick.</p>
-          <ul class="feature-list mb-6">
-            <li>Never lose another lead to slow follow-up</li>
-            <li>Agents coordinate like a team -- not isolated tools</li>
-            <li>Reach customers on WhatsApp, email, and SMS automatically</li>
-            <li>Agents remember every interaction and get smarter over time</li>
-            <li>Live and working in 2-5 days, not 6 months</li>
-          </ul>
-          <p style="font-size: var(--text-sm); color: var(--ash); margin-bottom: var(--space-4);">From $399 (1-2 agents) to $2,499 (full team) -- one-time</p>
-          <a href="/agents" class="btn btn--primary btn--full">See How It Saves You Time</a>
-        </div>
-        <div class="service-block__card">
-          <div class="service-block__icon">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div class="card__badge mb-4">Proven</div>
-          <h3 class="mb-3">Sleep Easy Knowing You're Not the Next Breach</h3>
-          <p style="color: var(--graphite); margin-bottom: var(--space-6);">One misconfigured setting can cost you your entire business. We find the holes before someone else does -- and we close them for you.</p>
-          <ul class="feature-list mb-6">
-            <li>Find out if you're vulnerable right now -- free scan</li>
-            <li>Catch threats automatically before they hit you ($29)</li>
-            <li>Get a plain-English report on every risk + how to fix it ($199)</li>
-            <li>We fix everything for you -- nothing left on your plate ($399)</li>
-          </ul>
-          <p style="font-size: var(--text-sm); color: var(--ash); margin-bottom: var(--space-4);">Start free. Full protection from $399.</p>
-          <a href="/security" class="btn btn--secondary btn--full">Check If You're Exposed</a>
-        </div>
+      <div class="hero__sidebar reveal" data-delay="3">
+        <div class="hero__sidebar-title">Quick specs</div>
+        <div class="hero__sidebar-row"><span class="key">timeline</span> <span class="val">2-5 days</span></div>
+        <div class="hero__sidebar-row"><span class="key">your cost</span> <span class="val">$30-50/mo</span></div>
+        <div class="hero__sidebar-row"><span class="key">lock-in</span> <span class="val">none</span></div>
+        <div class="hero__sidebar-row"><span class="key">infra</span> <span class="val">yours</span></div>
+        <div class="hero__sidebar-row"><span class="key">source</span> <span class="val">open</span></div>
+        <div class="hero__sidebar-divider"></div>
+        <div class="hero__sidebar-row"><span class="key">we run</span> <span class="val">12 agents</span></div>
+        <div class="hero__sidebar-row"><span class="key">in prod</span> <span class="val">daily</span></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section--sm">
-    <div class="container">
-      <div class="walkaway">
-        <h2 class="mb-4">Pay once. Own everything. Walk away.</h2>
-        <p class="lead" style="color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto;">No monthly fees to us. No vendor lock-in. No "you need us to keep the lights on." Your agents run on your server. If you fire us tomorrow, everything keeps working.</p>
-        <div class="walkaway__grid">
-          <div class="walkaway__item">
-            <h3>You're up and running in days</h3>
-            <p>We build your agents, connect your channels, test everything end-to-end, and deploy to your infrastructure. You're saving time by end of week.</p>
-          </div>
-          <div class="walkaway__item">
-            <h3>You understand everything before we leave</h3>
-            <p>Full documentation, a walkthrough call, and 7-30 days of post-setup support. No black boxes. No mystery code. It's yours.</p>
-          </div>
-          <div class="walkaway__item">
-            <h3>Your costs stay under $50/month -- total</h3>
-            <p>Hosting runs about $10/month. AI API costs run $20-50/month. That's it. Compare that to the $3,000-5,000/month you're spending on the work these agents replace.</p>
-          </div>
+<!-- TERMINAL — SPEC:002 -->
+<section class="section--sm" style="padding: 0 0 var(--sp-24);">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:002</span>
+      <span class="spec-coord">// audit output</span>
+    </div>
+    <div class="terminal reveal" data-delay="1">
+      <div class="terminal__bar">
+        <span class="terminal__dot"></span>
+        <span class="terminal__dot"></span>
+        <span class="terminal__dot"></span>
+        <span class="terminal__title">milo — audit</span>
+      </div>
+      <div class="terminal__body"><span class="t-prompt">$</span> <span class="t-cmd">milo audit --workspace ./client-ops</span>
+
+<span class="t-muted">Scanning 14 workflows across 3 departments...</span>
+
+  <span class="t-accent">Sales</span>        <span class="t-bar">██████████</span><span class="t-bar-empty">░░░░</span>  <span class="t-num">6</span> automatable  │  <span class="t-success">~18h/week saved</span>
+  <span class="t-accent">Support</span>      <span class="t-bar">████████</span><span class="t-bar-empty">░░░░░░</span>  <span class="t-num">4</span> automatable  │  <span class="t-success">~12h/week saved</span>
+  <span class="t-accent">Content</span>      <span class="t-bar">██████</span><span class="t-bar-empty">░░░░░░░░</span>  <span class="t-num">2</span> automatable  │  <span class="t-success">~8h/week saved</span>
+
+<span class="t-num">12</span> workflows identified. ROI: <span class="t-success">38h/week → $4,200/mo saved</span>
+Recommended: <span class="t-accent">3-agent team</span>. Deployment: <span class="t-num">~4 days</span>.
+
+<span class="t-prompt">$</span> <span class="t-cmd">milo deploy --team sales-ops</span>
+<span class="t-success">✓</span> scout deployed        <span class="t-muted">[2.1s]</span>
+<span class="t-success">✓</span> evaluator deployed    <span class="t-muted">[1.8s]</span>
+<span class="t-success">✓</span> outreach deployed     <span class="t-muted">[2.4s]</span>
+
+Team <span class="t-accent">"sales-ops"</span> live. Cost: <span class="t-num">~$34/mo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENT CONFIG — SPEC:003 -->
+<section style="padding: 0 0 var(--sp-20);">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:003</span>
+      <span class="spec-coord">// agent architecture</span>
+    </div>
+    <div class="config-grid">
+      <div class="config-block reveal" data-delay="1">
+        <div class="config-block__bar">
+          <span class="config-block__dot"></span>
+          <span class="config-block__dot"></span>
+          <span class="config-block__dot"></span>
+          <span class="config-block__title">prospecting-team.yaml</span>
         </div>
+        <div class="config-block__body"><span class="c-comment"># Agent team — deployed 2026-02-14, running in production</span>
+
+<span class="c-key">team</span>: <span class="c-str">prospecting</span>
+<span class="c-key">status</span>: <span class="c-str">active</span>
+<span class="c-key">infra</span>: <span class="c-str">client-owned (Hetzner)</span>
+
+<span class="c-key">agents</span>:
+  <span class="c-key">scout</span>:
+    <span class="c-key">model</span>: <span class="c-str">claude-haiku-4-5-20251001</span>
+    <span class="c-key">schedule</span>: <span class="c-str">"weekdays 9am"</span>
+    <span class="c-key">sources</span>: [<span class="c-str">linkedin</span>, <span class="c-str">apollo</span>]
+    <span class="c-key">output</span>: <span class="c-arrow">→ evaluator</span>
+
+  <span class="c-key">evaluator</span>:
+    <span class="c-key">model</span>: <span class="c-str">claude-sonnet-4-20250514</span>
+    <span class="c-key">trigger</span>: <span class="c-str">scout.output</span>
+    <span class="c-key">criteria</span>: <span class="c-str">./icp-profile.md</span>
+    <span class="c-key">output</span>: qualified <span class="c-arrow">→ writer</span> | low-fit <span class="c-arrow">→ archive</span>
+
+  <span class="c-key">writer</span>:
+    <span class="c-key">model</span>: <span class="c-str">claude-opus-4-20250115</span>
+    <span class="c-key">trigger</span>: <span class="c-str">evaluator.qualified</span>
+    <span class="c-key">voice</span>: <span class="c-str">./brand-voice.md</span>
+    <span class="c-key">channels</span>: [<span class="c-str">linkedin-dm</span>, <span class="c-str">email</span>]
+    <span class="c-key">requires</span>: <span class="c-str">human approval</span></div>
+      </div>
+      <div class="config-aside reveal" data-delay="2" style="display: flex; flex-direction: column; gap: var(--sp-6);">
+        <div class="config-aside__fig">FIG.01</div>
+        <div class="config-aside__image">
+          <img src="/mockups/d2-hands.png" alt="Master architect's hands working a brass compass over architectural drawings" loading="lazy" width="640" height="360">
+        </div>
+        <p class="config-aside__caption">Precision instruments, deliberate craft — the same discipline applied to every agent we deploy.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section section--tinted">
-    <div class="container">
-      <h2 class="text-center mb-4">Sound familiar?</h2>
-      <p class="lead text-center text-narrow mb-12">If any of these hit close to home, you're exactly who this is built for.</p>
-      <div class="persona-grid">
-        <div class="persona">
-          <div class="persona__type">Solopreneur</div>
-          <h3>"I haven't taken a day off in 3 months"</h3>
-          <p>You're the CEO, sales team, and support desk rolled into one. Your agents take over follow-ups, scheduling, content, and daily reports -- giving you back 20+ hours a week to focus on the work that actually grows revenue.</p>
-        </div>
-        <div class="persona">
-          <div class="persona__type">Small Business</div>
-          <h3>"I'm paying people $25/hr to copy-paste data"</h3>
-          <p>Your 2-10 person team is buried in repetitive busywork. Agents take over appointment booking, lead follow-up, customer communication, and reporting -- so your humans can do what humans are actually good at.</p>
-        </div>
-        <div class="persona">
-          <div class="persona__type">Service Business</div>
-          <h3>"I lost a $5,000 deal because I forgot to follow up"</h3>
-          <p>Plumbers, consultants, lawyers, agencies -- you're incredible at the work but leads slip through the cracks. Your agents find prospects, send outreach, and follow up automatically. Nobody gets forgotten. Ever.</p>
-        </div>
+<!-- PULL QUOTE -->
+<blockquote class="pull-quote">
+  <div class="wrap">
+    <div class="pull-quote__inner reveal">
+      <p class="pull-quote__text">We run a 12-agent system ourselves — every day, in production. The problems you'd hit in month three, we solved in our own operations first.</p>
+      <cite class="pull-quote__attr">From the team that eats its own cooking</cite>
+    </div>
+  </div>
+</blockquote>
+
+<!-- SERVICES — SPEC:004 -->
+<section style="padding: 0 0 var(--sp-24);">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:004</span>
+      <span class="spec-coord">// services</span>
+    </div>
+    <div class="editorial reveal" data-delay="1">
+      <div>
+        <h2 class="editorial__title">Two ways we transform your operations</h2>
+      </div>
+      <div class="editorial__body">
+        <p><strong style="color: var(--text-1);">AI Agent Teams</strong> — We audit your workflows, design agent teams, deploy to your infrastructure, and hand over full ownership. From $399 for a starter setup to $2,499 for a full team. Your only ongoing cost: $30-50/month for hosting and API fees.</p>
+        <p><strong style="color: var(--text-1);">Security Hardening</strong> — Free scanner to full secure deployment. We find the vulnerabilities in your AI configs, fix them, and walk away. From $0 (free scan) to $399 (done-for-you secure build).</p>
       </div>
     </div>
-  </section>
-
-  <section class="section">
-    <div class="container container--narrow text-center">
-      <h2 class="mb-6">Why this works when other "AI solutions" didn't</h2>
-      <p class="lead mb-12">We're not consultants who read a blog post about AI last month. We run a 12-agent system ourselves -- every single day, in production. We've already hit the wall you'd hit in month 3 and solved it. You get battle-tested agents from day one.</p>
-      <div class="grid grid--3" style="text-align: left;">
+    <div class="gold-line"></div>
+    <ul class="stacked-list reveal" data-delay="2">
+      <li class="stacked-item">
+        <div class="stacked-item__num">01</div>
         <div>
-          <h3 style="font-size: var(--text-base); margin-bottom: var(--space-2);">We eat our own cooking</h3>
-          <p style="font-size: var(--text-sm); color: var(--graphite);">Our content, prospecting, outreach, reporting, and security monitoring are all run by the same agents we build for you. If it breaks, we feel it first.</p>
+          <div class="stacked-item__title">Your agents never sleep, never miss a lead</div>
+          <div class="stacked-item__body">Follow-ups, scheduling, outreach, reporting — done automatically, 24/7. Agents coordinate like a team, remember every interaction, and get smarter over time.</div>
         </div>
+      </li>
+      <li class="stacked-item">
+        <div class="stacked-item__num">02</div>
         <div>
-          <h3 style="font-size: var(--text-base); margin-bottom: var(--space-2);">Fire us anytime -- everything keeps running</h3>
-          <p style="font-size: var(--text-sm); color: var(--graphite);">Your agents live on your infrastructure. Open source tools. Standard APIs. No proprietary lock-in. If you walk away from us, your agents don't even notice.</p>
+          <div class="stacked-item__title">Pay once. Own everything. Walk away.</div>
+          <div class="stacked-item__body">Your agents live on your infrastructure. Open source tools, standard APIs. If you fire us tomorrow, everything keeps working. No subscriptions to us. Ever.</div>
         </div>
+      </li>
+      <li class="stacked-item">
+        <div class="stacked-item__num">03</div>
         <div>
-          <h3 style="font-size: var(--text-base); margin-bottom: var(--space-2);">Saving you time by Friday, not next quarter</h3>
-          <p style="font-size: var(--text-sm); color: var(--graphite);">A typical 2-3 agent setup deploys in 2-5 days. Not a 6-month digital transformation. Not a 12-week engagement. Working agents, this week.</p>
+          <div class="stacked-item__title">Saving you time by Friday, not next quarter</div>
+          <div class="stacked-item__body">A typical 2-3 agent setup deploys in 2-5 days. Full documentation, walkthrough call, and 7-30 days of post-setup support. No black boxes. No mystery code.</div>
         </div>
-      </div>
-    </div>
-  </section>
+      </li>
+    </ul>
+  </div>
+</section>
 
-  <section class="cta-dark">
-    <div class="container">
-      <div class="cta-dark__inner">
-        <h2>Every day you wait, you're paying $150+ in wasted time.</h2>
-        <p>Start with one agent for $399, or get a full team for $2,499. One-time cost. You own everything. Your agents start working this week.</p>
-        <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
-          <a href="/agents" class="btn btn--primary btn--lg">Get Your Time Back</a>
-          <a href="/security" class="btn btn--outline btn--lg" style="border-color: rgba(255,255,255,0.3); color: var(--white);">Secure Your Business</a>
-        </div>
+<!-- CREDIBILITY — SPEC:005 -->
+<section style="padding: 0 0 var(--sp-24);">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:005</span>
+      <span class="spec-coord">// why milo</span>
+    </div>
+    <div class="editorial reveal" data-delay="1">
+      <div>
+        <h2 class="editorial__title">The businesses that automate first will win. The rest will wonder what happened.</h2>
+      </div>
+      <div class="editorial__body editorial__body--columns">
+        <p>Most AI consultancies read a blog post and started selling. We started by building for ourselves — content, prospecting, outreach, reporting, security monitoring — all run by the same agents we build for clients.</p>
+        <p>Your agents live on your infrastructure. Open-source tools. Standard APIs. No proprietary lock-in. If you walk away from us, your agents don't even notice.</p>
+        <p>A typical 2-3 agent deployment takes 2-5 days. Your ongoing cost after we deliver: $30-50/month for hosting and API fees. Not $3,000-5,000/month in manual labor. That's the trade.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <img src="milo-icon.svg" alt="" class="footer__logo-icon">
-            <span class="footer__logo-text">milo</span>
-          </div>
-          <p class="footer__brand-text">Stop paying humans for work machines do better. One-time setup. You own it all.</p>
-        </div>
-        <div>
-          <h4>Services</h4>
-          <ul class="footer__links">
-            <li><a href="/agents">AI Agent Teams</a></li>
-            <li><a href="/security">Security Hardening</a></li>
-            <li><a href="/ainative">AI Native Setup</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Resources</h4>
-          <ul class="footer__links">
-            <li><a href="/blog">Guides</a></li>
-            <li><a href="/scanner">Free Security Scanner</a></li>
-            <li><a href="https://github.com/getmilodev">GitHub</a></li>
-            <li><a href="https://x.com/getmilo_dev">@getmilo_dev</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <span>&copy; 2026 Milo</span>
-        <span>Privacy &middot; Terms</span>
+<!-- CTA — SPEC:006 -->
+<section class="cta-section">
+  <div class="section-marker section-marker--cta reveal">
+    <span class="spec-label spec-label--on-dark">SPEC:006</span>
+    <span class="spec-coord spec-coord--on-dark">// engagement</span>
+  </div>
+  <div class="cta__inner">
+    <div>
+      <h2 class="cta__title reveal">Ready to build something that <span class="accent">endures</span>?</h2>
+      <p class="cta__body reveal" data-delay="1">Start with a strategy call. We'll map your operations and show you exactly what a transformation looks like — before you spend a dollar.</p>
+      <div class="reveal" data-delay="2">
+        <a href="/contact" class="btn btn--gold-on-dark">Start a project</a>
       </div>
     </div>
-  </footer>
+    <div class="cta__pricing reveal" data-delay="2">
+      <strong>Starter</strong> — $399 one-time<br>
+      <strong>Full team</strong> — $2,499 one-time<br>
+      <strong>Managed</strong> — $999/month<br><br>
+      You own everything.<br>
+      $0/month to us after delivery.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__logo">
+      <span class="footer__logo-text">milo</span>
+      <span class="footer__dot"></span>
+    </div>
+    <div class="footer__links">
+      <a href="/agents">Services</a>
+      <a href="/security">Security</a>
+      <a href="/blog">Guides</a>
+      <a href="https://github.com/getmilodev">GitHub</a>
+    </div>
+    <span class="footer__copy">&copy; 2026 Milo</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Mobile menu
+  const toggle = document.querySelector('.nav__toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !open);
+    menu.classList.toggle('open');
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  // Focus trap + Escape for mobile menu
+  document.addEventListener('keydown', (e) => {
+    if (!menu.classList.contains('open')) return;
+    if (e.key === 'Escape') {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+      toggle.focus();
+      return;
+    }
+    if (e.key === 'Tab') {
+      const focusable = [toggle, ...menu.querySelectorAll('a')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+</script>
 
 </body>
 </html>

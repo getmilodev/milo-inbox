@@ -5,468 +5,477 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Native Setup — Go AI-Native in One Afternoon | Milo</title>
   <meta name="description" content="Custom AI workspace built around your actual work. One session, you own everything. Walk away as the most dangerous person in your office.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="milo-design-system.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      color: #1a1a1a;
-      background: #fafafa;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
-
-    .hero {
-      padding: 80px 0 60px;
-      text-align: center;
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
-    }
-    .hero .badge {
-      display: inline-block;
-      background: #f0f7ff;
-      color: #2563eb;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 24px;
-      letter-spacing: 0.3px;
-    }
-    .hero h1 {
-      font-size: 44px;
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 20px;
-      letter-spacing: -1px;
-      color: #0a0a0a;
-    }
-    .hero .subtitle {
-      font-size: 20px;
-      color: #555;
-      max-width: 560px;
-      margin: 0 auto 36px;
-      line-height: 1.5;
-    }
-    .hero .cta-primary {
-      display: inline-block;
-      background: #0a0a0a;
-      color: #fff;
-      font-size: 17px;
-      font-weight: 600;
-      padding: 16px 40px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .hero .cta-primary:hover { background: #333; }
-    .hero .cta-note {
-      display: block;
-      margin-top: 12px;
-      font-size: 14px;
-      color: #888;
-    }
-    .hero .cta-note a {
-      color: #2563eb;
-      text-decoration: underline;
-    }
-    .hero .cta-note a:hover {
-      color: #1d4ed8;
+    /* Page-specific: highlight callout */
+    .callout {
+      border-left: 3px solid var(--gold);
+      padding: var(--sp-6) var(--sp-8);
+      margin: var(--sp-8) 0;
+      background: var(--gold-light);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: var(--text-base);
+      color: var(--text-1);
+      line-height: 1.65;
+      font-style: italic;
     }
 
-    .problem {
-      padding: 64px 0;
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
-    }
-    .problem h2 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      letter-spacing: -0.5px;
-    }
-    .problem p {
-      font-size: 17px;
-      color: #444;
-      margin-bottom: 16px;
-      line-height: 1.7;
-    }
-    .problem .highlight {
-      background: #fffbeb;
-      border-left: 3px solid #f59e0b;
-      padding: 20px 24px;
-      margin: 28px 0;
-      border-radius: 0 8px 8px 0;
-      font-size: 17px;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    .solution {
-      padding: 64px 0;
-      background: #fafafa;
-      border-bottom: 1px solid #e8e8e8;
-    }
-    .solution h2 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      letter-spacing: -0.5px;
-    }
-    .solution .lead {
-      font-size: 17px;
-      color: #555;
-      margin-bottom: 36px;
-    }
-    .items { list-style: none; }
-    .items li {
-      background: #fff;
-      border: 1px solid #e8e8e8;
-      border-radius: 10px;
-      padding: 24px 28px;
-      margin-bottom: 16px;
-    }
-    .items li strong {
-      display: block;
-      font-size: 17px;
-      margin-bottom: 6px;
-      color: #0a0a0a;
-    }
-    .items li span {
-      font-size: 15px;
-      color: #666;
-      line-height: 1.5;
-    }
-
-    .outcome {
-      padding: 64px 0;
-      background: #fff;
-      border-bottom: 1px solid #e8e8e8;
-    }
-    .outcome h2 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      letter-spacing: -0.5px;
-    }
-    .outcomes-grid {
+    /* Stats grid for outcomes */
+    .stats-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-6);
     }
-    .outcome-card {
-      padding: 24px;
-      background: #f8faf8;
-      border-radius: 10px;
-      border: 1px solid #e2e8e2;
+    .stats-grid__item {
+      padding: var(--sp-6) 0;
+      border-top: 2px solid var(--border);
     }
-    .outcome-card .num {
-      font-size: 32px;
-      font-weight: 700;
-      color: #16a34a;
-      margin-bottom: 4px;
+    .stats-grid__num {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      color: var(--text-1);
+      font-weight: 400;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: var(--sp-1);
     }
-    .outcome-card .label {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.4;
+    .stats-grid__label {
+      font-size: var(--text-sm);
+      color: var(--text-2);
+      line-height: 1.5;
     }
 
-    .pricing {
-      padding: 64px 0;
-      text-align: center;
-      background: #0a0a0a;
-      color: #fff;
-    }
-    .pricing h2 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .pricing .desc {
-      font-size: 17px;
-      color: #aaa;
-      margin-bottom: 32px;
-    }
-    .price-box {
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 40px;
-      max-width: 480px;
-      margin: 0 auto 32px;
-      text-align: left;
-    }
-    .price-box .amount {
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .price-box .term {
-      font-size: 15px;
-      color: #888;
-      margin-bottom: 24px;
-    }
-    .price-box ul {
+    /* Pricing feature list on dark surface */
+    .cta-features {
       list-style: none;
-      margin-bottom: 0;
+      padding: 0;
     }
-    .price-box ul li {
-      font-size: 15px;
-      color: #ccc;
-      padding: 8px 0;
-      border-top: 1px solid #2a2a2a;
-    }
-    .price-box ul li:before {
-      content: "\2713  ";
-      color: #16a34a;
-      font-weight: 600;
-    }
-    .pricing .cta-primary {
-      display: inline-block;
-      background: #fff;
-      color: #0a0a0a;
-      font-size: 17px;
-      font-weight: 600;
-      padding: 16px 48px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .pricing .cta-primary:hover { background: #e8e8e8; }
-    .pricing .guarantee {
-      margin-top: 16px;
-      font-size: 14px;
-      color: #888;
-    }
-    .pricing .guarantee a {
-      color: #aaa;
-      text-decoration: underline;
-    }
-    .pricing .guarantee a:hover {
-      color: #fff;
-    }
-
-    .faq {
-      padding: 64px 0;
-      background: #fff;
-    }
-    .faq h2 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 32px;
-      letter-spacing: -0.5px;
-    }
-    .faq-item {
-      border-bottom: 1px solid #e8e8e8;
-      padding: 20px 0;
-    }
-    .faq-item h3 {
-      font-size: 17px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #0a0a0a;
-    }
-    .faq-item p {
-      font-size: 15px;
-      color: #666;
+    .cta-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-3);
+      font-size: var(--text-sm);
+      color: var(--text-on-dark);
       line-height: 1.6;
     }
-    .faq-item a {
-      color: #2563eb;
+    .cta-features li::before {
+      content: '\2713';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Talk-link styling */
+    .talk-link {
+      color: var(--gold-text);
       text-decoration: underline;
+      text-underline-offset: 3px;
     }
+    .talk-link:hover { color: var(--text-1); }
 
-    .footer {
-      padding: 32px 0;
-      text-align: center;
-      font-size: 14px;
-      color: #999;
-      border-top: 1px solid #e8e8e8;
+    .talk-link--on-dark {
+      color: var(--gold);
     }
-    .footer a { color: #666; text-decoration: none; }
+    .talk-link--on-dark:hover { color: var(--text-inv); }
 
-    .success-banner {
-      display: none;
-      background: #16a34a;
-      color: #fff;
-      text-align: center;
-      padding: 16px;
-      font-size: 16px;
-      font-weight: 600;
+    /* FAQ link inside answers */
+    .faq__answer-inner a {
+      color: var(--gold-text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
+    .faq__answer-inner a:hover { color: var(--text-1); }
 
-    @media (max-width: 640px) {
-      .hero { padding: 48px 0 40px; }
-      .hero h1 { font-size: 32px; }
-      .hero .subtitle { font-size: 17px; }
-      .outcomes-grid { grid-template-columns: 1fr; }
-      .price-box { padding: 28px; }
-      .price-box .amount { font-size: 36px; }
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="success-banner" id="successBanner">
-    You're in. Check your inbox — we'll reach out within 24 hours to schedule your setup session.
-  </div>
 
-  <section class="hero">
-    <div class="container">
-      <div class="badge">By Milo — AI that works for you</div>
-      <h1>Go AI-Native<br>in One Afternoon</h1>
-      <p class="subtitle">A custom AI workspace built around your actual work. One session. You own everything. Walk away ahead of everyone in your office.</p>
-      <a href="https://buy.stripe.com/aFa7sKckB5aD4ts0lUfIs0d" class="cta-primary">Book Your Setup — $2,500</a>
-      <span class="cta-note">One-time. No subscriptions. No ongoing fees.</span>
-      <span class="cta-note"><a href="#" id="hero-talk-link">Prefer to talk first? &#8594;</a></span>
+<div class="grid-bg" aria-hidden="true"></div>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- SUCCESS BANNER -->
+<div class="success-banner" id="successBanner" role="alert" style="display:none;">
+  You're in. Check your inbox — we'll reach out within 24 hours to schedule your setup session.
+</div>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Main">
+  <div class="wrap">
+    <a href="/" class="nav__logo">
+      <span class="nav__logo-text">milo</span>
+      <span class="nav__dot"></span>
+    </a>
+    <div class="nav__links">
+      <a href="/agents" class="nav__link">Services</a>
+      <a href="/security" class="nav__link">Security</a>
+      <a href="/calculator" class="nav__link">Calculator</a>
+      <a href="/build" class="nav__link">Build</a>
+      <a href="/contact" class="nav__cta">Start a project</a>
     </div>
-  </section>
+    <button class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-  <section class="problem">
-    <div class="container">
-      <h2>You know AI matters. You just don't know where to start.</h2>
-      <p>Your CEO mentions it in every meeting. Your team is asking about it. LinkedIn is full of people who suddenly became AI experts overnight.</p>
-      <p>Meanwhile, you're sitting there thinking: <em>I should probably be using this. But I don't have time to figure out prompt engineering, or which tools to use, or how to make any of this actually useful for my job.</em></p>
-      <div class="highlight">
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation">
+  <a href="/agents">Services</a>
+  <a href="/security">Security</a>
+  <a href="/calculator">Calculator</a>
+  <a href="/build">Build</a>
+  <a href="/contact">Start a project</a>
+</div>
+
+<main id="main">
+
+<!-- HERO — SPEC:010 -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:010</span>
+      <span class="spec-coord">// ai-native setup</span>
+    </div>
+    <h1 class="page-hero__title reveal" data-delay="1">Go AI-Native<br>in One Afternoon</h1>
+    <p class="page-hero__subtitle reveal" data-delay="2">A custom AI workspace built around your actual work. One session. You own everything. Walk away ahead of everyone in your office.</p>
+    <div class="reveal" data-delay="3" style="margin-top: var(--sp-8); display: flex; gap: var(--sp-3); flex-wrap: wrap; align-items: center;">
+      <a href="https://buy.stripe.com/aFa7sKckB5aD4ts0lUfIs0d" class="btn btn--dark btn--lg">Book Your Setup — $2,500</a>
+      <span style="font-size: var(--text-sm); color: var(--text-3);">One-time. No subscriptions.</span>
+    </div>
+    <p class="reveal" data-delay="3" style="margin-top: var(--sp-3); font-size: var(--text-sm); color: var(--text-3);">
+      <a href="#" id="hero-talk-link" class="talk-link">Prefer to talk first?</a>
+    </p>
+  </div>
+</section>
+
+<!-- PROBLEM — SPEC:011 -->
+<section class="section">
+  <div class="wrap wrap--narrow">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:011</span>
+      <span class="spec-coord">// the problem</span>
+    </div>
+    <div class="editorial reveal" data-delay="1" style="display: block;">
+      <h2 style="font-size: var(--text-2xl); margin-bottom: var(--sp-6);">You know AI matters. You just don't know where to start.</h2>
+      <div class="editorial__body">
+        <p>Your CEO mentions it in every meeting. Your team is asking about it. LinkedIn is full of people who suddenly became AI experts overnight.</p>
+        <p>Meanwhile, you're sitting there thinking: <em>I should probably be using this. But I don't have time to figure out prompt engineering, or which tools to use, or how to make any of this actually useful for my job.</em></p>
+      </div>
+      <div class="callout">
         The first person at your company who figures this out gets an unfair advantage. Not eventually — right now. The question is whether that person is you or someone else.
       </div>
-      <p>You don't need a course. You don't need to learn to code. You need someone who already knows this stuff to set you up and hand you the keys.</p>
-      <p>That's what we do.</p>
+      <div class="editorial__body">
+        <p>You don't need a course. You don't need to learn to code. You need someone who already knows this stuff to set you up and hand you the keys.</p>
+        <p style="font-weight: 600; color: var(--text-1);">That's what we do.</p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="solution">
-    <div class="container">
-      <h2>What you get</h2>
-      <p class="lead">Everything built around your role, your workflows, your actual work — not generic templates.</p>
-      <ul class="items">
-        <li>
-          <strong>Custom AI Workspace</strong>
-          <span>Claude projects configured specifically for what you do. Your company context, your frameworks, your terminology — already loaded and ready.</span>
-        </li>
-        <li>
-          <strong>Tailored Prompts and Workflows</strong>
-          <span>The analyses, reports, emails, and decisions you make every week — turned into prompts that give you better output in minutes instead of hours.</span>
-        </li>
-        <li>
-          <strong>Your Knowledge Base</strong>
-          <span>Internal docs, playbooks, competitive intel, past work — organized so your AI actually understands your business, not just the internet.</span>
-        </li>
-        <li>
-          <strong>Hands-On Walkthrough</strong>
-          <span>Not a PDF. Not a video. A live session where we build it together and you leave knowing exactly how to use everything.</span>
-        </li>
-        <li>
-          <strong>30 Days of Follow-Up</strong>
-          <span>Questions after the session? New use cases? We are available for 30 days to tune and adjust as you start using it for real.</span>
-        </li>
+<div class="wrap"><div class="gold-line"></div></div>
+
+<!-- WHAT YOU GET — SPEC:012 -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:012</span>
+      <span class="spec-coord">// deliverables</span>
+    </div>
+    <div class="editorial reveal" data-delay="1">
+      <div>
+        <h2 class="editorial__title">What you get</h2>
+      </div>
+      <div class="editorial__body">
+        <p>Everything built around your role, your workflows, your actual work — not generic templates.</p>
+      </div>
+    </div>
+    <ul class="stacked-list reveal" data-delay="2">
+      <li class="stacked-item">
+        <div class="stacked-item__num">01</div>
+        <div>
+          <div class="stacked-item__title">Custom AI Workspace</div>
+          <div class="stacked-item__body">Claude projects configured specifically for what you do. Your company context, your frameworks, your terminology — already loaded and ready.</div>
+        </div>
+      </li>
+      <li class="stacked-item">
+        <div class="stacked-item__num">02</div>
+        <div>
+          <div class="stacked-item__title">Tailored Prompts and Workflows</div>
+          <div class="stacked-item__body">The analyses, reports, emails, and decisions you make every week — turned into prompts that give you better output in minutes instead of hours.</div>
+        </div>
+      </li>
+      <li class="stacked-item">
+        <div class="stacked-item__num">03</div>
+        <div>
+          <div class="stacked-item__title">Your Knowledge Base</div>
+          <div class="stacked-item__body">Internal docs, playbooks, competitive intel, past work — organized so your AI actually understands your business, not just the internet.</div>
+        </div>
+      </li>
+      <li class="stacked-item">
+        <div class="stacked-item__num">04</div>
+        <div>
+          <div class="stacked-item__title">Hands-On Walkthrough</div>
+          <div class="stacked-item__body">Not a PDF. Not a video. A live session where we build it together and you leave knowing exactly how to use everything.</div>
+        </div>
+      </li>
+      <li class="stacked-item">
+        <div class="stacked-item__num">05</div>
+        <div>
+          <div class="stacked-item__title">30 Days of Follow-Up</div>
+          <div class="stacked-item__body">Questions after the session? New use cases? We are available for 30 days to tune and adjust as you start using it for real.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- OUTCOMES — SPEC:013 -->
+<section class="section--sm" style="padding-bottom: var(--sp-20);">
+  <div class="wrap">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:013</span>
+      <span class="spec-coord">// outcomes</span>
+    </div>
+    <h2 class="reveal" data-delay="1" style="font-size: var(--text-2xl); margin-bottom: var(--sp-8);">After your setup</h2>
+    <div class="stats-grid reveal" data-delay="2">
+      <div class="stats-grid__item">
+        <div class="stats-grid__num">10x</div>
+        <div class="stats-grid__label">Faster on the work that used to eat your afternoons</div>
+      </div>
+      <div class="stats-grid__item">
+        <div class="stats-grid__num">2 hrs</div>
+        <div class="stats-grid__label">Average time from start to fully AI-native</div>
+      </div>
+      <div class="stats-grid__item">
+        <div class="stats-grid__num">100%</div>
+        <div class="stats-grid__label">Yours. No subscriptions, no lock-in, no dependencies</div>
+      </div>
+      <div class="stats-grid__item">
+        <div class="stats-grid__num">3+</div>
+        <div class="stats-grid__label">Colleagues who will ask you "how are you doing that?"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / PRICING — dark inset -->
+<section class="cta-section">
+  <div class="section-marker section-marker--cta reveal">
+    <span class="spec-label spec-label--on-dark">SPEC:014</span>
+    <span class="spec-coord spec-coord--on-dark">// pricing</span>
+  </div>
+  <div class="cta__inner">
+    <div>
+      <h2 class="cta__title reveal">Simple pricing. <span class="accent">One session.</span></h2>
+      <p class="cta__body reveal" data-delay="1">Everything included. Nothing recurring. You own it all.</p>
+      <ul class="cta-features reveal" data-delay="1">
+        <li>Custom AI workspace built for your role</li>
+        <li>Tailored prompts for your actual workflows</li>
+        <li>Knowledge base loaded with your docs</li>
+        <li>Live hands-on setup session</li>
+        <li>30 days of follow-up support</li>
+        <li>Works for any department or function</li>
       </ul>
+      <div class="reveal" data-delay="2" style="margin-top: var(--sp-8);">
+        <a href="https://buy.stripe.com/aFa7sKckB5aD4ts0lUfIs0d" class="btn btn--gold-on-dark btn--lg">Book Your Setup</a>
+      </div>
+      <p class="reveal" data-delay="2" style="margin-top: var(--sp-4); font-size: var(--text-sm); color: var(--text-on-dark-muted);">
+        Prefer to talk first? <a href="#" id="pricing-talk-link" class="talk-link--on-dark">Email us</a> — we reply within a few hours.
+      </p>
     </div>
-  </section>
+    <div class="cta__pricing reveal" data-delay="2">
+      <strong>$2,500</strong><br>
+      one-time setup<br><br>
+      You own everything.<br>
+      $0/month to us after delivery.
+    </div>
+  </div>
+</section>
 
-  <section class="outcome">
-    <div class="container">
-      <h2>After your setup</h2>
-      <div class="outcomes-grid">
-        <div class="outcome-card">
-          <div class="num">10x</div>
-          <div class="label">Faster on the work that used to eat your afternoons</div>
+<!-- FAQ — SPEC:015 -->
+<section class="section">
+  <div class="wrap wrap--narrow">
+    <div class="section-marker reveal">
+      <span class="spec-label">SPEC:015</span>
+      <span class="spec-coord">// faq</span>
+    </div>
+    <h2 class="reveal" data-delay="1" style="font-size: var(--text-2xl); margin-bottom: var(--sp-8);">Common questions</h2>
+
+    <div class="faq-item reveal" data-delay="1">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-1">Do I need to be technical?</button>
+      <div class="faq__answer" id="faq-1" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p>No. That is the entire point. If you can use email and Google Docs, you can use what we set up. We handle everything technical.</p>
         </div>
-        <div class="outcome-card">
-          <div class="num">2 hrs</div>
-          <div class="label">Average time from start to fully AI-native</div>
-        </div>
-        <div class="outcome-card">
-          <div class="num">100%</div>
-          <div class="label">Yours. No subscriptions, no lock-in, no dependencies</div>
-        </div>
-        <div class="outcome-card">
-          <div class="num">3+</div>
-          <div class="label">Colleagues who will ask you "how are you doing that?"</div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" data-delay="1">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-2">What is Claude?</button>
+      <div class="faq__answer" id="faq-2" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p>Claude is an AI assistant made by Anthropic — think of it as a brilliant colleague who has read everything and works instantly. We configure it to understand your specific job and company.</p>
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="pricing">
-    <div class="container">
-      <h2>Simple pricing</h2>
-      <p class="desc">One session. Everything included. Nothing recurring.</p>
-      <div class="price-box">
-        <div class="amount">$2,500</div>
-        <div class="term">One-time setup — you own everything</div>
-        <ul>
-          <li>Custom AI workspace built for your role</li>
-          <li>Tailored prompts for your actual workflows</li>
-          <li>Knowledge base loaded with your docs</li>
-          <li>Live hands-on setup session</li>
-          <li>30 days of follow-up support</li>
-          <li>Works for any department or function</li>
-        </ul>
-      </div>
-      <a href="https://buy.stripe.com/aFa7sKckB5aD4ts0lUfIs0d" class="cta-primary">Book Your Setup</a>
-      <p class="guarantee">Prefer to talk first? <a href="#" id="pricing-talk-link">Email us</a> — we reply within a few hours.</p>
-    </div>
-  </section>
-
-  <section class="faq">
-    <div class="container">
-      <h2>Common questions</h2>
-      <div class="faq-item">
-        <h3>Do I need to be technical?</h3>
-        <p>No. That is the entire point. If you can use email and Google Docs, you can use what we set up. We handle everything technical.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What is Claude?</h3>
-        <p>Claude is an AI assistant made by Anthropic — think of it as a brilliant colleague who has read everything and works instantly. We configure it to understand your specific job and company.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How long does the setup take?</h3>
-        <p>About 2 hours. We do it live together over video. By the end, you will have a fully configured workspace and know exactly how to use it.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What if I want to set up my whole team?</h3>
-        <p>We do team setups too. <a href="#" id="faq-team-link">Email us</a> and we will scope it out. Most team packages run $5,000 to $15,000 depending on size.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Will I need to pay for anything else?</h3>
-        <p>You will need a Claude Pro subscription ($20/month from Anthropic). That is it. Our setup fee is one-time — no recurring charges from us.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What kinds of roles does this work for?</h3>
-        <p>Operations, marketing, finance, strategy, HR, legal, sales leadership — anyone who does knowledge work. If your job involves reading, writing, analyzing, or deciding, this makes you faster.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can my company expense this?</h3>
-        <p>Yes. You will get a receipt from Stripe immediately. Most clients expense it as professional development or technology services.</p>
+    <div class="faq-item reveal" data-delay="2">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-3">How long does the setup take?</button>
+      <div class="faq__answer" id="faq-3" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p>About 2 hours. We do it live together over video. By the end, you will have a fully configured workspace and know exactly how to use it.</p>
+        </div>
       </div>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>Milo — AI that works for you</p>
+    <div class="faq-item reveal" data-delay="2">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-4">What if I want to set up my whole team?</button>
+      <div class="faq__answer" id="faq-4" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p><a href="#" id="faq-team-link">Email us</a> and we will scope it out. Most team packages run $5,000 to $15,000 depending on size.</p>
+        </div>
+      </div>
     </div>
-  </footer>
 
-  <script>
-    (function() {
-      if (window.location.search.includes('success=true')) {
-        document.getElementById('successBanner').style.display = 'block';
-        window.scrollTo(0, 0);
+    <div class="faq-item reveal" data-delay="3">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-5">Will I need to pay for anything else?</button>
+      <div class="faq__answer" id="faq-5" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p>You will need a Claude Pro subscription ($20/month from Anthropic). That is it. Our setup fee is one-time — no recurring charges from us.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" data-delay="3">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-6">What kinds of roles does this work for?</button>
+      <div class="faq__answer" id="faq-6" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p>Operations, marketing, finance, strategy, HR, legal, sales leadership — anyone who does knowledge work. If your job involves reading, writing, analyzing, or deciding, this makes you faster.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item reveal" data-delay="3">
+      <button class="faq__question" aria-expanded="false" aria-controls="faq-7">Can my company expense this?</button>
+      <div class="faq__answer" id="faq-7" aria-hidden="true">
+        <div class="faq__answer-inner">
+          <p>Yes. You will get a receipt from Stripe immediately. Most clients expense it as professional development or technology services.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__logo">
+      <span class="footer__logo-text">milo</span>
+      <span class="footer__dot"></span>
+    </div>
+    <div class="footer__links">
+      <a href="/agents">Services</a>
+      <a href="/security">Security</a>
+      <a href="/blog">Guides</a>
+      <a href="https://github.com/getmilodev">GitHub</a>
+    </div>
+    <span class="footer__copy">&copy; 2026 Milo</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
-      var u = 'milo';
-      var d = 'getmilo.dev';
-      var a = u + String.fromCharCode(64) + d;
-      var s1 = 'AI%20Native%20Setup%20%E2%80%94%20Quick%20Question';
-      var s2 = 'Team%20AI%20Native%20Setup';
-      var el1 = document.getElementById('hero-talk-link');
-      var el2 = document.getElementById('pricing-talk-link');
-      var el3 = document.getElementById('faq-team-link');
-      if (el1) el1.href = 'mailto:' + a + '?subject=' + s1;
-      if (el2) el2.href = 'mailto:' + a + '?subject=' + s1;
-      if (el3) el3.href = 'mailto:' + a + '?subject=' + s2;
-    })();
-  </script>
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Mobile menu
+  const toggle = document.querySelector('.nav__toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !open);
+    menu.classList.toggle('open');
+    document.body.style.overflow = open ? '' : 'hidden';
+  });
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  // Focus trap + Escape for mobile menu
+  document.addEventListener('keydown', (e) => {
+    if (!menu.classList.contains('open')) return;
+    if (e.key === 'Escape') {
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+      toggle.focus();
+      return;
+    }
+    if (e.key === 'Tab') {
+      const focusable = [toggle, ...menu.querySelectorAll('a')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq__question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answer = document.getElementById(btn.getAttribute('aria-controls'));
+      btn.setAttribute('aria-expanded', !expanded);
+      answer.setAttribute('aria-hidden', expanded);
+    });
+  });
+
+  // === ORIGINAL SCRIPTS (preserved exactly) ===
+  (function() {
+    if (window.location.search.includes('success=true')) {
+      document.getElementById('successBanner').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+    var u = 'milo';
+    var d = 'getmilo.dev';
+    var a = u + String.fromCharCode(64) + d;
+    var s1 = 'AI%20Native%20Setup%20%E2%80%94%20Quick%20Question';
+    var s2 = 'Team%20AI%20Native%20Setup';
+    var el1 = document.getElementById('hero-talk-link');
+    var el2 = document.getElementById('pricing-talk-link');
+    var el3 = document.getElementById('faq-team-link');
+    if (el1) el1.href = 'mailto:' + a + '?subject=' + s1;
+    if (el2) el2.href = 'mailto:' + a + '?subject=' + s1;
+    if (el3) el3.href = 'mailto:' + a + '?subject=' + s2;
+  })();
+</script>
+
 </body>
 </html>
