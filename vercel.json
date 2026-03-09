@@ -58,15 +58,7 @@
     { "source": "/blog/ai-agent-team-small-business", "destination": "/content/blog-ai-agent-team-small-business.html" },
     { "source": "/blog/how-to-automate-business-with-ai", "destination": "/content/blog-how-to-automate-business-with-ai.html" },
     { "source": "/blog/ai-for-executives-cost-2026", "destination": "/content/blog-ai-for-executives-cost-2026.html" },
-    { "source": "/blog/intuit-ai-agents-accountants", "destination": "/content/blog-intuit-ai-agents-accountants.html" },
-
-    { "source": "/ops/:path*", "destination": "/404" },
-    { "source": "/mockups/:path*", "destination": "/404" },
-    { "source": "/ref/:path*", "destination": "/404" },
-    { "source": "/research/:path*", "destination": "/404" },
-    { "source": "/CLAUDE.md", "destination": "/404" },
-    { "source": "/content/:path(.*\\.md)", "destination": "/404" },
-    { "source": "/:path(.*\\.md)", "destination": "/404" }
+    { "source": "/blog/intuit-ai-agents-accountants", "destination": "/content/blog-intuit-ai-agents-accountants.html" }
   ],
   "headers": [
     {
