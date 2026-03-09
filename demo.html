@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Start a Project — Free Strategy Call | Milo</title>
-<meta name="description" content="Book a free strategy call with Milo. We'll map your operations and show you exactly what AI agent teams or executive enablement looks like for your situation.">
+<title>Start a Project — Workflow Mapping Call | Milo</title>
+<meta name="description" content="Book a workflow mapping call with Milo. We'll identify the first proposal, reporting, follow-up, or research system to build for your firm.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="milo-design-system.css">
@@ -155,10 +155,10 @@
   <div class="wrap">
     <div class="section-marker reveal">
       <span class="spec-label">START</span>
-      <span class="spec-coord">// strategy call</span>
+      <span class="spec-coord">// workflow mapping</span>
     </div>
-    <h1 class="page-hero__title reveal" data-delay="1">Let's map what AI looks like for <span class="accent">your operation</span></h1>
-    <p class="page-hero__subtitle reveal" data-delay="2">30-minute strategy call. We'll identify what's automatable, what it costs, and what results to expect — before you spend a dollar.</p>
+    <h1 class="page-hero__title reveal" data-delay="1">Let&apos;s map the workflow your team keeps rebuilding <span class="accent">by hand</span></h1>
+    <p class="page-hero__subtitle reveal" data-delay="2">30-minute working session for agencies and lean service firms. We&apos;ll identify the first system to build, what the scope should be, and whether the entry sprint or full buildout makes sense.</p>
   </div>
 </section>
 
@@ -170,13 +170,13 @@
       <!-- LEFT: sidebar context -->
       <div class="demo-sidebar reveal" data-delay="2">
         <h3 style="font-size: var(--text-lg); margin-bottom: var(--sp-2);">What happens next</h3>
-        <p style="font-size: var(--text-sm); color: var(--text-2); line-height: 1.7; margin-bottom: var(--sp-6);">We review your situation, schedule a 30-minute call, and come prepared with specific recommendations for your use case.</p>
+        <p style="font-size: var(--text-sm); color: var(--text-2); line-height: 1.7; margin-bottom: var(--sp-6);">We review the workflow problem, schedule a 30-minute call, and come prepared with a concrete first-system recommendation for your situation.</p>
         <ul class="demo-sidebar__promises">
           <li>No payment required</li>
-          <li>No commitment</li>
+          <li>No long sales process</li>
           <li>We respond within 24 hours</li>
-          <li>Specific to your business</li>
-          <li>You decide what happens next</li>
+          <li>Specific to your workflow</li>
+          <li>You leave knowing what we would build first</li>
         </ul>
       </div>
 
@@ -200,18 +200,18 @@
               <label class="label" for="field-vertical">What are you interested in?</label>
               <select class="select" id="field-vertical" name="vertical">
                 <option value="">Select one...</option>
-                <option value="agents">AI Agent Teams — automate business workflows</option>
-                <option value="exec">AI for Executives — personal AI enablement</option>
+                <option value="agents">Owned workflow system for my firm</option>
+                <option value="exec">Executive AI enablement</option>
                 <option value="both">Both / not sure yet</option>
               </select>
             </div>
             <div class="form-group">
-              <label class="label" for="field-message">What's eating your time? <span class="label__opt">(optional)</span></label>
-              <textarea class="textarea" id="field-message" name="message" rows="3" placeholder="e.g. Follow-ups I never get to, 10 hours/week on scheduling, want to understand AI better..." style="min-height: 100px;"></textarea>
+              <label class="label" for="field-message">Which workflow is breaking? <span class="label__opt">(optional)</span></label>
+              <textarea class="textarea" id="field-message" name="message" rows="3" placeholder="e.g. proposal turnaround is slow, reporting gets rebuilt every month, follow-up depends on whoever remembers, research gets redone every week..." style="min-height: 100px;"></textarea>
             </div>
             <input type="hidden" name="ref" id="ref-field" value="">
-            <button type="submit" class="btn btn--dark btn--full btn--lg">Book My Strategy Call</button>
-            <p class="trust-line">no payment &middot; no commitment &middot; we respond in 24 hours</p>
+            <button type="submit" class="btn btn--dark btn--full btn--lg">Book My Workflow Call</button>
+            <p class="trust-line">no payment &middot; no long sales process &middot; we respond in 24 hours</p>
           </form>
         </div>
 
@@ -221,7 +221,7 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12" class="success-check-anim"></polyline></svg>
             </div>
             <h2>You're in.</h2>
-            <p>We'll review your situation and reach out to <span class="firm-name" id="echo-firm"></span> within 24 hours to schedule your strategy call.</p>
+            <p>We&apos;ll review the workflow situation and reach out to <span class="firm-name" id="echo-firm"></span> within 24 hours to schedule your mapping call.</p>
           </div>
         </div>
       </div>
@@ -322,7 +322,7 @@
     fd.forEach(function(v, k) { d[k] = v; });
 
     var ts = new Date().toISOString();
-    var vMap = { agents: 'AI Agent Teams', exec: 'AI for Executives', both: 'Both / not sure' };
+    var vMap = { agents: 'Owned workflow system', exec: 'AI for Executives', both: 'Both / not sure' };
     var lines = [
       'PROJECT INQUIRY',
       'Name: ' + d.name,
@@ -349,17 +349,17 @@
     .then(function(res) {
       if (res.ok) {
         document.getElementById('form-card').classList.add('hide');
-        document.getElementById('echo-firm').textContent = d.email;
+        document.getElementById('echo-firm').textContent = d.firm || d.email;
         document.getElementById('success-card').classList.remove('hide');
       } else {
         btn.disabled = false;
-        btn.textContent = 'Book My Strategy Call';
+        btn.textContent = 'Book My Workflow Call';
         alert('Something went wrong. Please try again.');
       }
     })
     .catch(function() {
       btn.disabled = false;
-      btn.textContent = 'Book My Strategy Call';
+      btn.textContent = 'Book My Workflow Call';
       alert('Connection error. Please try again.');
     });
   });

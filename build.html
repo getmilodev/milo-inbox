@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Build Your AI Team — See What Agents Your Business Needs | Milo</title>
-  <meta name="description" content="Answer 3 questions. Get a custom AI agent team recommendation for your business. See exactly which agents you need, what they do, and what it costs. Takes 60 seconds.">
-  <meta property="og:title" content="Build Your AI Team in 60 Seconds | Milo">
-  <meta property="og:description" content="Pick your industry. Tell us what eats your time. Get a custom AI agent team blueprint — with roles, capabilities, and pricing.">
+  <title>Map Your First AI Workflow — 60-Second Build Tool | Milo</title>
+  <meta name="description" content="Answer 3 questions and get a custom workflow blueprint for your firm. See which system to build first for proposals, reporting, follow-up, research, and delivery.">
+  <meta property="og:title" content="Map Your First AI Workflow in 60 Seconds | Milo">
+  <meta property="og:description" content="Tell Milo what kind of firm you run and where the workflow breaks. Get a scoped blueprint for the first system to build.">
   <link rel="canonical" href="https://getmilo.dev/build">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -459,10 +459,10 @@
   <div class="wrap wrap--narrow">
     <div class="section-marker reveal">
       <span class="spec-label">SPEC:010</span>
-      <span class="spec-coord">// team configurator</span>
+      <span class="spec-coord">// workflow configurator</span>
     </div>
-    <h1 class="build-hero__title reveal" data-delay="1">Build your <span class="accent">AI team</span></h1>
-    <p class="build-hero__subtitle reveal" data-delay="2">Answer 3 questions. Get a custom AI agent team blueprint for your business. Takes 60 seconds.</p>
+    <h1 class="build-hero__title reveal" data-delay="1">Map your <span class="accent">first workflow</span></h1>
+    <p class="build-hero__subtitle reveal" data-delay="2">Answer 3 questions. Get a custom workflow blueprint for proposals, reporting, follow-up, research, and the manual work your firm keeps rebuilding every week.</p>
   </div>
 </section>
 
@@ -481,48 +481,48 @@
     <div class="step active" id="step1">
       <div class="step-heading">
         <div class="step-heading__label">Step 1 of 3</div>
-        <h2 class="step-heading__title">What kind of business do you run?</h2>
+        <h2 class="step-heading__title">What kind of firm is this?</h2>
       </div>
       <div class="option-grid" id="industryGrid" role="radiogroup" aria-label="Select your industry">
+        <div class="option" data-value="agency" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M10 3v3M10 14v3M3 10h3M14 10h3"/></svg></div>
+          <h3>Agency</h3>
+          <p>Marketing, creative, media, performance</p>
+        </div>
+        <div class="option" data-value="consulting" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v16"/><path d="M4 6h12"/><path d="M2 12l2-6 2 6"/><path d="M14 12l2-6 2 6"/></svg></div>
+          <h3>Consulting / Advisory</h3>
+          <p>Strategy, ops, finance, growth</p>
+        </div>
         <div class="option" data-value="law" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
           <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v16"/><path d="M4 6h12"/><path d="M2 12l2-6 2 6"/><path d="M14 12l2-6 2 6"/></svg></div>
-          <h3>Law Firm</h3>
-          <p>Solo to mid-size practice</p>
+          <h3>Law / Compliance</h3>
+          <p>Practice, advisory, or compliance team</p>
+        </div>
+        <div class="option" data-value="accounting" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V12M8 17V8M12 17V5M16 17V3"/></svg></div>
+          <h3>Accounting / Finance</h3>
+          <p>CPA, bookkeeping, advisory</p>
+        </div>
+        <div class="option" data-value="recruiting" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
+          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v14"/><path d="M3 10h14"/></svg></div>
+          <h3>Recruiting / Staffing</h3>
+          <p>Search, placement, talent teams</p>
         </div>
         <div class="option" data-value="realestate" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
           <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10l8-7 8 7"/><path d="M4 8.5V17h12V8.5"/></svg></div>
           <h3>Real Estate</h3>
-          <p>Brokerage, team, or solo agent</p>
+          <p>Brokerage, advisory, investor ops</p>
         </div>
-        <div class="option" data-value="healthcare" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3v14"/><path d="M3 10h14"/></svg></div>
-          <h3>Healthcare / Dental</h3>
-          <p>Practice or clinic</p>
-        </div>
-        <div class="option" data-value="trades" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2l6.93 4v8L10 18l-6.93-4V6z"/></svg></div>
-          <h3>Home Services / HVAC</h3>
-          <p>Plumbing, electrical, HVAC, roofing</p>
-        </div>
-        <div class="option" data-value="agency" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M10 3v3M10 14v3M3 10h3M14 10h3"/></svg></div>
-          <h3>Agency / Consulting</h3>
-          <p>Marketing, design, or advisory</p>
-        </div>
-        <div class="option" data-value="ecommerce" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
+        <div class="option" data-value="inhouse" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
           <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="14" height="11" rx="1"/><path d="M7 7V5a3 3 0 016 0v2"/></svg></div>
-          <h3>E-Commerce</h3>
-          <p>Online store or D2C brand</p>
-        </div>
-        <div class="option" data-value="finance" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
-          <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V12M8 17V8M12 17V5M16 17V3"/></svg></div>
-          <h3>Accounting / Finance</h3>
-          <p>CPA, bookkeeper, or advisor</p>
+          <h3>In-House Marketing / RevOps</h3>
+          <p>Internal ops, growth, client-facing teams</p>
         </div>
         <div class="option" data-value="other" onclick="selectIndustry(this)" tabindex="0" role="radio" aria-checked="false">
           <div class="option-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2l8 8-8 8-8-8z"/></svg></div>
           <h3>Something Else</h3>
-          <p>We build for any business</p>
+          <p>We will still map the workflow</p>
         </div>
       </div>
     </div>
@@ -564,46 +564,46 @@
     <div class="step" id="step3">
       <div class="step-heading">
         <div class="step-heading__label">Step 3 of 3</div>
-        <h2 class="step-heading__title">What eats most of your time?</h2>
-        <p class="step-heading__hint">Pick all that apply. This shapes your agent team.</p>
+        <h2 class="step-heading__title">Where does the workflow keep breaking?</h2>
+        <p class="step-heading__hint">Pick all that apply. This shapes the first system we would build.</p>
       </div>
       <div class="checkbox-grid" id="painGrid">
-        <div class="checkbox-option" data-value="leads" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
+        <div class="checkbox-option" data-value="proposal" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
           <div class="check"></div>
-          <span>Following up with leads</span>
-        </div>
-        <div class="checkbox-option" data-value="scheduling" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
-          <div class="check"></div>
-          <span>Scheduling and calendar</span>
-        </div>
-        <div class="checkbox-option" data-value="support" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
-          <div class="check"></div>
-          <span>Customer questions</span>
-        </div>
-        <div class="checkbox-option" data-value="outreach" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
-          <div class="check"></div>
-          <span>Outreach and prospecting</span>
-        </div>
-        <div class="checkbox-option" data-value="data" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
-          <div class="check"></div>
-          <span>Data entry and admin</span>
+          <span>Proposal turnaround is slow</span>
         </div>
         <div class="checkbox-option" data-value="reporting" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
           <div class="check"></div>
-          <span>Reporting and analytics</span>
+          <span>Client reporting gets rebuilt every cycle</span>
         </div>
-        <div class="checkbox-option" data-value="content" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
+        <div class="checkbox-option" data-value="followup" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
           <div class="check"></div>
-          <span>Content and social media</span>
+          <span>Lead or client follow-up slips</span>
         </div>
-        <div class="checkbox-option" data-value="invoicing" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
+        <div class="checkbox-option" data-value="research" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
           <div class="check"></div>
-          <span>Invoicing and follow-up</span>
+          <span>Research and meeting prep repeat every week</span>
+        </div>
+        <div class="checkbox-option" data-value="delivery" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
+          <div class="check"></div>
+          <span>Delivery coordination disappears into messages</span>
+        </div>
+        <div class="checkbox-option" data-value="inbox" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
+          <div class="check"></div>
+          <span>Internal inbox triage lands on one person</span>
+        </div>
+        <div class="checkbox-option" data-value="notes" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
+          <div class="check"></div>
+          <span>Meeting notes and next steps get lost</span>
+        </div>
+        <div class="checkbox-option" data-value="billing" onclick="togglePain(this)" tabindex="0" role="checkbox" aria-checked="false">
+          <div class="check"></div>
+          <span>Renewal or invoicing follow-up is manual</span>
         </div>
       </div>
       <div class="btn-row">
         <button class="btn btn-back" onclick="goStep(2)">Back</button>
-        <button class="btn btn-primary" id="buildBtn" disabled onclick="showResults()">Build my team</button>
+        <button class="btn btn-primary" id="buildBtn" disabled onclick="showResults()">Build my blueprint</button>
       </div>
     </div>
 
@@ -614,35 +614,35 @@
           <span class="spec-label">SPEC:011</span>
           <span class="spec-coord">// blueprint output</span>
         </div>
-        <div class="result-header__badge">Team blueprint ready</div>
-        <h2 class="result-header__title" id="resultTitle">Your AI Agent Team</h2>
-        <p class="result-header__subtitle" id="resultSubtitle">Based on your answers, here are the agents we'd build for you.</p>
+        <div class="result-header__badge">Workflow blueprint ready</div>
+        <h2 class="result-header__title" id="resultTitle">Your workflow blueprint</h2>
+        <p class="result-header__subtitle" id="resultSubtitle">Based on your answers, here are the systems we would prioritize first.</p>
       </div>
       <div id="agentCards"></div>
 
       <div class="summary-box">
-        <h3>Your team at a glance</h3>
+        <h3>Your build at a glance</h3>
         <div class="summary-stats">
           <div class="summary-stat">
             <div class="num" id="agentCount">4</div>
-            <div class="label">AI agents</div>
+            <div class="label">workflows mapped</div>
           </div>
           <div class="summary-stat">
             <div class="num" id="hoursSaved">25+</div>
-            <div class="label">hours saved / week</div>
+            <div class="label">hours returned / week</div>
           </div>
           <div class="summary-stat">
             <div class="num" id="investmentAmount">-</div>
-            <div class="label">one-time setup</div>
+            <div class="label">starting scope</div>
           </div>
         </div>
         <div class="summary-actions">
-          <a class="cta-btn" id="ctaLink" href="/buy/team">Get this team built</a>
+          <a class="cta-btn" id="ctaLink" href="/buy/team">Start this build</a>
           <a class="cta-secondary" href="/agents">Compare all plans</a>
         </div>
       </div>
 
-      <p class="fine-print">One-time setup fee. You own everything. Only ongoing cost is <strong>$10 to $50/mo</strong> for hosting and AI API usage. No monthly fees to Milo. Use code <code>EARLYMILO25</code> for 25% off.</p>
+      <p class="fine-print">One-time setup fee. You own everything. The scoped sprint starts with one workflow and the larger build covers multiple systems. Ongoing cost is usually <strong>$10 to $50/mo</strong> for hosting and model usage, with no recurring Milo software fee.</p>
     </div>
 
   </div>
@@ -718,68 +718,68 @@ function goStep(n) {
 }
 
 const agentDB = {
-  leads: {
-    name: 'Lead Follow-Up Agent',
+  proposal: {
+    name: 'Proposal System',
     icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2l-6 9h5l-1 7 6-9h-5l1-7z"/></svg>',
-    bg: 'oklch(94% 0.04 65)',
-    role: 'Pipeline acceleration',
-    desc: 'Responds to new leads within 60 seconds via email or SMS. Sends personalized follow-ups on a cadence you set. Never lets a lead go cold.',
+    bg: 'var(--gold-light)',
+    role: 'Proposal turnaround',
+    desc: 'Turns transcripts, notes, prior scopes, and pricing rules into a repeatable proposal flow with fewer blank-page starts and less last-minute chasing.',
     hours: 6
-  },
-  scheduling: {
-    name: 'Calendar Agent',
-    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg>',
-    bg: 'oklch(92% 0.03 240)',
-    role: 'Scheduling automation',
-    desc: 'Books meetings, sends confirmations and reminders, reschedules no-shows, and syncs across your calendar tools. Zero back-and-forth.',
-    hours: 4
-  },
-  support: {
-    name: 'Client Communication Agent',
-    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="10" rx="2"/><path d="M7 13v4l4-4"/></svg>',
-    bg: 'oklch(93% 0.04 155)',
-    role: 'Always-on client support',
-    desc: 'Answers common questions 24/7 via chat, email, or text. Trained on YOUR business, YOUR policies, YOUR tone. Escalates when needed.',
-    hours: 5
-  },
-  outreach: {
-    name: 'Outreach Agent',
-    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.5"/><circle cx="10" cy="10" r="1"/></svg>',
-    bg: 'oklch(93% 0.03 350)',
-    role: 'Prospecting on autopilot',
-    desc: 'Researches prospects, writes personalized messages, and sends targeted outreach. Fills your pipeline while you focus on closing.',
-    hours: 8
-  },
-  data: {
-    name: 'Admin Agent',
-    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="10" height="15" rx="1"/><path d="M8 3V1h4v2"/></svg>',
-    bg: 'oklch(93% 0.03 300)',
-    role: 'Data entry elimination',
-    desc: 'Enters data into your CRM, updates records, processes forms, and syncs information across systems. The busywork disappears.',
-    hours: 5
   },
   reporting: {
-    name: 'Reporting Agent',
+    name: 'Client Reporting System',
+    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg>',
+    bg: 'var(--surface)',
+    role: 'Reporting assembly',
+    desc: 'Pulls numbers from your stack, drafts the client-facing update, and gives the team a clean review point instead of rebuilding reports from scratch.',
+    hours: 4
+  },
+  followup: {
+    name: 'Follow-Up System',
+    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="10" rx="2"/><path d="M7 13v4l4-4"/></svg>',
+    bg: 'var(--surface-raised)',
+    role: 'Pipeline continuity',
+    desc: 'Keeps prospects and clients from going cold by turning your follow-up cadence, reminders, and escalation rules into a dependable workflow.',
+    hours: 5
+  },
+  research: {
+    name: 'Research System',
+    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="10" r="3.5"/><circle cx="10" cy="10" r="1"/></svg>',
+    bg: 'var(--surface)',
+    role: 'Reusable context',
+    desc: 'Collects account context, meeting prep, and background research into one structured system so the team stops reopening the same tabs every week.',
+    hours: 8
+  },
+  delivery: {
+    name: 'Delivery Coordination System',
+    icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="10" height="15" rx="1"/><path d="M8 3V1h4v2"/></svg>',
+    bg: 'var(--gold-light)',
+    role: 'Execution flow',
+    desc: 'Routes work between intake, approvals, execution, and client delivery so nothing disappears in email, Slack, or someone&apos;s private to-do list.',
+    hours: 5
+  },
+  inbox: {
+    name: 'Internal Inbox System',
     icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V11M8 17V7M12 17V9M16 17V4"/></svg>',
-    bg: 'oklch(93% 0.03 220)',
-    role: 'Automated insights',
-    desc: 'Pulls numbers from your tools, builds daily and weekly reports, flags anomalies, and delivers insights to your inbox every morning.',
+    bg: 'var(--surface-raised)',
+    role: 'Request triage',
+    desc: 'Sorts incoming internal requests, summarizes what matters, and routes work to the right owner so one operator is not carrying the whole inbox.',
     hours: 3
   },
-  content: {
-    name: 'Content Agent',
+  notes: {
+    name: 'Meeting Notes System',
     icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 3.5l3 3L7 16H4v-3z"/></svg>',
-    bg: 'oklch(95% 0.04 90)',
-    role: 'Content production',
-    desc: 'Drafts social posts, blog outlines, email newsletters, and marketing copy in your voice. You review and approve \u2014 it does the heavy lifting.',
+    bg: 'var(--surface)',
+    role: 'Decision capture',
+    desc: 'Turns calls and internal meetings into usable notes, action items, and next steps so handoffs do not depend on someone remembering the details later.',
     hours: 6
   },
-  invoicing: {
-    name: 'Billing Agent',
+  billing: {
+    name: 'Billing Follow-Up System',
     icon: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="12" height="16" rx="1"/><path d="M8 7h4M8 10h4M8 13h2"/></svg>',
-    bg: 'oklch(93% 0.04 155)',
-    role: 'Revenue collection',
-    desc: 'Sends invoices on schedule, follows up on overdue payments with polite persistence, and logs payment status. Get paid faster.',
+    bg: 'var(--gold-light)',
+    role: 'Collections rhythm',
+    desc: 'Keeps invoice reminders, renewal nudges, and overdue follow-up consistent without asking the team to remember the cadence manually.',
     hours: 3
   }
 };
@@ -792,27 +792,32 @@ function showResults() {
   const totalHours = agents.reduce((sum, a) => sum + a.hours, 0);
   const count = agents.length;
 
-  let tier, price, link;
-  if (count <= 3) {
-    tier = 'Per Agent'; price = '$399/agent'; link = '/buy/starter';
+  let price, link, ctaText;
+  if (count <= 2) {
+    price = '$399+'; link = '/buy/starter'; ctaText = 'Start the scoped sprint →';
   } else {
-    tier = 'Full Team (4+)'; price = '$2,499'; link = '/buy/team';
+    price = '$2,499+'; link = '/demo'; ctaText = 'Talk through the buildout →';
   }
 
   const industryNames = {
-    law: 'law firm', realestate: 'real estate business', healthcare: 'practice',
-    trades: 'business', agency: 'agency', ecommerce: 'store',
-    finance: 'firm', other: 'business'
+    agency: 'agency',
+    consulting: 'consulting firm',
+    law: 'law or compliance firm',
+    accounting: 'finance or accounting firm',
+    recruiting: 'recruiting team',
+    realestate: 'real estate firm',
+    inhouse: 'in-house operations team',
+    other: 'firm'
   };
-  const biz = industryNames[state.industry] || 'business';
+  const biz = industryNames[state.industry] || 'firm';
 
-  document.getElementById('resultTitle').innerHTML = 'Your ' + count + '-Agent AI Team';
-  document.getElementById('resultSubtitle').textContent = 'Custom-built for your ' + biz + '. Ready in days, not months.';
+  document.getElementById('resultTitle').innerHTML = 'Your ' + count + '-Workflow Blueprint';
+  document.getElementById('resultSubtitle').textContent = 'Built for your ' + biz + '. We would start with the workflow that removes the most repeated manual work first.';
   document.getElementById('agentCount').textContent = count;
   document.getElementById('hoursSaved').textContent = totalHours + '+';
   document.getElementById('investmentAmount').textContent = price;
   document.getElementById('ctaLink').href = link;
-  document.getElementById('ctaLink').textContent = 'Get the ' + tier + ' package \u2192';
+  document.getElementById('ctaLink').textContent = ctaText;
 
   const cardsHTML = agents.map(a => {
     return '<div class="agent-card">' +
@@ -821,7 +826,7 @@ function showResults() {
         '<h3>' + a.name + '</h3>' +
         '<div class="role">' + a.role + '</div>' +
         '<p>' + a.desc + '</p>' +
-        '<div class="saves">// saves ~' + a.hours + ' hrs/week</div>' +
+        '<div class="saves">// returns ~' + a.hours + ' hrs/week</div>' +
       '</div></div>';
   }).join('');
 
