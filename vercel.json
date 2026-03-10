@@ -1,94 +1,301 @@
 {
   "redirects": [
-    { "source": "/buy/starter", "destination": "https://buy.stripe.com/dRm9ASdoFcD5e426KifIs0e", "statusCode": 307 },
-    { "source": "/buy/team", "destination": "https://buy.stripe.com/28EdR81FXbz11hgc4CfIs0f", "statusCode": 307 },
-    { "source": "/buy/managed", "destination": "https://buy.stripe.com/bJe5kC2K18mP5xw7OmfIs0g", "statusCode": 307 },
-    { "source": "/blog/openclaw-silent-failures", "destination": "/blog", "statusCode": 301 },
-    { "source": "/blog/openclaw-memory-management", "destination": "/blog", "statusCode": 301 },
-    { "source": "/blog/top-openclaw-problems-how-to-fix-them", "destination": "/blog", "statusCode": 301 },
-    { "source": "/receptionist", "destination": "/agents", "statusCode": 301 },
-    { "source": "/blog/ai-receptionist-pricing-comparison", "destination": "/blog", "statusCode": 301 },
-    { "source": "/blog/ai-receptionist-no-monthly-fee", "destination": "/blog", "statusCode": 301 },
-    { "source": "/blog/ai-receptionist-dental-practices", "destination": "/blog", "statusCode": 301 },
-    { "source": "/blog/ai-receptionist-hvac-plumbing", "destination": "/blog", "statusCode": 301 },
-    { "source": "/blog/ai-receptionist-law-firms", "destination": "/blog", "statusCode": 301 },
-    { "source": "/blog/ai-receptionist-veterinary-clinics", "destination": "/blog", "statusCode": 301 },
-    { "source": "/blog/best-ai-receptionist", "destination": "/blog", "statusCode": 301 },
-    { "source": "/blog/best-ai-receptionist-contractors", "destination": "/blog", "statusCode": 301 },
-    { "source": "/blog/ai-phone-answering-service", "destination": "/blog", "statusCode": 301 },
-    { "source": "/blog/missed-calls-cost-calculator", "destination": "/blog", "statusCode": 301 }
+    {
+      "source": "/buy/starter",
+      "destination": "https://buy.stripe.com/dRm9ASdoFcD5e426KifIs0e",
+      "statusCode": 307
+    },
+    {
+      "source": "/buy/team",
+      "destination": "https://buy.stripe.com/28EdR81FXbz11hgc4CfIs0f",
+      "statusCode": 307
+    },
+    {
+      "source": "/buy/managed",
+      "destination": "https://buy.stripe.com/bJe5kC2K18mP5xw7OmfIs0g",
+      "statusCode": 307
+    },
+    {
+      "source": "/blog/openclaw-silent-failures",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/openclaw-memory-management",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/top-openclaw-problems-how-to-fix-them",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/receptionist",
+      "destination": "/agents",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/ai-receptionist-pricing-comparison",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/ai-receptionist-no-monthly-fee",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/ai-receptionist-dental-practices",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/ai-receptionist-hvac-plumbing",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/ai-receptionist-law-firms",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/ai-receptionist-veterinary-clinics",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/best-ai-receptionist",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/best-ai-receptionist-contractors",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/ai-phone-answering-service",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/missed-calls-cost-calculator",
+      "destination": "/blog",
+      "statusCode": 301
+    }
   ],
   "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/executives", "destination": "/executives.html" },
-    { "source": "/demo", "destination": "/demo.html" },
-    { "source": "/ainative", "destination": "/ainative.html" },
-    { "source": "/agents", "destination": "/agents.html" },
-    { "source": "/build", "destination": "/build.html" },
-    { "source": "/calculator", "destination": "/calculator.html" },
-    { "source": "/audit", "destination": "/audit.html" },
-    { "source": "/security", "destination": "/security.html" },
-    { "source": "/industries", "destination": "/industries.html" },
-    { "source": "/blog", "destination": "/blog.html" },
-    { "source": "/why-so-cheap", "destination": "/content/why-so-cheap.html" },
-    { "source": "/law-firms", "destination": "/content/law-firm-landing.html" },
-    { "source": "/accountants", "destination": "/content/cpa-landing.html" },
-    { "source": "/hvac", "destination": "/content/hvac-landing.html" },
-    { "source": "/dental", "destination": "/content/dental-landing.html" },
-    { "source": "/veterinary", "destination": "/content/veterinary-landing.html" },
-    { "source": "/compare", "destination": "/content/compare-hub.html" },
-    { "source": "/compare/answerconnect", "destination": "/content/answerconnect-alternative.html" },
-    { "source": "/compare/ruby-receptionists", "destination": "/content/ruby-receptionists-alternative.html" },
-    { "source": "/compare/smith-ai", "destination": "/content/smith-ai-alternative.html" },
-    { "source": "/compare/my-ai-front-desk", "destination": "/content/my-ai-front-desk-alternative.html" },
-    { "source": "/compare/goodcall", "destination": "/content/goodcall-alternative.html" },
-    { "source": "/compare/dialzara", "destination": "/content/dialzara-alternative.html" },
-    { "source": "/compare/rosie", "destination": "/content/rosie-alternative.html" },
-    { "source": "/compare/callbird", "destination": "/content/callbird-alternative.html" },
-    { "source": "/compare/trillet", "destination": "/content/trillet-alternative.html" },
-    { "source": "/compare/ring-eden", "destination": "/content/ring-eden-alternative.html" },
-    { "source": "/compare/abby-connect", "destination": "/content/abby-connect-alternative.html" },
-    { "source": "/blog/ai-native-agencies", "destination": "/content/blog-ai-native-agencies.html" },
-    { "source": "/blog/ai-agents-small-business", "destination": "/content/blog-ai-agents-small-business.html" },
-    { "source": "/blog/ai-agent-system", "destination": "/content/blog-ai-agent-system-6m-pipeline.html" },
-    { "source": "/blog/build-vs-buy-ai-agents", "destination": "/content/blog-build-vs-buy-ai-agents.html" },
-    { "source": "/blog/one-time-vs-monthly-ai-subscriptions", "destination": "/content/blog-one-time-vs-monthly-ai-subscriptions.html" },
-    { "source": "/blog/how-much-does-ai-agent-cost", "destination": "/content/blog-how-much-does-ai-agent-cost.html" },
-    { "source": "/blog/ai-agent-team-cost-2026", "destination": "/content/blog-ai-agent-team-cost-2026.html" },
-    { "source": "/blog/ai-agent-team-small-business", "destination": "/content/blog-ai-agent-team-small-business.html" },
-    { "source": "/blog/how-to-automate-business-with-ai", "destination": "/content/blog-how-to-automate-business-with-ai.html" },
-    { "source": "/blog/ai-for-executives-cost-2026", "destination": "/content/blog-ai-for-executives-cost-2026.html" }
+    {
+      "source": "/blueprint",
+      "destination": "/blueprint.html"
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/executives",
+      "destination": "/executives.html"
+    },
+    {
+      "source": "/demo",
+      "destination": "/demo.html"
+    },
+    {
+      "source": "/ainative",
+      "destination": "/ainative.html"
+    },
+    {
+      "source": "/agents",
+      "destination": "/agents.html"
+    },
+    {
+      "source": "/build",
+      "destination": "/build.html"
+    },
+    {
+      "source": "/calculator",
+      "destination": "/calculator.html"
+    },
+    {
+      "source": "/audit",
+      "destination": "/audit.html"
+    },
+    {
+      "source": "/security",
+      "destination": "/security.html"
+    },
+    {
+      "source": "/industries",
+      "destination": "/industries.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/why-so-cheap",
+      "destination": "/content/why-so-cheap.html"
+    },
+    {
+      "source": "/law-firms",
+      "destination": "/content/law-firm-landing.html"
+    },
+    {
+      "source": "/accountants",
+      "destination": "/content/cpa-landing.html"
+    },
+    {
+      "source": "/hvac",
+      "destination": "/content/hvac-landing.html"
+    },
+    {
+      "source": "/dental",
+      "destination": "/content/dental-landing.html"
+    },
+    {
+      "source": "/veterinary",
+      "destination": "/content/veterinary-landing.html"
+    },
+    {
+      "source": "/compare",
+      "destination": "/content/compare-hub.html"
+    },
+    {
+      "source": "/compare/answerconnect",
+      "destination": "/content/answerconnect-alternative.html"
+    },
+    {
+      "source": "/compare/ruby-receptionists",
+      "destination": "/content/ruby-receptionists-alternative.html"
+    },
+    {
+      "source": "/compare/smith-ai",
+      "destination": "/content/smith-ai-alternative.html"
+    },
+    {
+      "source": "/compare/my-ai-front-desk",
+      "destination": "/content/my-ai-front-desk-alternative.html"
+    },
+    {
+      "source": "/compare/goodcall",
+      "destination": "/content/goodcall-alternative.html"
+    },
+    {
+      "source": "/compare/dialzara",
+      "destination": "/content/dialzara-alternative.html"
+    },
+    {
+      "source": "/compare/rosie",
+      "destination": "/content/rosie-alternative.html"
+    },
+    {
+      "source": "/compare/callbird",
+      "destination": "/content/callbird-alternative.html"
+    },
+    {
+      "source": "/compare/trillet",
+      "destination": "/content/trillet-alternative.html"
+    },
+    {
+      "source": "/compare/ring-eden",
+      "destination": "/content/ring-eden-alternative.html"
+    },
+    {
+      "source": "/compare/abby-connect",
+      "destination": "/content/abby-connect-alternative.html"
+    },
+    {
+      "source": "/blog/ai-native-agencies",
+      "destination": "/content/blog-ai-native-agencies.html"
+    },
+    {
+      "source": "/blog/ai-agents-small-business",
+      "destination": "/content/blog-ai-agents-small-business.html"
+    },
+    {
+      "source": "/blog/ai-agent-system",
+      "destination": "/content/blog-ai-agent-system-6m-pipeline.html"
+    },
+    {
+      "source": "/blog/build-vs-buy-ai-agents",
+      "destination": "/content/blog-build-vs-buy-ai-agents.html"
+    },
+    {
+      "source": "/blog/one-time-vs-monthly-ai-subscriptions",
+      "destination": "/content/blog-one-time-vs-monthly-ai-subscriptions.html"
+    },
+    {
+      "source": "/blog/how-much-does-ai-agent-cost",
+      "destination": "/content/blog-how-much-does-ai-agent-cost.html"
+    },
+    {
+      "source": "/blog/ai-agent-team-cost-2026",
+      "destination": "/content/blog-ai-agent-team-cost-2026.html"
+    },
+    {
+      "source": "/blog/ai-agent-team-small-business",
+      "destination": "/content/blog-ai-agent-team-small-business.html"
+    },
+    {
+      "source": "/blog/how-to-automate-business-with-ai",
+      "destination": "/content/blog-how-to-automate-business-with-ai.html"
+    },
+    {
+      "source": "/blog/ai-for-executives-cost-2026",
+      "destination": "/content/blog-ai-for-executives-cost-2026.html"
+    }
   ],
   "headers": [
     {
       "source": "/api/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" }
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET,POST,OPTIONS"
+        }
       ]
     },
     {
       "source": "/(executives|demo|ainative|agents|build|calculator|audit|security|why-so-cheap|industries|blog)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(law-firms|accountants|hvac|dental|veterinary)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     },
     {
       "source": "/compare/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     },
     {
       "source": "/blog/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     }
   ]
