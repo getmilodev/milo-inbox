@@ -49,6 +49,18 @@ function firstNameFromSender(from = '') {
   return m ? m[1].replace(/[",]/g, '') : 'there';
 }
 
+function senderDomain(from = '') {
+  const m = String(from).match(/@([^>\s]+)/);
+  return m ? m[1].replace(/[>]/g, '').toLowerCase() : '';
+}
+
+function inferCompany(from = '') {
+  const domain = senderDomain(from);
+  if (!domain) return '';
+  const root = domain.split('.').slice(0, -1).pop() || domain;
+  return root.replace(/[-_]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
 function threadKey(inbound) {
   return inbound.threadId || inbound.messageId || Buffer.from(`${inbound.from}|${inbound.subject}`).toString('base64').slice(0, 32);
 }
@@ -165,20 +177,81 @@ function buildThreadTranscript(issueBody = '', comments = []) {
 async function generateReplyWithGemini(inbound, senderKind, intentKind, threadTranscript) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) return null;
-  const prompt = `You are Callias Pulcher, founder of Milo. Write a concise, warm, direct business email reply.\n\nRules:\n- Never mention being an AI.\n- Sound like a sharp founder/operator.\n- Be useful, not verbose.\n- If the email is simple, answer directly.\n- If the best next step is a call, suggest the assessment call and include this link exactly: https://cal.com/getmilodev/30min\n- If the message is too sensitive, legal, abusive, unclear, or risky to answer automatically, return action HOLD.\n- Avoid hype and marketing fluff.\n\nReturn strict JSON with keys:\n{\n  "action": "reply" | "hold",\n  "reason": "short string",\n  "subject": "string",\n  "text": "string",\n  "html": "string"\n}\n\nContext:\nSender kind: ${senderKind}\nIntent kind: ${intentKind}\nInbound from: ${inbound.from}\nInbound subject: ${inbound.subject}\nInbound text: ${(inbound.text || inbound.preview || '').slice(0, 6000)}\n\nThread transcript:\n${threadTranscript}`;
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: prompt }] }], generationConfig: { temperature: 0.5, responseMimeType: 'application/json' } })
-  });
-  const data = await res.json();
-  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
-  try {
-    const parsed = JSON.parse(text);
-    if (!parsed.subject || !parsed.text) return null;
-    return { mode: 'gemini', ...parsed };
-  } catch {
-    return null;
+  const prompt = `You are Callias Pulcher, founder of Milo. Write the email like a real founder personally replying.
+
+Goal:
+- Make the reply feel handcrafted for the sender.
+- Reference their actual question or concern in the first sentence.
+- Sound calm, sharp, practical, and human.
+
+Hard rules:
+- Never mention being an AI.
+- Do not sound like customer support sludge.
+- Avoid generic phrases like "Got your note", "Thanks for reaching out", "Hope you're well", "If helpful", or "I'd be happy to" unless truly necessary.
+- Keep it concise: usually 70-160 words.
+- If the best next step is a call, suggest the assessment call and include this exact link: https://cal.com/getmilodev/30min
+- Answer directly first. Then suggest the next step.
+- If the message is too sensitive, legal, abusive, unclear, or risky to answer automatically, return action HOLD.
+
+Style:
+- Founder-to-founder or operator-to-operator.
+- Specific > polished.
+- Natural sentence rhythm.
+- No hype.
+
+Return strict JSON only:
+{
+  "action": "reply" | "hold",
+  "reason": "short string",
+  "subject": "string",
+  "text": "string",
+  "html": "string"
+}
+
+Sender details:
+- sender_kind: ${senderKind}
+- intent_kind: ${intentKind}
+- sender_name: ${firstNameFromSender(inbound.from)}
+- inferred_company: ${inferCompany(inbound.from)}
+- from: ${inbound.from}
+
+Inbound email:
+- subject: ${inbound.subject}
+- text: ${(inbound.text || inbound.preview || '').slice(0, 6000)}
+
+Thread transcript:
+${threadTranscript}`;
+
+  async function tryModel(model, timeoutMs) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
+        body: JSON.stringify({
+          contents: [{ role: 'user', parts: [{ text: prompt }] }],
+          generationConfig: { temperature: 0.35, responseMimeType: 'application/json' }
+        })
+      });
+      const data = await res.json();
+      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
+      const parsed = JSON.parse(text);
+      if (!parsed.subject || !parsed.text) return null;
+      return { mode: model, ...parsed };
+    } catch {
+      return null;
+    } finally {
+      clearTimeout(timer);
+    }
   }
+
+  const pro = await tryModel('gemini-2.5-pro', 25000);
+  if (pro) return pro;
+  const flash = await tryModel('gemini-2.5-flash', 12000);
+  if (flash) return flash;
+  return null;
 }
 
 function fallbackReply(inbound, intentKind) {
