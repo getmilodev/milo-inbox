@@ -166,7 +166,7 @@ async function generateReplyWithGemini(inbound, senderKind, intentKind, threadTr
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) return null;
   const prompt = `You are Callias Pulcher, founder of Milo. Write a concise, warm, direct business email reply.\n\nRules:\n- Never mention being an AI.\n- Sound like a sharp founder/operator.\n- Be useful, not verbose.\n- If the email is simple, answer directly.\n- If the best next step is a call, suggest the assessment call and include this link exactly: https://cal.com/getmilodev/30min\n- If the message is too sensitive, legal, abusive, unclear, or risky to answer automatically, return action HOLD.\n- Avoid hype and marketing fluff.\n\nReturn strict JSON with keys:\n{\n  "action": "reply" | "hold",\n  "reason": "short string",\n  "subject": "string",\n  "text": "string",\n  "html": "string"\n}\n\nContext:\nSender kind: ${senderKind}\nIntent kind: ${intentKind}\nInbound from: ${inbound.from}\nInbound subject: ${inbound.subject}\nInbound text: ${(inbound.text || inbound.preview || '').slice(0, 6000)}\n\nThread transcript:\n${threadTranscript}`;
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: prompt }] }], generationConfig: { temperature: 0.5, responseMimeType: 'application/json' } })
   });
