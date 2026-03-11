@@ -86,7 +86,7 @@ async function githubRequest(path, options = {}) {
 async function getThreadState(key) {
   const path = `${STATE_PREFIX}/${safeThreadKey(key)}.json`;
   try {
-    const data = await githubRequest(`/repos/${PRIVATE_REPO}/contents/${encodeURIComponent(path)}`);
+    const data = await githubRequest(`/repos/${PRIVATE_REPO}/contents/${path}`);
     const content = Buffer.from(data.content || '', 'base64').toString('utf8');
     return { path, sha: data.sha, state: JSON.parse(content) };
   } catch (e) {
@@ -102,7 +102,7 @@ async function putThreadState(path, state, sha = null) {
     branch: 'main'
   };
   if (sha) body.sha = sha;
-  return githubRequest(`/repos/${PRIVATE_REPO}/contents/${encodeURIComponent(path)}`, { method: 'PUT', body });
+  return githubRequest(`/repos/${PRIVATE_REPO}/contents/${path}`, { method: 'PUT', body });
 }
 
 async function createPrivateIssue(inbound, senderKind, intentKind, key) {
