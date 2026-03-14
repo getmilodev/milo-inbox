@@ -1,5 +1,8 @@
 # Internal strategy/ops docs — sensitive, never deploy
 ops/
+docs/
+dns/
+ref/
 mockups/
 research/
 content/*.md
