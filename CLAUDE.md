@@ -1,20 +1,26 @@
-# Milo — AI Transformation Partner for Small Business
+# Milo — AI Native Setup for Professional Services
 
-Milo (getmilo.dev) builds and deploys AI agent systems for small businesses and executives. We audit operations, architect agent teams, deploy to the client's own infrastructure, and transfer full ownership. No lock-in, no recurring fees to us.
+Milo (getmilo.dev) helps founders and operators at professional-services firms turn AI from vague curiosity into practical operating advantage. We assess, build, and hand off — no lock-in, no recurring fees to us.
 
-## Product Lines
+## Product / Pricing
 
-| Product | Price | Audience | Key Selling Point |
-|---------|-------|----------|-------------------|
-| AI Agent Teams | $399/agent or $2,499 for 4+ (one-time) | SMBs (law, dental, HVAC, accounting, veterinary) | You own everything. ~$40/mo infrastructure only |
-| AI for Executives | $2-5K setup + optional monthly retainer | Senior leaders, C-suite | Personal AI stack, strategic literacy, ongoing optimization |
+| Stage | Price | What happens |
+|-------|-------|--------------|
+| AI Systems Assessment | $500 | 30-min diagnostic — where AI creates the most leverage first |
+| AI Native Setup | From $2,500 | Build the first workflow, working session, full handoff |
+| Expansion | Scoped after first win | Extend into additional workflows or team members |
+
+Ongoing infrastructure: $30–60/mo (client's own hosting/model usage, not to Milo).
+
+## ICP
+
+3-to-15-person professional-services firm (agencies, consulting, law, accounting) whose founder or operator knows AI should be making them faster but hasn't gotten past ChatGPT — and has at least one weekly workflow (proposals, reporting, follow-up, or research) that's still entirely manual.
 
 ## Competitive Position
 
-- Nobody else sells multi-agent *teams* — competitors sell single tools (Goodcall, Smith.ai, Ruby, Dialzara, etc.)
-- We run 12 agents in production ourselves daily — we eat our own cooking
+- We build around real recurring workflows, not vague AI ambitions
 - One-time pricing in a market of monthly subscriptions
-- The receptionist/phone-answering product line is **dead**. Never reference it in new content.
+- The receptionist/phone-answering product line and per-agent pricing ($399) are **dead**. Never reference them in new content.
 
 <important>
 HARD STOPS — things Claude must NEVER do in this project:
