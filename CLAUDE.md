@@ -1,194 +1,89 @@
-# Milo Website — Brand & Code Guidelines
+# Milo — AI Transformation Partner for Small Business
 
-All pages on getmilo.dev MUST follow these rules. No exceptions.
-
-## Design Direction: The Blueprint
-
-Technical specification aesthetic. Warm-tinted OKLCH palette (hue 65), classical typography accents, grid-paper background, monospace spec labels. Ratio: ~70% tech / ~30% classical.
-
-## Required Page Structure
-
-Every HTML page must include, in this order:
-
-```
-1. <link rel="stylesheet" href="/milo-design-system.css">  (root-relative)
-2. Google Fonts preconnect + link (Cormorant Garamond, Outfit, JetBrains Mono)
-3. <div class="grid-bg" aria-hidden="true"></div>
-4. <a href="#main" class="skip-link">Skip to main content</a>
-5. Standard nav (see below)
-6. Mobile menu (see below)
-7. <main id="main"> ... </main>
-8. Standard footer (see below)
-9. Scroll reveal JS + mobile menu JS + focus trap JS (see below)
-```
-
-Pages in `/content/` are served via Vercel rewrites at nested paths (`/blog/*`, `/compare/*`) — always use root-relative CSS path (`/milo-design-system.css`).
-
-## Standard Nav
-
-```html
-<nav class="nav" role="navigation" aria-label="Main">
-  <div class="wrap">
-    <a href="/" class="nav__logo">
-      <span class="nav__logo-text">milo</span>
-      <span class="nav__dot"></span>
-    </a>
-    <div class="nav__links">
-      <a href="/agents" class="nav__link">Services</a>
-      <a href="/security" class="nav__link">Security</a>
-      <a href="/calculator" class="nav__link">Calculator</a>
-      <a href="/build" class="nav__link">Build</a>
-      <a href="/demo" class="nav__cta">Start a project</a>
-    </div>
-    <button class="nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-```
-
-- Add `nav__link--active` + `aria-current="page"` to the link matching the current page
-- Content/blog/compare pages: no active link (they're not in the nav)
-
-## Standard Mobile Menu
-
-```html
-<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation">
-  <a href="/agents">Services</a>
-  <a href="/security">Security</a>
-  <a href="/calculator">Calculator</a>
-  <a href="/build">Build</a>
-  <a href="/demo">Start a project</a>
-</div>
-```
-
-Links must match the nav exactly — Services, Security, Calculator, Build, Start a project.
-
-## Standard Footer
-
-```html
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__logo">
-      <span class="footer__logo-text">milo</span>
-      <span class="footer__dot"></span>
-    </div>
-    <div class="footer__links">
-      <a href="/agents">Services</a>
-      <a href="/security">Security</a>
-      <a href="/blog">Guides</a>
-      <a href="https://github.com/getmilodev">GitHub</a>
-    </div>
-    <span class="footer__copy">&copy; 2026 Milo</span>
-  </div>
-</footer>
-```
-
-## Required JS (end of body)
-
-Every page needs: scroll reveal (IntersectionObserver), mobile menu toggle, focus trap + Escape handler. See any main page (e.g., `agents.html`) for the exact JS block.
-
-## Design System Rules
-
-### Colors
-- **Never use raw hex or OKLCH values.** Always reference CSS custom properties (`--gold-text`, `--text-2`, etc.)
-- Use `--gold-text` (not `--gold`) for text on light backgrounds — `--gold` fails WCAG AA
-- Use `--text-3` for captions/secondary text (AA-compliant)
-- On dark surfaces: `--text-inv`, `--text-on-dark`, `--text-on-dark-muted`
-- Warm-tinted neutrals only — all neutrals use hue 65, never pure gray
-
-### Typography
-- `--font-display` (Cormorant Garamond) — headings, pull quotes, brand mark, hero prices
-- `--font-body` (Outfit) — body text, buttons, UI, nav
-- `--font-mono` (JetBrains Mono) — spec labels, code, technical data, sidebar metadata
-- Use the fluid type scale (`--text-xs` through `--text-4xl`) — never hardcode font sizes
-
-### Layout
-- Use `wrap` (max-width 1160px) or `wrap wrap--narrow` (max-width 720px) for content containers
-- Use editorial layouts (asymmetric 2-col grids) — NOT card grids
-- Use `stacked-list` / `stacked-item` for feature lists — NOT identical card repetition
-- Use `comparison-table` for vs-tables
-- Use `pricing-tier` rows for pricing — NOT card grids
-- Use `cta-section` (dark inset with rounded corners) for bottom CTAs
-
-### Blueprint Elements
-- `grid-bg` — 60px grid background on every page
-- `spec-label` — monospace labels on section markers (SPEC:001, LAND:001, BLOG:001, etc.)
-- `spec-label--on-dark` — variant for dark surfaces (CTA sections)
-- `section-marker--cta` — layout class for markers inside CTA sections
-- `spec-coord` — secondary annotation text after spec labels
-
-### Accessibility
-- `skip-link` on every page
-- `aria-current="page"` on active nav link
-- `aria-expanded` + `aria-controls` on mobile menu toggle
-- `role="dialog"` on mobile menu
-- Focus trap + Escape key on mobile menu
-- `aria-expanded` + `aria-controls` on FAQ accordions
-- `sr-only` class for visually-hidden labels
-- Body text links inside `<main>` get automatic underlines (CSS rule)
-- `prefers-reduced-motion` respected — animations disabled
-
-### Spacing
-- 4pt base system: `--sp-1` (4px) through `--sp-32` (128px)
-- Never hardcode pixel values for spacing — always use tokens
-
-### Motion
-- `ease-out-expo` for primary transitions
-- `ease-out-quart` for secondary
-- No bounce or elastic easing
-- Scroll reveal via `reveal` class + IntersectionObserver
-- `data-delay="1"` through `data-delay="4"` for stagger
-
-### Anti-Patterns (DO NOT)
-- Card grids (same-sized cards with icon + heading + text)
-- Hero metric layouts (big number, small label, gradient accent)
-- Gradient text
-- Glassmorphism / blur effects
-- Bounce/elastic easing
-- System fonts (Inter, Roboto, Arial, -apple-system)
-- Raw hex colors (#1a1a1a, #e53e3e, #2563eb, etc.)
-- Inline styles that duplicate design system properties
-- Centered-everything layouts
-- Nested cards
-
-## File Organization
-
-```
-/                       Root pages (index, agents, executives, security, calculator, build, ainative, demo)
-/content/               SEO content (blog posts, industry landings, competitor comparisons)
-/api/                   Vercel serverless functions
-/ops/                   Internal operations docs (not served)
-milo-design-system.css  Single source of truth for all styling
-vercel.json             Rewrites, redirects, headers
-sitemap.xml             All public URLs
-```
-
-## Vercel Routing
-
-Content pages are served via rewrites in `vercel.json`:
-- `/law-firms` → `/content/law-firm-landing.html`
-- `/compare/answerconnect` → `/content/answerconnect-alternative.html`
-- `/blog/ai-agents-small-business` → `/content/blog-ai-agents-small-business.html`
-- etc.
-
-`/receptionist` redirects (301) to `/agents`. Receptionist blog routes redirect to `/blog`.
-
-All Stripe checkout links go through redirects: `/buy/starter`, `/buy/team`.
+Milo (getmilo.dev) builds and deploys AI agent systems for small businesses and executives. We audit operations, architect agent teams, deploy to the client's own infrastructure, and transfer full ownership. No lock-in, no recurring fees to us.
 
 ## Product Lines
 
-Two product lines only:
-- **AI Agent Teams** (businesses) — $399/agent, $2,499 for 4+ team. Per-agent ownership.
-- **AI for Executives** — $2-5K setup + optional monthly. Personal AI stack, strategic literacy, ongoing optimization.
+| Product | Price | Audience | Key Selling Point |
+|---------|-------|----------|-------------------|
+| AI Agent Teams | $399/agent or $2,499 for 4+ (one-time) | SMBs (law, dental, HVAC, accounting, veterinary) | You own everything. ~$40/mo infrastructure only |
+| AI for Executives | $2-5K setup + optional monthly retainer | Senior leaders, C-suite | Personal AI stack, strategic literacy, ongoing optimization |
 
-The receptionist product line is deprecated. Do not reference AI receptionist, phone answering, or answering service in any new content.
+## Competitive Position
 
-## Preserving Content
+- Nobody else sells multi-agent *teams* — competitors sell single tools (Goodcall, Smith.ai, Ruby, Dialzara, etc.)
+- We run 12 agents in production ourselves daily — we eat our own cooking
+- One-time pricing in a market of monthly subscriptions
+- The receptionist/phone-answering product line is **dead**. Never reference it in new content.
 
-When rewriting any page:
-- **Never drop content** — every paragraph, statistic, quote, and CTA must survive
-- **Preserve all links** — internal links, Stripe buy links, external links
-- **Preserve structured data** — JSON-LD (Service, FAQPage, ProfessionalService, Article)
-- **Preserve meta tags** — title, description, og:title, og:description, canonical
-- **Preserve all JavaScript functionality** — calculators, forms, wizards, API calls
+<important>
+HARD STOPS — things Claude must NEVER do in this project:
+1. Reference "AI receptionist", "phone answering", or "answering service" as Milo's product (deprecated — use "AI agent team")
+2. Use raw hex or OKLCH color values — always use CSS custom properties from the design system
+3. Use card grids, gradient text, glassmorphism, system fonts, or any anti-pattern from ref/design-system.md
+4. Push with `gh` CLI (smillunchick account has no access) — always use the getmilodev PAT
+5. Drop content when rewriting pages — every paragraph, link, JSON-LD, and meta tag must survive
+6. Use `--gold` for text — it fails WCAG AA. Use `--gold-text` instead
+7. Add the /security page to the nav — it's linked from within other pages only
+</important>
+
+## Deploy Workflow
+
+Static HTML site on Vercel. Auto-deploys on push to main.
+
+```bash
+# Always pull first (remote may have diverged)
+cd ~/Projects/milo-inbox
+git pull --rebase
+
+# After changes: commit and push
+git add <changed-files>
+git commit -m "Description"
+git push https://getmilodev:<PAT>@github.com/getmilodev/milo-inbox.git main
+```
+
+After creating/editing pages, ALWAYS commit and push. Don't write files and stop — changes must go live.
+
+New pages require: rewrite in `vercel.json` + add route to cache header regex.
+
+## Architecture
+
+- Static HTML, no build step, no bundler
+- All pages are single-file (inline CSS + JS)
+- Shared styles: `milo-design-system.css` (single source of truth)
+- Routes: `vercel.json` rewrites section
+- API: `api/` directory (Vercel serverless functions)
+- Ops: `ops/` directory (internal docs, outreach plans — not served)
+- Content: `content/` directory (blog posts, industry landings, competitor comparisons)
+- Stripe checkout: redirects in `vercel.json` (`/buy/starter`, `/buy/team`)
+
+## Nav Structure
+
+Services(/agents), Audit(/audit), Calculator(/calculator), Build(/build), Start a project(/demo) — 5 items, do not add more without discussion.
+
+## Key Pages
+
+| Page | Purpose |
+|------|---------|
+| index.html | Homepage — value prop, social proof |
+| agents.html | Services overview (AI Agent Teams) |
+| executives.html | AI for Executives offering |
+| build.html | 3-step wizard → custom agent team recommendation |
+| calculator.html | ROI calculator → cost of manual work |
+| audit.html | Free AI ops audit → 4-step wizard, personalized report |
+| demo.html | Lead form (reads `ref` param from URL for attribution) |
+| security.html | Security services (OpenClaw/NanoClaw hardening) |
+| blog.html | Blog index |
+| industries.html | Industry overview (law, dental, HVAC, veterinary, accounting) |
+
+## Design System
+
+Read `@ref/design-system.md` when creating or editing pages — covers colors, typography, spacing, motion, layout patterns, and anti-patterns.
+
+## Page Templates
+
+Read `@ref/page-structure.md` when creating new pages or modifying nav/footer — contains exact HTML for nav, mobile menu, footer, required JS, and accessibility checklist.
+
+## Verification
+
+When starting a new task, confirm you've read this file by mentioning "Milo" and the relevant product line.
